@@ -1,0 +1,2 @@
+class RelativeType < ApplicationRecord
+end

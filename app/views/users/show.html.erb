@@ -1,0 +1,16 @@
+<h1><%= @user.full_name %></h1>
+
+<h2>Name: <%= @user.full_name %></h2>
+<h3>Email: <%= @user.email %></h3>
+<h3>Birthday: <%= @user.birthday %></h3>
+<h3>Anniversary: <%= @user.anniversary %></h3>
+<h3>Relation:
+<br>
+<br>
+
+<% if current_user #|| current_user.admin %>
+  <%= link_to "Edit me", "/familymembers/#{@user.id}/edit" %><br>
+  <%= link_to "Delete me", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
+<% end %>
+
+<%= link_to "Back to All Family Members", "/familymembers" %>
