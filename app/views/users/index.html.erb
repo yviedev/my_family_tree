@@ -1,10 +1,11 @@
 <h1>My Family Members</h1>
+<h2>You have <%= current_user.group.users.count %> family members</h2>
 
 <% @users.each do |user| %>
 <h2>Name: <a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
 <h3>Email: <%= user.email %></h3>
-<h3>Birthday: <%= user.birthday %></h3>
-<h3>Anniversary: <%= user.anniversary %></h3>
-<h3>Relation to <!--<%= current_user %>-->:
+<h3>Birthday: <%= user.pretty_time(user.birthday) %></h3>
+<h3>Anniversary: <%= user.pretty_time(user.anniversary) %></h3>
+<h3>Relation to <%= current_user.first_name %>: <%= user.relation %>
 <hr>
 <% end %>

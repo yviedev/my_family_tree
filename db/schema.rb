@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212005352) do
+ActiveRecord::Schema.define(version: 20161215040741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,12 +60,13 @@ ActiveRecord::Schema.define(version: 20161212005352) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "group_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.date     "birthday"
-    t.date     "anniversary"
+    t.datetime "birthday"
+    t.datetime "anniversary"
+    t.boolean  "admin",           default: false
   end
 
   create_table "videos", force: :cascade do |t|

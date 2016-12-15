@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.where(group_id: current_user.group_id)
+    # @users = User.all
     render = 'index.html.erb'
   end
 
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.create!(
-      
+
     )
   end
 
