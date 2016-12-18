@@ -7,10 +7,6 @@ class User < ApplicationRecord
 
   belongs_to :group, optional: true
 
-  def relative_info
-
-  end
-
   def full_name
     return "#{first_name} #{last_name}"
   end
@@ -24,6 +20,7 @@ class User < ApplicationRecord
   end
 
   def relation
+  
   end
 
 end
