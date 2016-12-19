@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :status_updates
-  has_many :media
+  has_many :images
   has_many :relationships
 
   belongs_to :group, optional: true
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def relation
-  
+      @relationships
   end
 
 end

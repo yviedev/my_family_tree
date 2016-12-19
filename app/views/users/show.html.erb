@@ -2,9 +2,16 @@
 
 <h2>Name: <%= @user.full_name %></h2>
 <h3>Email: <%= @user.email %></h3>
-<h3>Birthday: <%= @user.birthday %></h3>
-<h3>Anniversary: <%= @user.anniversary %></h3>
-<h3>Relation:
+<h3>Birthday: <%= @user.pretty_time(@user.birthday) %></h3>
+<h3>Anniversary: <%= @user.pretty_time(@user.anniversary) %></h3>
+<h3>Media: <% @user.images.each do |image| %></h3>
+  <img src="<%= Image.find(image.id).url %>">
+  <% end %>
+<h3>Relation to Me:<% @relationships.each do |relationship| %>
+  <% if User.find(relationship.relative_id).id == @user.id %>
+    <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+  <% end %>
+  <% end %>
 <br>
 <br>
 

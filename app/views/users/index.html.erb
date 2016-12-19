@@ -3,9 +3,16 @@
 
 <% @users.each do |user| %>
 <h2>Name: <a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
+<h3>User ID: <%= user.id %></h3>
 <h3>Email: <%= user.email %></h3>
 <h3>Birthday: <%= user.pretty_time(user.birthday) %></h3>
 <h3>Anniversary: <%= user.pretty_time(user.anniversary) %></h3>
-<h3>Relation to <%= current_user.first_name %>: <%= user.relation %>
+<h3>Relation to Me:
+<% @relationships.each do |relationship| %>
+  <% if User.find(relationship.relative_id).id == user.id %>
+    <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+  <% end %>
+  <% end %>
+    <hr>
 <hr>
 <% end %>
