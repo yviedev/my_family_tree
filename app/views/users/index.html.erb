@@ -12,6 +12,7 @@
   <% if User.find(relationship.relative_id).id == user.id %>
     <%= RelativeType.find(relationship.relative_type_id).name %></h3>
   <% end %>
+  create drop down field that list relative_type names and simultaneously assigns relative_type_id
   <% end %>
     <hr>
 <hr>

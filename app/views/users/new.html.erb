@@ -1,5 +1,6 @@
 <h1>Signup!</h1>
-<%= form_tag '/familymembers', method: :post do  %>
+<%= form_tag "/familymembers", method: :post do  %>
+<!-- jlfjdkslfjd -->
   <div>
     <%= label_tag :first_name %>
     <%= text_field_tag :first_name %>
@@ -7,6 +8,11 @@
   <div>
     <%= label_tag :last_name %>
     <%= text_field_tag :last_name %>
+  </div>
+  <div>
+    <%= label_tag :group_id %>
+    <%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%> 
+            <%= link_to "My family group is not listed here.", "/myfamily/new" %>
   </div>
   <div>
     <%= label_tag :birthday %>

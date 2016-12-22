@@ -1,0 +1,6 @@
+<h1>Choose your family group:</h1>
+<%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%>
+<%= link_to "Go to Family!", "/" %>
+<br><br><br><br>
+
+<%= link_to "My family group is not listed here.", "/myfamily/new" %><br>
