@@ -3,10 +3,14 @@ class UsersController < ApplicationController
   def index
     @title = "All Family Members"
 
-    @users = User.where(group_id: current_user.group_id)
+    if current_user
+      @users = User.where(group_id: current_user.group_id)
     # @users = User.all
-    @relationships = current_user.relationships
-    render = 'index.html.erb'
+      @relationships = current_user.relationships
+      render = 'index.html.erb'
+    else
+      redirect_to '/login'
+    end
   end
 
   def show
