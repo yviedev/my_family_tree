@@ -5,14 +5,12 @@
 <h2>Name: <a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
 <h3>User ID: <%= user.id %></h3>
 <h3>Email: <%= user.email %></h3>
-<h3>Birthday: <%= user.pretty_time(user.birthday) %></h3>
-<h3>Anniversary: <%= user.pretty_time(user.anniversary) %></h3>
+<h3>Birthday: <%= user.month_date(user.birthday) %></h3>
+<h3>Anniversary: <%= user.month_date(user.anniversary) %></h3>
 <h3>Relation to Me:
 <% @relationships.each do |relationship| %>
   <% if User.find(relationship.relative_id).id == user.id %>
     <%= RelativeType.find(relationship.relative_type_id).name %></h3>
-  <% end %>
-  create drop down field that list relative_type names and simultaneously assigns relative_type_id
   <% end %>
     <hr>
 <hr>

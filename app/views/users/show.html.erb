@@ -2,22 +2,31 @@
 
 <h2>Name: <%= @user.full_name %></h2>
 <h3>Email: <%= @user.email %></h3>
-<h3>Birthday: <%= @user.pretty_time(@user.birthday) %></h3>
-<h3>Anniversary: <%= @user.pretty_time(@user.anniversary) %></h3>
-<h3>Media: <% @user.images.each do |image| %></h3>
+<h3>Birthday: <%= @user.month_date(@user.birthday) %></h3>
+<h3>Anniversary: <%= @user.month_date(@user.anniversary) %></h3>
+<h3>Photos: <% @user.images.each do |image| %></h3>
   <img src="<%= Image.find(image.id).url %>">
   <% end %>
-<h3>Relation to Me:<% @relationships.each do |relationship| %>
+<h3>Relation to Me: <%= @relation %>
+
+<% @relationships.each do |relationship| %>
   <% if User.find(relationship.relative_id).id == @user.id %>
     <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+  <% else %>
+    <%= form_tag '/relationships', method: :post do %>
+    <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
+    <%= hidden_field_tag :user_id, @user.id%>
+    <%= submit_tag 'Add relationship' %>
   <% end %>
   <% end %>
-<br>
+<% end %>
+
+
 <br>
 
 <% if current_user #|| current_user.admin %>
-  <%= link_to "Edit me", "/familymembers/#{@user.id}/edit" %><br>
-  <%= link_to "Delete me", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
+  <%= link_to "Edit member", "/familymembers/#{@user.id}/edit" %><br>
+  <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
 <% end %>
 
-<%= link_to "Back to All Family Members", "/familymembers" %>
+<%= link_to "Back to All Family Members", "/" %>

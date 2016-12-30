@@ -11,7 +11,7 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}"
   end
 
-  def pretty_time(date)
+  def month_date(date)
     if date
       date.strftime("%B %-d")
     else
@@ -19,8 +19,12 @@ class User < ApplicationRecord
     end
   end
 
-  def relation
-      @relationships
+  def month_date_year(date)
+    if date
+      date.strftime("%B %-d, %Y")
+    else
+      "#{first_name} doesn't have one."
+    end
   end
 
 end

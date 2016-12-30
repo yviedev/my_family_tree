@@ -15,8 +15,19 @@ class UsersController < ApplicationController
 
   def show
     @title = "Family Member"
+    @current_user = current_user
     @user = User.find(params[:id])
+    @relative_type_id = RelativeType.all
     @relationships = current_user.relationships
+
+    @relationships.each do |relationship|
+      if User.find(relationship.relative_id).id == @user.id
+        @relation = RelativeType.find(relationship.relative_type_id).name
+      else
+        @relation = "Not available"
+      end
+    end
+
     render = 'show.html.erb'
   end
 
@@ -55,8 +66,9 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Edit Family Member"
+    @groups = Group.all.order('name ASC')
     @user = User.find(params[:id])
-    redirect_to "/familymembers/#{@user.id}"
+    render 'edit.html.erb'
   end
 
   def update
@@ -82,6 +94,19 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to "/"
+  end
+
+  def relation
+    user = User.find(params[:id])
+    current_user.relationships.each do |relationship|
+      return relationship
+      # if User.find(relationship.relative_id).id == user.id
+      #   @relation = RelativeType.find(relationship.relative_type_id).name
+      # else
+      #   @relation = "Not set yet."
+      # end
+    end
+    # return @relation
   end
 
 end

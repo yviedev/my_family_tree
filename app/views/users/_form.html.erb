@@ -2,11 +2,11 @@
 
 <div>
   <%= label_tag :first_name %>
-  <%= text_field_tag :first_name %>
+  <%= text_field_tag :first_name, @user.first_name %>
 </div>
 <div>
   <%= label_tag :last_name %>
-  <%= text_field_tag :last_name %>
+  <%= text_field_tag :last_name, @user.last_name %>
 </div>
 <div>
   <%= label_tag :group_id %>
@@ -14,11 +14,11 @@
 </div>
 <div>
   <%= label_tag :birthday %>
-  <%= text_field_tag :birthday %>
+  <%= text_field_tag :birthday, @user.month_date_year(@user.birthday) %>
 </div>
 <div>
   <%= label_tag :anniversary %>
-  <%= text_field_tag :anniversary %>
+  <%= text_field_tag :anniversary, @user.month_date_year(@user.anniversary) %>
 </div>
 
 <%= submit_tag message %>

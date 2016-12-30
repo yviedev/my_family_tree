@@ -1,0 +1,17 @@
+<h1>Add Family Relation below:</h1>
+
+<%= form_tag "/relationships", method: :post do %>
+<div>
+  <%= label_tag :Relation %>
+  <%= text_field_tag :name %>
+</div>
+<div>
+  <%= label_tag :Relation %>
+  <%= text_field_tag :name %>
+</div>
+<div>
+  <%= label_tag :Relation %>
+  <%= text_field_tag :name %>
+</div>
+<%= submit_tag "Add Family Relation" %>
+<% end %>

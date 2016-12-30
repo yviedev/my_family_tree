@@ -12,7 +12,7 @@
   <div>
     <%= label_tag :group_id %>
     <%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%> 
-            <%= link_to "My family group is not listed here.", "/myfamily/new" %>
+    <%= link_to "My family group is not listed here.", "/myfamily/new" %>
   </div>
   <div>
     <%= label_tag :birthday %>
