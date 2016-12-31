@@ -1,17 +1,28 @@
 <h1>My Family Members</h1>
 <h2>You have <%= current_user.group.users.count %> family members</h2>
 
-<% @users.each do |user| %>
-<h2>Name: <a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
-<h3>User ID: <%= user.id %></h3>
-<h3>Email: <%= user.email %></h3>
-<h3>Birthday: <%= user.month_date(user.birthday) %></h3>
-<h3>Anniversary: <%= user.month_date(user.anniversary) %></h3>
-<h3>Relation to Me:
+<div class="row">
+<% @users.each_with_index do |user, index| %>
+<div class="col-md-4 my-col row-eq-height">
+
+<h2><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
+<h3>Relationship:
 <% @relationships.each do |relationship| %>
   <% if User.find(relationship.relative_id).id == user.id %>
     <%= RelativeType.find(relationship.relative_type_id).name %></h3>
   <% end %>
-    <hr>
-<hr>
+  <% end %>
+<h4>Status Update: 
+<% if user.status_updates == [] %>
+  No status update available</h4>
+<% else %>
+  <%= user.status_updates.first.post %></h4>
 <% end %>
+<% user.id %>
+</div>
+<% if index % 3 == 2 %>
+</div>
+<div class="row">
+<% end %>
+<% end %>
+</div>

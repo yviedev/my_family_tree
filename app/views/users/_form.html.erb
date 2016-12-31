@@ -9,16 +9,21 @@
   <%= text_field_tag :last_name, @user.last_name %>
 </div>
 <div>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, @user.email %>
+</div>
+<div>
   <%= label_tag :group_id %>
-  <%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%> <%= link_to "My family group is not listed here.", "/myfamily/new" %>
+  <%= select_tag :group_id, options_from_collection_for_select(@groups, "id", "name", @user.group_id) %> 
+  <%= link_to "My family group is not listed here.", "/myfamily/new" %>
 </div>
 <div>
   <%= label_tag :birthday %>
-  <%= text_field_tag :birthday, @user.month_date_year(@user.birthday) %>
+  <%= date_field_tag :birthday, @user.mm_dd_yy(@user.birthday) %>
 </div>
 <div>
   <%= label_tag :anniversary %>
-  <%= text_field_tag :anniversary, @user.month_date_year(@user.anniversary) %>
+  <%= date_field_tag :anniversary, @user.mm_dd_yy(@user.anniversary) %>
 </div>
 
 <%= submit_tag message %>

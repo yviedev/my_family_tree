@@ -27,4 +27,12 @@ class User < ApplicationRecord
     end
   end
 
+  def mm_dd_yy(date)
+    if date
+      date.strftime("%m/%d/%y")
+    else
+      "#{first_name} doesn't have one."
+    end
+  end
+
 end

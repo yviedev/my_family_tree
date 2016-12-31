@@ -1,30 +1,27 @@
-<h1><%= @user.full_name %></h1>
-
-<h2>Name: <%= @user.full_name %></h2>
-<h3>Email: <%= @user.email %></h3>
+<h1><% if @user.images != [] %>
+  <img src="<%= @user.images.first.url %>">
+<% end %><%= @user.full_name %></h1>
+<h3>Relationship: <%= @relationship %>
 <h3>Birthday: <%= @user.month_date(@user.birthday) %></h3>
 <h3>Anniversary: <%= @user.month_date(@user.anniversary) %></h3>
-<h3>Photos: <% @user.images.each do |image| %></h3>
-  <img src="<%= Image.find(image.id).url %>">
-  <% end %>
-<h3>Relation to Me: <%= @relation %>
+<h3>Status Update: 
+<% if @user.status_updates == [] %>
+  No status update available.</h3>
+<% else %>
+  <%= @user.status_updates.first.post %></h3>
+<% end %>
+<br>
 
-<% @relationships.each do |relationship| %>
-  <% if User.find(relationship.relative_id).id == @user.id %>
-    <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+<% if current_user #|| current_user.admin %>
+  <% if @relationship != "Not available"%>
+    <br><%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit" %><br>
   <% else %>
     <%= form_tag '/relationships', method: :post do %>
     <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
     <%= hidden_field_tag :user_id, @user.id%>
     <%= submit_tag 'Add relationship' %>
+    <% end %><br>
   <% end %>
-  <% end %>
-<% end %>
-
-
-<br>
-
-<% if current_user #|| current_user.admin %>
   <%= link_to "Edit member", "/familymembers/#{@user.id}/edit" %><br>
   <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
 <% end %>
