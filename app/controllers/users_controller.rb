@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   end
 
   def create_family_member
-    @user = User.new(
+    @user = User.create!(
       first_name: params[:first_name],
       last_name: params[:last_name],
       group_id: params[:groups],
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
       redirect_to "/"
     else
       flash[:warning] = "Please try and edit your family member again."
-      render 'new.html.erb'
+      render 'newfamilymember.html.erb'
     end
   end
 
@@ -140,7 +140,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     flash[:warning] = "You deleted your family member."
-    redirect_to "/"
+    redirect_to "/familymembers"
   end
 
 end

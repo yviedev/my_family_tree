@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 img {
-  height: 15%;
-  width: 15%
+  height: 25%;
+  width: 25%
 }
+#message{
+  background: white;
+  padding:0 15px 15px 15px;
+  color: black;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.35);
+  min-height: 50px;
+  width: 600px;
+  border-radius: 15px;
+  border: solid #575757 4px;
+  margin-bottom: 15px;
+ }

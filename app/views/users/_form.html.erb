@@ -9,13 +9,7 @@
   <%= text_field_tag :last_name, @user.last_name %>
 </div>
 <div>
-  <%= label_tag :email %>
-  <%= text_field_tag :email, @user.email %>
-</div>
-<div>
-  <%= label_tag :group_id %>
-  <%= select_tag :group_id, options_from_collection_for_select(@groups, "id", "name", @user.group_id) %> 
-  <%= link_to "My family group is not listed here.", "/myfamily/new" %>
+  <%= hidden_field_tag :group_id, current_user.group_id%>
 </div>
 <div>
   <%= label_tag :birthday %>
