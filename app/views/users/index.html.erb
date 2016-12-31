@@ -12,12 +12,6 @@
     <%= RelativeType.find(relationship.relative_type_id).name %></h3>
   <% end %>
   <% end %>
-<h4>Status Update: 
-<% if user.status_updates == [] %>
-  No status update available</h4>
-<% else %>
-  <%= user.status_updates.first.post %></h4>
-<% end %>
 <% user.id %>
 </div>
 <% if index % 2 == 1 %>

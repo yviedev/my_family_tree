@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
-  def welcome
+  def home
+    render 'home.html.erb'
+  end
+
+  def newsfeed
     @title = "My Family Tree"
     if current_user
-      @messages = StatusUpdate.where(group_id: current_user.group_id)
-      render 'welcome.html.erb'
+      @messages = StatusUpdate.where(group_id: current_user.group_id, )
+      render 'newsfeed.html.erb'
     else
       redirect_to '/login'
     end
