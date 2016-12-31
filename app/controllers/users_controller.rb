@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+  def welcome
+    if current_user
+      @messages = StatusUpdate.where(group_id: current_user.group_id)
+      render 'welcome.html.erb'
+    else
+      redirect_to '/login'
+    end
+  end
+
   def index
     @title = "All Family Members"
 
@@ -17,8 +26,8 @@ class UsersController < ApplicationController
       @relationships = current_user.relationships
         
       render = 'index.html.erb'
-      else
-        redirect_to '/login'
+    else
+      redirect_to '/login'
     end
   end
 

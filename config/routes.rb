@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/' => 'users#index'
+  get '/' => 'users#welcome'
   get '/signup' => 'users#new'
+
+  get '/familymembers'=> 'users#index'
   post '/familymembers' =>'users#create'
   get '/familymembers/new' => 'users#new_family_member'
   post '/addfamilymember' => 'users#create_family_member'
