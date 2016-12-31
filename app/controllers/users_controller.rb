@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def welcome
+    @title = "My Family Tree"
     if current_user
       @messages = StatusUpdate.where(group_id: current_user.group_id)
       render 'welcome.html.erb'

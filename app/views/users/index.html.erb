@@ -3,7 +3,7 @@
 
 <div class="row">
 <% @users.each_with_index do |user, index| %>
-<div class="col-md-4 my-col row-eq-height">
+<div class="col-md-6 my-col row-eq-height">
 
 <h2><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
 <h3>Relationship:
@@ -20,7 +20,7 @@
 <% end %>
 <% user.id %>
 </div>
-<% if index % 3 == 2 %>
+<% if index % 2 == 1 %>
 </div>
 <div class="row">
 <% end %>
