@@ -1,22 +1,43 @@
-<h1>My Family Members</h1>
-<h2>You have <%= current_user.group.users.count %> family members</h2>
+<section class="menus style3" id="menuCard">
+  <div class="container"> 
+    <div class="row"> 
 
-<div class="row">
-<% @users.each_with_index do |user, index| %>
-<div class="col-md-6 my-col row-eq-height">
+<!-- Section Header -->
+      <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+        <h2><span class="highlight-text">My Family Members</span></h2>
 
-<h2><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
-<h3>Relationship:
-<% @relationships.each do |relationship| %>
-  <% if User.find(relationship.relative_id).id == user.id %>
-    <%= RelativeType.find(relationship.relative_type_id).name %></h3>
-  <% end %>
-  <% end %>
-<% user.id %>
-</div>
-<% if index % 2 == 1 %>
-</div>
-<div class="row">
-<% end %>
-<% end %>
-</div>
+        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">You have <%= (current_user.group.users.count - 1) %> family members:</p>
+      </div>
+<!-- Section Header End -->
+
+      <div class="menus-container"> 
+<!-- menu --> 
+        <div class="menu row">
+          <% @users.each_with_index do |user, index| %>
+            <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+              <div class="menu-column">
+                <div class="food">
+                  <div class="food-price">
+                    <h6 class="food-name"><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h6>
+                      <div class="dots"></div>
+                        <div class="food-desc">
+                          <span>Relationship:
+                            <% @relationships.each do |relationship| %>
+                            <% if User.find(relationship.relative_id).id == user.id %>
+                            <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+                            <% end %>
+                            <% end %>
+                          </span>
+                        </div><!-- /food-price -->
+                      </div><!-- /food-desc -->
+                    <div class="food-details">
+                      <span>Birthday: <%= user.month_date(user.birthday) %></span>
+                    </div><!-- /food-details -->
+                  </div><!-- /food -->
+              </div><!-- /col-md-6 -->
+            </div><!-- /row -->
+            <% end %>
+</div><!-- /menu-carousel -->
+</div><!-- /menus-container --> 
+</div><!-- /container -->
+</section>
