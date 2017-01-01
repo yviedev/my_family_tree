@@ -1,9 +1,10 @@
-<h1><% if @user.images != [] %>
+<h1><%= @user.full_name %></h1>
+<% if @user.images != [] %>
   <img src="<%= @user.images.first.url %>">
-<% end %><%= @user.full_name %></h1>
-<h3>Relationship: <%= @relationship %>
-<h3>Birthday: <%= @user.month_date(@user.birthday) %></h3>
-<h3>Anniversary: <%= @user.month_date(@user.anniversary) %></h3>
+<% end %>
+<h2>Relationship: <%= @relationship %>
+<h2>Birthday: <%= @user.month_date(@user.birthday) %></h2>
+<h2>Anniversary: <%= @user.month_date(@user.anniversary) %></h2>
 <br>
 
 <section id="portfolio" class="bgSection portfolio-section">
