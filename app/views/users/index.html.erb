@@ -1,8 +1,17 @@
 <!-- Section Header -->
       <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
         <h2><span class="highlight-text">My Family Members</span></h2>
-    
-        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">You have <%= (current_user.group.users.count - 1) %> family members:</p>
+        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">(You have <%= (current_user.group.users.count - 1) %> family members)</p>
+
+        <div class="btn-group col-md-8 col-sm-10 col-xs-12 col-md-offset-5 col-sm-offset-1">
+          <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Family Member</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=asc">Sort by Name | A-Z</a>
+            <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=desc">Sort by Name | Z-A</a>
+            <a class="dropdown-item" href="/familymembers/?sort_attribute=birthday&order=asc">Sort by Birthday | Jan-Dec</a>
+          </div>
+        </div>
+        
       </div>
 <!-- Section Header End -->
 

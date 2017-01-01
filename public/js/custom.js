@@ -125,7 +125,7 @@ jQuery(document).ready(function () {
     }
   });
 
-
+  /* ---------- Portfolio --------- */
   $('#portfolio-filter ul li a').on('click', function () {
     var selector = $(this).attr('data-filter');
     $container.isotope({
