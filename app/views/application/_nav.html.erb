@@ -25,17 +25,14 @@
         <a class="dropdown-item" href="/familymembers/<%= current_user.id %>">View My Page</a>
         <a class="dropdown-item" href="/familymembers">View All Family Members</a>
         <a class="dropdown-item" href="/familymembers/new">Add New Family Member</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=asc">Sort by Name | A-Z</a>
-        <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=desc">Sort by Name | Z-A</a>
-        <a class="dropdown-item" href="/familymembers/?sort_attribute=birthday&order=asc">Sort by Birthday | Jan-Dec</a>
+        
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">My Family Tree</a>
         <a class="dropdown-item" href="#">My Family Map</a>
         <a class="dropdown-item" href="#">My Messages</a>
       </div>
     </li>
-    <%= form_tag '/', method: :get, class: "navbar-form navbar-left" do %>
+    <%= form_tag '/familymembers', method: :get, class: "navbar-form navbar-left" do %>
       <div class="form-group">
     <%= text_field_tag :search_content, '' , class: "nav-link form-control", placeholder: "Enter name" %>
       </div>
