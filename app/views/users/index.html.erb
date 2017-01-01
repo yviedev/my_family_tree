@@ -1,7 +1,3 @@
-<section class="menus style3" id="menuCard">
-  <div class="container"> 
-    <div class="row"> 
-
 <!-- Section Header -->
       <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
         <h2><span class="highlight-text">My Family Members</span></h2>
@@ -10,34 +6,25 @@
       </div>
 <!-- Section Header End -->
 
-      <div class="menus-container"> 
-<!-- menu --> 
-        <div class="menu row">
-          <% @users.each_with_index do |user, index| %>
-            <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-              <div class="menu-column">
-                <div class="food">
-                  <div class="food-price">
-                    <h6 class="food-name"><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h6>
-                      <div class="dots"></div>
-                        <div class="food-desc">
-                          <span>Relationship:
-                            <% @relationships.each do |relationship| %>
-                            <% if User.find(relationship.relative_id).id == user.id %>
-                            <%= RelativeType.find(relationship.relative_type_id).name %></h3>
-                            <% end %>
-                            <% end %>
-                          </span>
-                        </div><!-- /food-price -->
-                      </div><!-- /food-desc -->
-                    <div class="food-details">
-                      <span>Birthday: <%= user.month_date(user.birthday) %></span>
-                    </div><!-- /food-details -->
-                  </div><!-- /food -->
-              </div><!-- /col-md-6 -->
-            </div><!-- /row -->
-            <% end %>
-</div><!-- /menu-carousel -->
-</div><!-- /menus-container --> 
-</div><!-- /container -->
+<% @users.each_with_index do |user, index| %>
+<div class="card-deck-wrapper">
+<div class="card-deck">
+<div class="card card-outline-success text-xs-center" style="width: 25rem; height: 25rem">
+<img class="card-img-top" src="..." alt="Card image cap">
+<div class="card-block">
+<h4 class="card-title"><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h4>
+<p class="card-text">Relationship:
+  <% @relationships.each do |relationship| %>
+  <% if User.find(relationship.relative_id).id == user.id %>
+  <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+  <% end %>
+  <% end %></p>
+<p class="card-text">Birthday: <%= user.month_date(user.birthday) %></p>
+<p class="card-text"><small class="text-muted"><%= user.month_date(user.updated_at) %></small></p>
+</div>
+</div>
+<% end %>
+</div>
+
 </section>
+</br>
