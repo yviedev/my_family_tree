@@ -30,7 +30,9 @@
         My Family Members
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <% if current_user%>
         <a class="dropdown-item" href="/familymembers/<%= current_user.id %>">View My Page</a>
+        <% end %>
         <a class="dropdown-item" href="/familymembers">View All Family Members</a>
         <a class="dropdown-item" href="/familymembers/new">Add New Family Member</a>
         
@@ -44,7 +46,7 @@
       <% if current_user %>
         <a class="nav-link" href="/logout">Log Out</a></li>
       <% else %>
-        <a href="/login">Log In</a></li>
+        <a class="nav-link" href="/login">Log In</a></li>
         <li><a class="nav-link" href="/signup">Signup</a></li>
       <% end %>
     </li>

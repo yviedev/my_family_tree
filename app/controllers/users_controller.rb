@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :newsfeed, :index, :new_family_member, :create_family_member]
 
   def home
     @title = "My Family Tree"
