@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
   def home
+    @title = "My Family Tree"
     render 'home.html.erb'
   end
 
   def newsfeed
-    @title = "My Family Tree"
+    @title = "My Newsfeed"
     if current_user
       @messages = StatusUpdate.where(group_id: current_user.group_id, )
       render 'newsfeed.html.erb'

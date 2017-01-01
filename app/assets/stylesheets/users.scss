@@ -5,14 +5,23 @@
 //   height: 25%;
 //   width: 25%
 // }
-#message{
+#message {
   background: white;
-  padding:0 15px 15px 15px;
+  padding: 0 15px 15px 15px;
   color: black;
-  box-shadow: 0 3px 3px rgba(0,0,0,0.35);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.35);
   min-height: 50px;
   width: 600px;
   border-radius: 15px;
   border: solid #575757 4px;
   margin-bottom: 15px;
- }
+}
+
+.card {
+  margin: 0 auto;
+  /* Added */
+  float: none;
+  /* Added */
+  margin-bottom: 10px;
+  /* Added */
+}

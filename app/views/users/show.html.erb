@@ -1,28 +1,31 @@
-<div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
+<div class="card card-outline-success text-xs-center" style="width: 75rem;">
+  <% if @user.images != [] %>
+  <img class="card-img-top" src="<%= @user.images.first.url %>" alt="Card image cap">
+  <% end %>
   <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h4 class="card-title"><%= @user.full_name %></h4>
+    <p class="card-text">Relationship: <%= @relationship %></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">Birthday: <%= @user.month_date(@user.birthday) %></li>
+    <li class="list-group-item">Anniversary: <%= @user.month_date(@user.anniversary) %></li>
   </ul>
   <div class="card-block">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <% if current_user #|| current_user.admin %>
+  <% if @relationship != "Not available"%>
+    <%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit" %><br>
+  <% else %>
+    <%= form_tag '/relationships', method: :post do %>
+    <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
+    <%= hidden_field_tag :user_id, @user.id%>
+    <%= submit_tag 'Add relationship' %>
+    <% end %><br>
+  <% end %>
+  <%= link_to "Edit member", "/familymembers/#{@user.id}/edit" %><br>
+  <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
+<% end %>
   </div>
 </div>
-
-<h1><%= @user.full_name %></h1>
-<% if @user.images != [] %>
-  <img src="<%= @user.images.first.url %>">
-<% end %>
-<h2>Relationship: <%= @relationship %>
-<h2>Birthday: <%= @user.month_date(@user.birthday) %></h2>
-<h2>Anniversary: <%= @user.month_date(@user.anniversary) %></h2>
-<br>
 
 <section id="portfolio" class="bgSection portfolio-section">
   <div class="container">
@@ -60,19 +63,4 @@
   <!-- Works End -->
 </section>
 <!-- Portfolio Section End -->
-
-<% if current_user #|| current_user.admin %>
-  <% if @relationship != "Not available"%>
-    <br><%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit" %><br>
-  <% else %>
-    <%= form_tag '/relationships', method: :post do %>
-    <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
-    <%= hidden_field_tag :user_id, @user.id%>
-    <%= submit_tag 'Add relationship' %>
-    <% end %><br>
-  <% end %>
-  <%= link_to "Edit member", "/familymembers/#{@user.id}/edit" %><br>
-  <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
-<% end %>
-
-<%= link_to "Back to All Family Members", "/" %>
+<br>
