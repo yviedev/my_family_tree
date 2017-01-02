@@ -11,7 +11,7 @@
     <li class="list-group-item">Anniversary: <%= @user.month_date(@user.anniversary) %></li>
   </ul>
   <div class="card-block">
-  <% if current_user #|| current_user.admin %>
+  <% if current_user || current_user.admin %>
   <% if @relationship != "Not available"%>
     <%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit" %><br>
   <% else %>
@@ -36,7 +36,7 @@
             
             <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Click the images below to go through <%= @user.first_name %>'s gallery.</p>
             
-            <% if current_user %>
+            <% if current_user || current_user.admin %>
             <div class="btn-group col-md-8 col-sm-10 col-xs-12 col-md-offset-5 col-sm-offset-1">
               <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Image options</button>
               <div class="dropdown-menu">
