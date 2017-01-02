@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :newsfeed, :index, :new_family_member, :create_family_member]
+  before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :newsfeed, :index, :new_family_member, :create_family_member]
 
   def home
     @title = "My Family Tree"
@@ -18,7 +18,7 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
 
   def index
     @title = "All Family Members"
-
+  
     if current_user
       if params["sort_attribute"] && params["order"]
         @users = User.where(group_id: current_user.group_id).order(params["sort_attribute"] => params["order"])
@@ -28,7 +28,7 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
         @users = User.where(group_id: current_user.group_id)
       end
       # @users = User.all
-
+  
       #link relationship between current_user and user
       @relationships = current_user.relationships
         
@@ -44,7 +44,7 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
     @user = User.find(params[:id])
     @relative_type_id = RelativeType.all.order('name ASC')
     @relationships = current_user.relationships
-
+  
     @relative_array = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
     if @relative_array[0]
       @relationship = RelativeType.find(@relative_array[0].relative_type_id).name
@@ -52,7 +52,7 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
     else
       @relationship = "Not available"
     end
-
+  
     render = 'show.html.erb'
   end
 
@@ -83,10 +83,10 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
     )
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Congrats. You added a new family member."
-      redirect_to "/"
+      flash[:success] = "Congrats. Your account was created."
+      redirect_to "/newsfeed"
     else
-      flash[:warning] = "Please try and edit your family member again."
+      flash[:warning] = "Please try again."
       render 'new.html.erb'
     end
   end
@@ -121,7 +121,7 @@ before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :ne
     @title = "Update Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
-
+  
     if @user.email
       flash[:warning] = "Only user can update their information."
     else

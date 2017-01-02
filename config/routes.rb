@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get '/myfamily/new' => 'groups#new'
   post '/myfamily' => 'groups#create'
 
+  get '/images/new' => 'images#new'
+  post '/images/' => 'images#create'
+  delete '/images/:id' =>'images#destroy'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
