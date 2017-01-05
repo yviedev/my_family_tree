@@ -6,16 +6,6 @@ class UsersController < ApplicationController
     render 'home.html.erb'
   end
 
-  def newsfeed
-    @title = "My Newsfeed"
-    if current_user
-      @messages = StatusUpdate.where(group_id: current_user.group_id, )
-      render 'newsfeed.html.erb'
-    else
-      redirect_to '/login'
-    end
-  end
-
   def index
     @title = "All Family Members"
   
@@ -39,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @title = "Family Member"
+    @title = "My Family Member"
     @current_user = current_user
     @user = User.find(params[:id])
     @relative_type_id = RelativeType.all.order('name ASC')
@@ -122,9 +112,7 @@ class UsersController < ApplicationController
     @groups = Group.all
     @user = User.find(params[:id])
   
-    if @user.email
-      flash[:warning] = "Only user can update their information."
-    else
+    if @user.email || current_user.admin
       @user.update!(
         first_name: params[:first_name],
         last_name: params[:last_name],
@@ -133,6 +121,8 @@ class UsersController < ApplicationController
         anniversary: params[:anniversary]
       )
       flash[:success] = "Congrats. You updated your family member info."
+    else
+      flash[:warning] = "Only user can update their information."
     end
     redirect_to "/familymembers/#{@user.id}"
     # else

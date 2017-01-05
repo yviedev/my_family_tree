@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/' => 'users#home'
-  get '/newsfeed' => 'users#newsfeed'
   get '/signup' => 'users#new'
 
   get '/familymembers'=> 'users#index'
@@ -20,7 +19,8 @@ Rails.application.routes.draw do
   patch '/relationships/:id' =>'relationships#update'
   delete '/relationships/:id' =>'relationships#destroy'
 
-  get '/statusupdates' => 'user#statusupdates'
+  get '/newsfeed' => 'status_updates#index'
+  post '/newsfeed' => 'status_updates#create'
 
   get '/myfamily' => 'groups#index'
   get '/myfamily/new' => 'groups#new'
