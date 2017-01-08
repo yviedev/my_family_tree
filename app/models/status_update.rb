@@ -1,5 +1,7 @@
 class StatusUpdate < ApplicationRecord
   belongs_to :user
+  has_many :likes
+  has_many :comments
 
   def month_date_year(date)
     if date

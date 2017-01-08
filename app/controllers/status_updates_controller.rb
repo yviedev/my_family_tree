@@ -3,7 +3,8 @@ class StatusUpdatesController < ApplicationController
   def index
     @title = "My Newsfeed"
     if current_user
-      @messages = Group.find(current_user.group_id).status_updates.order('created_at DESC')
+      @messages = Group.find(current_user.group_id).status_updates.order('created_at DESC').limit(5)
+
       render 'index.html.erb'
     else
       redirect_to '/login'

@@ -19,8 +19,29 @@
 <% end %>
 
 <% @messages.each do |message| %>
-<div class="message">Posted by: <%= User.find(message.user_id).first_name %> on <%= message.month_date_year_time(message.updated_at) %>
-<p><img src="<%= message.url %>"></p>
-<p><%= message.post %></p>
+  <div class="message">Posted by: <%= User.find(message.user_id).first_name %> on <%= message.month_date_year_time(message.updated_at) %>
+  <p><img src="<%= message.url %>"></p>
+  <p><%= message.post %></p>
+  </div>
+
+<% message.comments.each do |c|%>
+  <p>Comment by <%= current_user.first_name%>: <%= c.post%> <% c.id %></p>
+  <%= link_to "Delete comment", "/comments/#{c.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
+  <hr>
+<% end %>
+<div class="comment">
+
+<%= form_tag "/comments", method: :post do  %>
+
+  <div>
+    <%= label_tag "Comment" %>
+    <%= text_field_tag :post %>
+  </div>
+  <div>
+    <%= hidden_field_tag :status_update_id, message.id %>
+  </div>
+  
+<%= submit_tag "Add comment" %><br>
 </div>
+<% end %>
 <% end %>

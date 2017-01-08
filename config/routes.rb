@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get '/newsfeed' => 'status_updates#index'
   post '/newsfeed' => 'status_updates#create'
 
+  post '/comments' => 'comments#create'
+  delete '/comments/:id' =>'comments#destroy'
+
   get '/myfamily' => 'groups#index'
   get '/myfamily/new' => 'groups#new'
   post '/myfamily' => 'groups#create'
