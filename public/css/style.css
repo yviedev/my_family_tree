@@ -401,12 +401,13 @@ section#services {
   display: block;
 }
 
-.form-control,
+
+/*.form-control,
 input {
   border-radius: 0;
   padding: 15px 10px;
   height: auto;
-}
+}*/
 
 
 /* ---- icon Square ------ */
@@ -1623,7 +1624,8 @@ header.page-header .main-menu.minified {
   font-weight: 400;
   margin-bottom: 10px;
 }
-.contact-section .contact-form .input-fields input {
+
+/*.contact-section .contact-form .input-fields input {
   width: 100%;
   height: 60px;
   background-color: transparent;
@@ -1632,7 +1634,7 @@ header.page-header .main-menu.minified {
   padding-right: 15px;
   border: none;
   color: #111 !important;
-}
+}*/
 .contact-details ul li {
   color: #F00 !important;
   padding-top: 0;
