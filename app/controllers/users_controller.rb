@@ -34,6 +34,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @relative_type_id = RelativeType.all.order('name ASC')
     @relationships = current_user.relationships
+
+    # work on this later
+    # @relationships.each do |r|
+    #   if r.relative.id == @user.id
+    #     @relationship = @user.id
+    #   else
+    #     @relationship = "Not available"
+    #   end
+    # end
+
+    # @relationships.select { |r| r.relative == @user }
+    # @relatioship = r.relative_type.name || "Not available"
   
     @relative_array = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
     if @relative_array[0]

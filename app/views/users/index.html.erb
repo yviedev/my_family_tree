@@ -29,7 +29,7 @@
                 <h4 class="card-title"><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h4>
                 <p class="card-text">Relationship:
                   <% @relationships.each do |relationship| %>
-                  <% if User.find(relationship.relative).id == user %>
+                  <% if User.find(relationship.relative).id == user.id %>
                     <%= relationship.relative_type.name%> </h3>
                   <% end %>
                   <% end %></p>
