@@ -1,3 +1,4 @@
 class Like < ApplicationRecord
-  belongs_to :status_update, optional: true
+  belongs_to :status_update
+  belongs_to :user
 end

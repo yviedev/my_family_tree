@@ -8,40 +8,48 @@
     <%= label_tag :url %>
     <%= text_field_tag :url %>
   </div>
-  <div>
-    <%= hidden_field_tag :user_id, @current_user.id %>
-  </div>
   
 <%= submit_tag "Update Status" %><br>
 
-<%= link_to "Cancel", "/familymembers/#{current_user.id}" %><br>
+<%= link_to "Cancel", "/newsfeed" %><br>
 
 <% end %>
 
-<% @messages.each do |message| %>
-  <div class="message">Posted by: <%= User.find(message.user_id).first_name %> on <%= message.month_date_year_time(message.updated_at) %>
-  <p><img src="<%= message.url %>"></p>
-  <p><%= message.post %></p>
-  </div>
-
-<% message.comments.each do |c|%>
-  <p>Comment by <%= current_user.first_name%>: <%= c.post%> <% c.id %></p>
-  <%= link_to "Delete comment", "/comments/#{c.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
+<% @status_updates.each do |status_update| %>
+  <div class="status_update">Posted by: <%= status_update.user.first_name %> on <%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %>
+  <p><img src="<%= status_update.url %>"></p>
+  <p><%= status_update.post %></p>
+  <% if current_user == status_update.user %>
+    <%= link_to "Delete status update", "/newsfeed/#{status_update.id}", :method => :delete, :confirm => "Are you sure ?"%></p>
+  <% end %>
   <hr>
-<% end %>
-<div class="comment">
 
-<%= form_tag "/comments", method: :post do  %>
-
-  <div>
-    <%= label_tag "Comment" %>
-    <%= text_field_tag :post %>
-  </div>
-  <div>
-    <%= hidden_field_tag :status_update_id, message.id %>
-  </div>
+  <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+    <% @like = Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+    <%= form_tag "/likes/#{@like.id}", method: :patch do  %>  
+    <%= submit_tag "Like" %> :<%= status_update.likes.where(vote: true).count %></h2>
+    <% end %>
+  <% else %>
+    <%= form_tag "/likes", method: :post do  %>  
+    <%= hidden_field_tag :status_update_id, status_update.id %>
+    <%= submit_tag "Like" %> :<%= status_update.likes.where(vote: true).count %></h2>
+    <% end %>
+  <% end %>
   
-<%= submit_tag "Add comment" %><br>
-</div>
-<% end %>
+  <div class="comment">
+    <% status_update.comments.each do |comment|%>
+      <p>Comment by <%= comment.user.first_name%>: <%= comment.post%> <% comment.id %>
+      <% if comment.user == current_user%>
+        <%= link_to "Delete comment", "/comments/#{comment.id}", :method => :delete, :confirm => "Are you sure ?"%></p>
+      <% end %>
+    <% end %>
+    
+      <%= form_tag "/comments", method: :post do  %>
+      <%= label_tag "Comment" %>
+      <%= text_field_tag :post %>
+      <%= hidden_field_tag :status_update_id, status_update.id %>
+      <%= submit_tag "Add comment" %><br>
+  </div>
+      <% end %>
+  </div>
 <% end %>

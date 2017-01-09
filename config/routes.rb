@@ -21,9 +21,13 @@ Rails.application.routes.draw do
 
   get '/newsfeed' => 'status_updates#index'
   post '/newsfeed' => 'status_updates#create'
+  delete '/newsfeed/:id' =>'status_updates#destroy'
 
   post '/comments' => 'comments#create'
   delete '/comments/:id' =>'comments#destroy'
+
+  post '/likes' => 'likes#create'
+  patch '/likes/:id' => 'likes#update'
 
   get '/myfamily' => 'groups#index'
   get '/myfamily/new' => 'groups#new'

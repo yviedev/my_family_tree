@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :status_updates
   has_many :images
   has_many :relationships
+  has_many :likes
+  has_many :comments
 
   belongs_to :group, optional: true
 

@@ -3,8 +3,8 @@ class StatusUpdatesController < ApplicationController
   def index
     @title = "My Newsfeed"
     if current_user
-      @messages = Group.find(current_user.group_id).status_updates.order('created_at DESC').limit(5)
-
+      @status_updates = Group.find(current_user.group_id).status_updates.order('created_at DESC').limit(5)
+      
       render 'index.html.erb'
     else
       redirect_to '/login'
@@ -19,13 +19,21 @@ class StatusUpdatesController < ApplicationController
     @status_update = StatusUpdate.create!(
       post: params[:post],
       url: params[:url],
-      user_id: params[:user_id]
+      user_id: current_user.id
+    )
+
+    @like = Like.create!(
+      status_update_id: @status_update.id,
+      user_id: current_user.id
     )
 
     redirect_to '/newsfeed'
   end
 
-  def delete
+  def destroy
+    status_update = StatusUpdate.find(params[:id])
+    status_update.destroy
+    flash[:warning] = "Your status update has been deleted."
     redirect_to '/newsfeed'
   end
 

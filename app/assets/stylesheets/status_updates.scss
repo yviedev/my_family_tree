@@ -1,7 +1,7 @@
 // Place all the styles related to the StatusUpdates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.message {
+.status_update {
   background: white;
   padding: 0 15px 15px 15px;
   color: black;
@@ -16,7 +16,7 @@
 }
 
 .comment {
-  text-align: center;
+  // text-align: center;
   float: none;
   margin: 0 auto;
 }
