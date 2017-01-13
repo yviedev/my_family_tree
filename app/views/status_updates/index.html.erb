@@ -1,11 +1,11 @@
-<%= form_tag "/newsfeed", method: :post do  %>
+<%= form_tag "/newsfeed", :class => "newsfeed-center", method: :post do  %>
 
   <div>
-    <%= label_tag :post %>
+    <%= label_tag "Status Update:" %>
     <%= text_field_tag :post %>
   </div>
   <div>
-    <%= label_tag :url %>
+    <%= label_tag "Image URL:" %>
     <%= text_field_tag :url %>
   </div>
   
@@ -17,10 +17,10 @@
 
 <% @status_updates.each do |status_update| %>
   <div class="status_update">Posted by: <%= status_update.user.first_name %> on <%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %>
-  <p><img src="<%= status_update.url %>"></p>
-  <p><%= status_update.post %></p>
+  <p class="newsfeed-center"><img src="<%= status_update.url %>"></p>
+  <p class="newsfeed-center"><%= status_update.post %></p>
   <% if current_user == status_update.user %>
-    <%= link_to "Delete status update", "/newsfeed/#{status_update.id}", :method => :delete, :confirm => "Are you sure ?"%></p>
+    <p><%= link_to "Delete status update", "/newsfeed/#{status_update.id}", :method => :delete, :confirm => "Are you sure ?"%></p>
   <% end %>
   <hr>
 
@@ -45,11 +45,11 @@
     <% end %>
     
       <%= form_tag "/comments", method: :post do  %>
-      <%= label_tag "Comment" %>
+      <%= label_tag "Comment:" %>
       <%= text_field_tag :post %>
       <%= hidden_field_tag :status_update_id, status_update.id %>
       <%= submit_tag "Add comment" %><br>
   </div>
       <% end %>
-  </div>
+  </div><br>
 <% end %>

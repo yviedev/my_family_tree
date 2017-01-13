@@ -1,10 +1,173 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Group.create!([
+  {name: "Ike"},
+  {name: "Smith"},
+  {name: "Jones"},
+  {name: "Williams"},
+  {name: "Fox"},
+  {name: "Sanchez"},
+  {name: "Rice"},
+  {name: "Nwachuku"}
+])
 
+User.create!([
+  {email: "lewiszulauf@email.com", password_digest: "$2a$10$reiozyjnqNKnLt5rG5uhQuEs0dS5ITmVOTuE2gaDKAWe80GRyFlii", group_id: 1, first_name: "Lewis", last_name: "Zulauf", birthday: "1964-10-27 00:00:00", anniversary: "1984-01-14 00:00:00", admin: false},
+  {email: "liziike@email.com", password_digest: "$2a$10$Esr6zRdug5QkwYP4kNAS9OsnXICsGP1gMxulhxK.GjDbaQ0FpPO1m", group_id: 1, first_name: "Lizi", last_name: "Ike", birthday: "1981-01-12 00:00:00", anniversary: nil, admin: false},
+  {email: "dadike@email.com", password_digest: "$2a$10$Bcn1vrDMqfCljpBNyhczz.0BaoT0XOPI6oD5wo89gDrqL3slWJy9u", group_id: 1, first_name: "Dad", last_name: "Ike", birthday: "1950-02-10 00:00:00", anniversary: nil, admin: false},
+  {email: "brice@email.com", password_digest: "$2a$10$NL4awxK16aLCYW5Uzngm/uxdJomdmw0LGB1/yfWVxv0HP0ecJxv0e", group_id: 7, first_name: "Brian", last_name: "Rice", birthday: "1981-01-01 00:00:00", anniversary: nil, admin: false},
+  {email: "derrickike@email.com", password_digest: "$2a$10$PbtKQ/0aP35jYbWfALp1ueLHt0iwjDGDlE4Z0DYiZbXUuadbgfAkm", group_id: 1, first_name: "Derrick", last_name: "Ike", birthday: "1988-11-11 00:00:00", anniversary: nil, admin: false},
+  {email: nil, password_digest: nil, group_id: 8, first_name: "Ngachi", last_name: "Nwachuku", birthday: "1990-11-21 00:00:00", anniversary: nil, admin: false},
+  {email: "myrtislind@email.com", password_digest: "$2a$10$DK760T/BhWTB/gWtf3eZ4eB3HqOmZKVzt5GOoEMpnnQ.i0XveZorW", group_id: 7, first_name: "Myrtis", last_name: "Lind", birthday: "1950-08-10 00:00:00", anniversary: "1983-03-06 00:00:00", admin: false},
+  {email: "yvonneike@email.com", password_digest: "$2a$10$Roj2/ruAj2zvhbyiZgqKMOZP96RsQyMu0KPEoM2q6SNcFOgl19jwi", group_id: 1, first_name: "Yvonne", last_name: "Ike", birthday: nil, anniversary: nil, admin: true},
+  {email: "jakaylaschmitt@email.com", password_digest: "$2a$10$vxy57xosp.ZgsaY/Cc7zyOKdLzMHemqGOLAfBEutYU5s2IEAAbIle", group_id: 1, first_name: "Jakayla", last_name: "Schmitt", birthday: "2000-01-01 00:00:00", anniversary: nil, admin: false},
+  {email: "momike@email.com", password_digest: "$2a$10$jIBka1IYpQfVCW33VgijG.XxblfHIuYAZhE5.w6yXXZFfzJcVk0oO", group_id: 1, first_name: "Mom", last_name: "Ike", birthday: "1955-08-29 00:00:00", anniversary: "1981-03-07 00:00:00", admin: false},
+  {email: "myfamily@mailinator.com", password_digest: "$2a$10$88dgjox4c2fGD6hDJhdzLuB8XwXPxPC0qURv67QhfoL9gLYRUHq8K", group_id: 8, first_name: "Uchendu", last_name: "Nwachuku", birthday: nil, anniversary: nil, admin: false}
+])
+
+Image.create!([
+  {url: "https://robohash.org/beataevoluptatesvoluptas.png?size=300x300&set=set1", user_id: 86},
+  {url: "https://robohash.org/nostrumeaquepariatur.png?size=300x300&set=set1", user_id: 83},
+  {url: "https://robohash.org/voluptatemperspiciatisdolorem.png?size=300x300&set=set1", user_id: 78},
+  {url: "https://robohash.org/utautomnis.png?size=300x300&set=set1", user_id: 75},
+  {url: "https://robohash.org/quiaetmolestiae.png?size=300x300&set=set1", user_id: 70},
+  {url: "https://robohash.org/quamestnumquam.png?size=300x300&set=set1", user_id: 62},
+  {url: "https://robohash.org/dolorinnihil.png?size=300x300&set=set1", user_id: 52},
+  {url: "https://robohash.org/illumsintmaiores.png?size=300x300&set=set1", user_id: 38},
+  {url: "https://robohash.org/nonconsequuntursed.png?size=300x300&set=set1", user_id: 32},
+  {url: "https://robohash.org/autquiaamet.png?size=300x300&set=set1", user_id: 2},
+  {url: "https://robohash.org/accusamuscommodisunt.png?size=300x300&set=set1", user_id: 93},
+  {url: "https://robohash.org/architectovoluptatemsunt.png?size=300x300&set=set1", user_id: 1},
+  {url: "https://robohash.org/doloremquisquamenim.png?size=300x300&set=set1", user_id: 67},
+  {url: "https://robohash.org/distinctiosedrecusandae.png?size=300x300&set=set1", user_id: 63},
+  {url: "https://robohash.org/aliquidquidemofficia.png?size=300x300&set=set1", user_id: 59},
+  {url: "https://robohash.org/consecteturetharum.png?size=300x300&set=set1", user_id: 44},
+  {url: "https://robohash.org/erroraspernaturlaborum.png?size=300x300&set=set1", user_id: 34},
+  {url: "https://robohash.org/quiaquasvelit.png?size=300x300&set=set1", user_id: 22},
+  {url: "https://robohash.org/hicauteius.png?size=300x300&set=set1", user_id: 7},
+  {url: "https://robohash.org/reprehenderitacommodi.png?size=300x300&set=set1", user_id: 6},
+  {url: "https://robohash.org/beataefugiatsimilique.png?size=300x300&set=set1", user_id: 75},
+  {url: "https://robohash.org/erroraliquidaspernatur.png?size=300x300&set=set1", user_id: 70},
+  {url: "https://robohash.org/accusamusvoluptatemconsequatur.png?size=300x300&set=set1", user_id: 62},
+  {url: "https://robohash.org/optiofugitdistinctio.png?size=300x300&set=set1", user_id: 1},
+  {url: "https://robohash.org/exercitationemvoluptatemvelit.png?size=300x300&set=set1", user_id: 67},
+  {url: "https://robohash.org/idlaboriosamomnis.png?size=300x300&set=set1", user_id: 63},
+  {url: "https://robohash.org/earuminciduntad.png?size=300x300&set=set1", user_id: 59},
+  {url: "https://robohash.org/harumvelaut.png?size=300x300&set=set1", user_id: 44},
+  {url: "https://robohash.org/culpasitsint.png?size=300x300&set=set1", user_id: 34},
+  {url: "https://robohash.org/quiaquaeratcumque.png?size=300x300&set=set1", user_id: 22},
+  {url: "https://robohash.org/sintimpeditsimilique.png?size=300x300&set=set1", user_id: 7},
+  {url: "https://robohash.org/molestiaeasit.png?size=300x300&set=set1", user_id: 6},
+  {url: "https://robohash.org/eaquerationedicta.png?size=300x300&set=set1", user_id: 86},
+  {url: "https://robohash.org/eumestautem.png?size=300x300&set=set1", user_id: 83},
+  {url: "https://robohash.org/totamasperioresplaceat.png?size=300x300&set=set1", user_id: 78},
+  {url: "https://robohash.org/blanditiisnonqui.png?size=300x300&set=set1", user_id: 75},
+  {url: "https://robohash.org/providentetvelit.png?size=300x300&set=set1", user_id: 70},
+  {url: "https://robohash.org/fugaporroin.png?size=300x300&set=set1", user_id: 62},
+  {url: "https://robohash.org/estautemunde.png?size=300x300&set=set1", user_id: 52},
+  {url: "https://robohash.org/solutaatmolestias.png?size=300x300&set=set1", user_id: 38},
+  {url: "https://robohash.org/inventoreteneturat.png?size=300x300&set=set1", user_id: 32},
+  {url: "https://robohash.org/etnonnisi.png?size=300x300&set=set1", user_id: 2},
+  {url: "https://robohash.org/solutavelitquia.png?size=300x300&set=set1", user_id: 93},
+  {url: "https://upload.wikimedia.org/wikipedia/commons/0/07/Giraffe08_-_melbourne_zoo.jpg", user_id: 106},
+  {url: "https://image.spreadshirtmedia.com/image-server/v1/compositions/111525979/views/1,width=300,height=300,appearanceId=348,version=1473664654/programmer-i-write-code-t-shirts-men-s-premium-t-shirt.jpg", user_id: 1},
+  {url: "https://robohash.org/atvitaequidem.png?size=300x300&set=set1", user_id: 86},
+  {url: "https://robohash.org/utquivoluptas.png?size=300x300&set=set1", user_id: 83},
+  {url: "https://robohash.org/animiquilaborum.png?size=300x300&set=set1", user_id: 78},
+  {url: "https://robohash.org/quossitipsa.png?size=300x300&set=set1", user_id: 52},
+  {url: "https://robohash.org/veroestmodi.png?size=300x300&set=set1", user_id: 38},
+  {url: "https://robohash.org/laboredolorumnulla.png?size=300x300&set=set1", user_id: 32},
+  {url: "https://robohash.org/sitremdelectus.png?size=300x300&set=set1", user_id: 2},
+  {url: "https://robohash.org/deseruntpariaturvoluptatum.png?size=300x300&set=set1", user_id: 93},
+  {url: "http://www.clipartlord.com/wp-content/uploads/2014/05/unicorn4.png", user_id: 1},
+  {url: "https://robohash.org/voluptasrepellatrepudiandae.png?size=300x300&set=set1", user_id: 67},
+  {url: "https://robohash.org/eosharumpraesentium.png?size=300x300&set=set1", user_id: 63},
+  {url: "https://robohash.org/aliquidfacereat.png?size=300x300&set=set1", user_id: 59},
+  {url: "https://robohash.org/utmolestiaeamet.png?size=300x300&set=set1", user_id: 44},
+  {url: "https://robohash.org/sequiautlibero.png?size=300x300&set=set1", user_id: 34},
+  {url: "https://robohash.org/solutaeosodit.png?size=300x300&set=set1", user_id: 22},
+  {url: "https://robohash.org/recusandaeofficiavel.png?size=300x300&set=set1", user_id: 7},
+  {url: "https://robohash.org/fugitsapienteet.png?size=300x300&set=set1", user_id: 6}
+])
+
+RelativeType.create!([
+  {name: "cousin"},
+  {name: "aunt/uncle"},
+  {name: "grandchild"},
+  {name: "self"},
+  {name: "niece/nephew"},
+  {name: "parent"},
+  {name: "grandparent"},
+  {name: "sibling"},
+  {name: "child"},
+  {name: "spouse"}
+])
+
+Relationship.create!([
+  {user_id: 106, relative_id: 107, relative_type_id: 9},
+  {user_id: 106, relative_id: 106, relative_type_id: 9},
+  {user_id: 1, relative_id: 102, relative_type_id: 9},
+  {user_id: 1, relative_id: 7, relative_type_id: 6},
+  {user_id: 1, relative_id: 1, relative_type_id: 1},
+  {user_id: 1, relative_id: 101, relative_type_id: 8},
+  {user_id: 2, relative_id: 102, relative_type_id: 7},
+  {user_id: 2, relative_id: 104, relative_type_id: 19},
+  {user_id: 2, relative_id: 101, relative_type_id: 3},
+  {user_id: 2, relative_id: 1, relative_type_id: 3},
+  {user_id: 2, relative_id: 2, relative_type_id: 1},
+  {user_id: 1, relative_id: 22, relative_type_id: 9},
+  {user_id: 1, relative_id: 6, relative_type_id: 9},
+  {user_id: 1, relative_id: 104, relative_type_id: 2},
+  {user_id: 1, relative_id: 2, relative_type_id: 2}
+])
+
+StatusUpdate.create!([
+  {post: "Tumblr art party tacos locavore direct trade church-key park.", user_id: 1, url: "https://robohash.org/etaspernaturnon.png?size=300x300&set=set1"},
+  {post: "Pickled food truck neutra shoreditch pour-over mustache.", user_id: 2, url: "https://robohash.org/ullamquosdoloremque.png?size=300x300&set=set1"},
+  {post: "Butcher readymade meggings disrupt quinoa bespoke leggings banh mi blue bottle.", user_id: 6, url: "https://robohash.org/utsitet.png?size=300x300&set=set1"},
+  {post: "Next level tofu trust fund scenester meggings master keytar brooklyn neutra.", user_id: 101, url: "https://robohash.org/inventoresaepeeum.png?size=300x300&set=set1"},
+  {post: "Sustainable keytar fingerstache waistcoat portland vice.", user_id: 102, url: "https://robohash.org/sequievenietmolestiae.png?size=300x300&set=set1"},
+  {post: "Chia hoodie green juice blog xoxo loko selvage.", user_id: 104, url: "https://robohash.org/quiipsaaspernatur.png?size=300x300&set=set1"},
+  {post: "Mlkshk ugh kickstarter 90's xoxo before they sold out fingerstache truffaut.", user_id: 1, url: "https://robohash.org/nisiadillo.png?size=300x300&set=set1"},
+  {post: "Keytar yolo pabst slow-carb gluten-free twee.", user_id: 2, url: "https://robohash.org/quasimolestiaenobis.png?size=300x300&set=set1"},
+  {post: "Neutra brooklyn heirloom occupy.", user_id: 6, url: "https://robohash.org/consecteturteneturvelit.png?size=300x300&set=set1"},
+  {post: "Bushwick artisan fap literally deep v gastropub 3 wolf moon organic.", user_id: 101, url: "https://robohash.org/namutrerum.png?size=300x300&set=set1"},
+  {post: "Leggings asymmetrical fanny pack paleo pinterest tote bag actually.", user_id: 102, url: "https://robohash.org/debitisilloeligendi.png?size=300x300&set=set1"},
+  {post: "Beard church-key gastropub +1 forage cleanse vegan meditation wes anderson.", user_id: 104, url: "https://robohash.org/teneturrationequaerat.png?size=300x300&set=set1"},
+  {post: "Sartorial art party artisan kogi cold-pressed skateboard retro kinfolk.", user_id: 1, url: "https://robohash.org/veldistinctioet.png?size=300x300&set=set1"},
+  {post: "Green juice cornhole aesthetic ethical.", user_id: 2, url: "https://robohash.org/natusliberooptio.png?size=300x300&set=set1"},
+  {post: "Brooklyn neutra scenester franzen tacos tofu small batch swag meggings.", user_id: 6, url: "https://robohash.org/adquoderror.png?size=300x300&set=set1"},
+  {post: "Freegan meh distillery pop-up tacos authentic lo-fi truffaut marfa.", user_id: 101, url: "https://robohash.org/suscipitillumquia.png?size=300x300&set=set1"},
+  {post: "Brunch bushwick synth tumblr.", user_id: 102, url: "https://robohash.org/debitisexpeditaprovident.png?size=300x300&set=set1"},
+  {post: "Keffiyeh brooklyn next level letterpress sustainable chambray kinfolk scenester.", user_id: 104, url: "https://robohash.org/dolorumsolutaquo.png?size=300x300&set=set1"},
+  {post: "New status update!", user_id: 1, url: ""},
+  {post: "I'm annoyed.", user_id: 2, url: ""},
+  {post: "status!", user_id: 1, url: ""}
+])
+
+Comment.create!([
+  {post: "This is another comment.", status_update_id: nil, user_id: nil},
+  {post: "This is another comment.", status_update_id: nil, user_id: nil},
+  {post: "This is a new comment", status_update_id: nil, user_id: nil},
+  {post: "This is a new update.", status_update_id: nil, user_id: nil},
+  {post: "This is a new update.", status_update_id: nil, user_id: nil},
+  {post: "one more comment", status_update_id: 506, user_id: nil},
+  {post: "New comment", status_update_id: 506, user_id: nil},
+  {post: "Blah", status_update_id: 533, user_id: 1},
+  {post: "Blah blah", status_update_id: 533, user_id: 2},
+  {post: "blah", status_update_id: 534, user_id: 1}
+])
+
+Like.create!([
+  {status_update_id: 512, vote: false, user_id: 1},
+  {status_update_id: 513, vote: false, user_id: 1},
+  {status_update_id: 514, vote: false, user_id: 1},
+  {status_update_id: 514, vote: false, user_id: 2},
+  {status_update_id: 513, vote: false, user_id: 2},
+  {status_update_id: 533, vote: false, user_id: 1},
+  {status_update_id: 532, vote: false, user_id: 1},
+  {status_update_id: 533, vote: false, user_id: 2},
+  {status_update_id: 534, vote: false, user_id: 2},
+  {status_update_id: 534, vote: false, user_id: 1},
+  {status_update_id: 535, vote: false, user_id: 1}
+])
 
 
