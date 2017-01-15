@@ -37,6 +37,11 @@ Rails.application.routes.draw do
   post '/images/' => 'images#create'
   delete '/images/:id' =>'images#destroy'
 
+  get '/maps' => 'maps#index'
+  get '/maps/:id' => 'maps#show'
+  post '/maps' => 'maps#create'
+  patch '/maps/:id' => 'maps#update'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
