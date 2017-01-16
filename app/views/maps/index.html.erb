@@ -2,6 +2,7 @@
 
 <h1>My Family Map</h1>
 
+<div class="form">
 <% if @place.nil? %>
   <%= form_tag "/maps", method: :post do  %>
   <%= label_tag "Location:" %>
@@ -13,17 +14,16 @@
 <% else %>
   <%= form_tag "/maps", method: :patch do  %>
   <%= label_tag "Location:" %>
-  <%= text_field_tag :location, @place.location %>
+  <%= text_field_tag :location, "Enter new location" %>
   <%= label_tag "Description:" %>
-  <%= text_field_tag :description, @place.description %>
+  <%= text_field_tag :description, "Enter new description" %>
   <%= submit_tag "Update my location" %><br>
 <% end %>
 <% end %>
-
+</div>
+  
   <div id="map"></div>
   <script>
-  console.log("Hi, I'm places");
-
     function initMap() {
       var nyc = {lat: 40.7128, lng: -74.0059};
 
@@ -31,7 +31,6 @@
       <% @places.each do |place|%>
         places.push(<%= place.to_json.html_safe %>);
       <% end %>
-      console.log(places);
 
       map = new google.maps.Map(document.getElementById('map'), {
           center: nyc,
