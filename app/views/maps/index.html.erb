@@ -31,6 +31,7 @@
       <% @places.each do |place|%>
         places.push(<%= place.to_json.html_safe %>);
       <% end %>
+      console.log(places);
 
       map = new google.maps.Map(document.getElementById('map'), {
           center: nyc,
@@ -46,7 +47,7 @@
           var marker = new google.maps.Marker({
             position: {lat: location.latitude, lng: location.longitude},
             map: map,
-            title: "Fake location"
+            title: ""
           });
           marker.addListener('click', function() {
             infowindow.open(map, marker);

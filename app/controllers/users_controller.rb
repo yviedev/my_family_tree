@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     @user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
-      group_id: params[:groups],
+      group_id: current_user.group_id,
       birthday: params[:birthday],
       anniversary: params[:anniversary]
     )
