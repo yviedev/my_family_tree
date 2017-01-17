@@ -7,16 +7,16 @@
   <%= form_tag "/maps", method: :post do  %>
   <%= label_tag "Location:" %>
   <%= text_field_tag :location %>
-  <%= label_tag "Description:" %>
+  <%= label_tag "#{current_user.first_name}" %>
   <%= text_field_tag :description %>
   <%= submit_tag "Add my location" %><br>
   <% end %>
 <% else %>
-  <%= form_tag "/maps", method: :patch do  %>
+  <%= form_tag "/maps/:id", method: :patch do  %>
   <%= label_tag "Location:" %>
   <%= text_field_tag :location, "Enter new location" %>
-  <%= label_tag "Description:" %>
-  <%= text_field_tag :description, "Enter new description" %>
+  <%= label_tag "#{current_user.first_name}" %>
+  <%= text_field_tag :description, "is.." %>
   <%= submit_tag "Update my location" %><br>
 <% end %>
 <% end %>

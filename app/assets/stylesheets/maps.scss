@@ -7,3 +7,13 @@
   margin: 0 auto;
   float: none;
 }
+
+#map_geolocation label {
+  width: auto;
+  display: inline;
+}
+
+#map_geolocation img {
+  max-height: none;
+  max-width: none;
+}

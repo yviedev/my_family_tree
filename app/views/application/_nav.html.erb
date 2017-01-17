@@ -48,7 +48,9 @@
         <% end %>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="/familymembers/<%= current_user.id %>">View My Page</a>
+      <% if current_user %>
+        <a class="dropdown-item" href="/familymembers/<%= current_user.id %>">View My Page</a>
+      <% end %>
         <a class="dropdown-item" href="/logout">Logout</a>
       </div>
     </li>

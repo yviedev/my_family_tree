@@ -94,15 +94,14 @@ class UsersController < ApplicationController
   end
 
   def create_family_member
-    @user = User.create!(
+    @user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
       group_id: params[:groups],
       birthday: params[:birthday],
       anniversary: params[:anniversary]
     )
-    if @user.save
-      session[:user_id] = @user.id
+    if @user.save(validate: false)
       flash[:success] = "Congrats. You added a new family member."
       redirect_to "/"
     else

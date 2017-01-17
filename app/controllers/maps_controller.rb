@@ -32,7 +32,7 @@ class MapsController < ApplicationController
 
     @place.update(
       location: params["location"],
-      description: User.find(current_user.id).first_name + " is at " + params["description"],
+      description: "<a href='/familymembers/#{current_user.id}'>User.find(current_user.id).first_name</a>" + params["description"],
       latitude: coordinates[0],
       longitude: coordinates[1]
     )
