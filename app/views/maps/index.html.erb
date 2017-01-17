@@ -1,6 +1,7 @@
 <% require 'json' %>
 
 <h1>My Family Map</h1>
+<h3>You have have <%= @places.count %> family members on your map. Please zoom out to see more family members.</h3>
 
 <div class="form">
 <% if @place.nil? %>
@@ -22,7 +23,7 @@
 <% end %>
 </div>
   
-  <div id="map"></div>
+  <div id="familyMap"></div>
   <script>
     function initMap() {
       var nyc = {lat: 40.7128, lng: -74.0059};
@@ -34,7 +35,7 @@
       console.log(places);
 
 
-      map = new google.maps.Map(document.getElementById('map'), {
+      var map = new google.maps.Map(document.getElementById('familyMap'), {
           center: nyc,
           zoom: 8
         });
