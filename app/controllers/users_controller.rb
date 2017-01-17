@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     )
     if @user.save(validate: false)
       flash[:success] = "Congrats. You added a new family member."
-      redirect_to "/"
+      redirect_to "/familymembers"
     else
       flash[:warning] = "Please try and edit your family member again."
       render 'newfamilymember.html.erb'
