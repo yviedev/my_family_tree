@@ -1,15 +1,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js"></script>
 <script src="utils.js"></script>
 
-<div id="container" style="width: 75%;">
-  <canvas id="canvas"></canvas>
-</div>
+<canvas id="canvas"></canvas>
+
 <button id="randomizeData">Randomize Data</button>
 <button id="addDataset">Add Dataset</button>
 <button id="removeDataset">Remove Dataset</button>
 <button id="addData">Add Data</button>
 <button id="removeData">Remove Data</button>
-<script>
+
+<script class="chart">
   var DEFAULT_DATASET_SIZE = 7;
 
   var addedCount = 0;
@@ -20,9 +20,10 @@
       duration: 10000
     },
     datasets: [{
-      label: "My First dataset",
-      backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-      borderColor: window.chartColors.red,
+      label: "Immediate Family",
+      backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+      hoverBackgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
+      borderColor: window.chartColors.yellow,
       borderWidth: 1,
       data: [{
         x: randomScalingFactor(),
@@ -54,9 +55,10 @@
         r: Math.abs(randomScalingFactor()) / 5,
       }]
     }, {
-      label: "My Second dataset",
-      backgroundColor: color(window.chartColors.orange).alpha(0.5).rgbString(),
-      borderColor: window.chartColors.orange,
+      label: "Extended Family",
+      backgroundColor: color(window.chartColors.purple).alpha(0.5).rgbString(),
+      hoverBackgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+      borderColor: window.chartColors.red,
       borderWidth: 1,
       data: [{
         x: randomScalingFactor(),
@@ -99,7 +101,7 @@
         responsive: true,
         legend: {
           labels: {
-              usePointStyle: false
+              usePointStyle: true
           }
         },
         scales: {
