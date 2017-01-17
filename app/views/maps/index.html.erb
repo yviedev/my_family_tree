@@ -1,10 +1,14 @@
 <% require 'json' %>
 
 <h1>My Family Map</h1>
-<h3>You have have <%= @places.count %> family members on your map. Please zoom out to see more family members.</h3>
+<%if @map_places.count == 1 %>
+<h3>You are the only person on your family member.</h3>
+<%elsif @map_places.count > 1%>
+<h3>You have have <%= @map_places.count %> family members on your map. Please zoom out to see more family members.</h3>
+<% end %>
 
 <div class="form">
-<% if @place.nil? %>
+<% if @map_place.nil? %>
   <%= form_tag "/maps", method: :post do  %>
   <%= label_tag "Location:" %>
   <%= text_field_tag :location %>
@@ -28,19 +32,21 @@
     function initMap() {
       var nyc = {lat: 40.7128, lng: -74.0059};
 
-      var places = []
-      <% @places.each do |place|%>
-        places.push(<%= place.to_json.html_safe %>);
+      var map_places = []
+      <% @map_places.each do |map_place|%>
+        map_places.push(<%= map_place.to_json.html_safe %>);
       <% end %>
-      console.log(places);
-
 
       var map = new google.maps.Map(document.getElementById('familyMap'), {
           center: nyc,
           zoom: 8
         });
-        for(var i = 0; i < places.length; i++){
-          createMarker(places[i]);
+
+        var familyCoordinates = [];
+        console.log(familyCoordinates);
+
+        for(var i = 0; i < map_places.length; i++){
+          createMarker(map_places[i]);
         }
         function createMarker(location){
           var infowindow = new google.maps.InfoWindow({
@@ -51,10 +57,23 @@
             map: map,
             animation: google.maps.Animation.DROP
           });
+
+          familyCoordinates.push({lat: location.latitude, lng: location.longitude});
+
           marker.addListener('click', function() {
             infowindow.open(map, marker);
           });
+          
         }
+        var familyPath = new google.maps.Polyline({
+          path: familyCoordinates,
+          map: map,
+          geodesic: true,
+          strokeColor: '#9932CC',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
       }
     
   </script>

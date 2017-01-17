@@ -3,9 +3,9 @@ class MapsController < ApplicationController
   def index
     @title = "My Family Map"
 
-    @places = Map.where(group_id: current_user.group_id)
+    @map_places = Map.where(group_id: current_user.group_id)
 
-    @place = Map.find_by(user_id: current_user.id)
+    @map_place = Map.find_by(user_id: current_user.id)
 
     render 'index.html.erb'
   end
@@ -13,7 +13,7 @@ class MapsController < ApplicationController
   def create
     coordinates = Geocoder.coordinates(params["location"])
 
-    @place = Map.create!(
+    @map_place = Map.create!(
       user_id: current_user.id,
       group_id: current_user.group_id,
       location: params["location"],
@@ -28,9 +28,9 @@ class MapsController < ApplicationController
   def update
     coordinates = Geocoder.coordinates(params["location"])
 
-    @place = Map.find_by(user_id: current_user.id)
+    @map_place = Map.find_by(user_id: current_user.id)
 
-    @place.update(
+    @map_place.update(
       location: params["location"],
       description: "<a href='/familymembers/#{current_user.id}'>#{User.find(current_user.id).first_name}</a>" + " " + params["description"],
       latitude: coordinates[0],
@@ -41,8 +41,8 @@ class MapsController < ApplicationController
   end
 
   def destroy
-    # @place = Map.find_by(user_id: current_user.id)
-    # @place.destroy
+    # @map_place = Map.find_by(user_id: current_user.id)
+    # @map_place.destroy
     # redirect_to '/maps'
   end
 end
