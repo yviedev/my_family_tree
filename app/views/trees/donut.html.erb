@@ -25,7 +25,7 @@
     function createSlice(newSlice){
 
       data.addRows([
-        [newSlice.name, 50, '<a href="/familymembers/' + newSlice.user_id +'">' + '<img width=100px height=100px src="' + newSlice.image + '"></a>', newSlice.user_id]
+        [newSlice.name, 50, '<p style="text-align:center">' + newSlice.name + ' (' + newSlice.relationship + ')' + '</p>' + '<a href="/familymembers/' + newSlice.user_id +'">' + '<img width=100px height=100px src="' + newSlice.image + '"></a>', newSlice.user_id]
       ]);
 
     }
