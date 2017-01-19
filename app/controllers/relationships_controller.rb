@@ -13,7 +13,8 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.create!(
       user_id: current_user.id,
       relative_id: params[:user_id],
-      relative_type_id: params[:relative_type_id]
+      relative_type_id: params[:relative_type_id],
+      group_id: current_user.group_id
     )
 
     # if @relationship.save
