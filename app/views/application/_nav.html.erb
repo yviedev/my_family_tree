@@ -1,9 +1,9 @@
 <header>
         <!-- Navigation Menu start-->
 <nav class="navbar navbar-light bg-faded">
-<div class="container-fluid">
+<div class="container-fluid center-nav-bar">
     <a href="/"><img class="logo-main" src="/images/logo.png"></a>
-    <div class="navbar-right">
+    <div class="navbar-right nav-search-bar">
     <%= form_tag '/familymembers', method: :get, class: "navbar-form navbar-left" do %>
       <div class="form-group">
     <%= text_field_tag :search_content, '' , class: "nav-link form-control", placeholder: "Enter name" %>
@@ -22,8 +22,6 @@
     <li class="nav-item">
       <a class="nav-link" href="/#developer">Developer</a>
     </li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
   <% if current_user %>
     <li><a class="nav-link" href="/newsfeed">Newsfeed</a></li>
     <li class="nav-item dropdown">
