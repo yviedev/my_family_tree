@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'geocoder'
 gem 'dotenv-rails'
 gem 'seed_dump'
-gem 'bootstrap-sass'
+
 gem 'faker'
 gem 'awesome_print'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
