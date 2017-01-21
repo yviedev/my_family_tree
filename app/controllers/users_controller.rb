@@ -62,14 +62,18 @@ class UsersController < ApplicationController
     @title = "Signup"
     @groups = Group.all.order('name ASC')
     @user = User.new
-    render 'new.html.erb'
+    render 'signup.html.erb'
   end
 
   def new_family_member
     @title = "Add New Family Member"
     @groups = Group.all.order('name ASC')
     @user = User.new
-    render 'newfamilymember.html.erb'
+    # render 'newfamilymember.html.erb'
+    respond_to do |format|
+      format.html { render 'newfamilymember.html.erb' }
+      format.js { render 'newfamilymember.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def create
@@ -89,7 +93,7 @@ class UsersController < ApplicationController
       redirect_to "/newsfeed"
     else
       flash[:warning] = "Please try again."
-      render 'new.html.erb'
+      render 'signup.html.erb'
     end
   end
 
@@ -101,20 +105,27 @@ class UsersController < ApplicationController
       birthday: params[:birthday],
       anniversary: params[:anniversary]
     )
-    if @user.save(validate: false)
+    # if 
+      @user.save(validate: false)
       flash[:success] = "Congrats. You added a new family member."
-      redirect_to "/familymembers"
-    else
-      flash[:warning] = "Please try and edit your family member again."
-      render 'newfamilymember.html.erb'
-    end
+      # redirect_to "/familymembers"
+      respond_to do |format|
+        format.html { redirect_to '/familymembers' }
+        format.js { render 'createfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+      end
+    # else
+    #   flash[:warning] = "Please try and edit your family member again."
+    #   render 'newfamilymember.html.erb'
+    # end
+
+    
   end
 
   def edit
     @title = "Edit Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
-    render 'edit.html.erb'
+    render 'editfamilymember.html.erb'
   end
 
   # write a method to update email & password but only for current_user
@@ -127,7 +138,7 @@ class UsersController < ApplicationController
       @user.update!(
         first_name: params[:first_name],
         last_name: params[:last_name],
-        group_id: params[:group_id],
+        group_id: @user.group_id,
         birthday: params[:birthday],
         anniversary: params[:anniversary]
       )
