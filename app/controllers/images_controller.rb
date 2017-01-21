@@ -1,7 +1,11 @@
 class ImagesController < ApplicationController
 
   def new
-    render 'new.html.erb'
+    # render 'new.html.erb'
+    respond_to do |format|
+      format.html { render 'new.html.erb' }
+      format.js { render 'new.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def create
@@ -13,11 +17,15 @@ class ImagesController < ApplicationController
     @user = User.find(@image.user_id)
 
     if @image.save
-      flash[:success] = "Congrats. Your image was added to your account."
+      flash[:success] = "Congrats. Your image was added below."
     else
-      flash[:warning] = "Please try again."
+      flash[:warning] = "Oops. Please try again."
     end
-    redirect_to "/familymembers/#{@user.id}"
+    # redirect_to "/familymembers/#{@user.id}"
+    respond_to do |format|
+      format.html { redirect_to "/familymembers/#{@user.id}" }
+      format.js { render 'create.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def show

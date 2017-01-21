@@ -106,13 +106,13 @@ class UsersController < ApplicationController
       anniversary: params[:anniversary]
     )
     # if 
-      @user.save(validate: false)
-      flash[:success] = "Congrats. You added a new family member."
+    @user.save(validate: false)
+    flash[:success] = "Congrats. You added a new family member."
       # redirect_to "/familymembers"
-      respond_to do |format|
-        format.html { redirect_to '/familymembers' }
-        format.js { render 'createfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
-      end
+    respond_to do |format|
+      format.html { redirect_to '/familymembers' }
+      format.js { render 'createfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
     # else
     #   flash[:warning] = "Please try and edit your family member again."
     #   render 'newfamilymember.html.erb'
@@ -125,7 +125,11 @@ class UsersController < ApplicationController
     @title = "Edit Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
-    render 'editfamilymember.html.erb'
+    # render 'editfamilymember.html.erb'
+    respond_to do |format|
+      format.html { render 'editfamilymember.html.erb' }
+      format.js { render 'editfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   # write a method to update email & password but only for current_user
@@ -146,7 +150,11 @@ class UsersController < ApplicationController
     else
       flash[:warning] = "Only user can update their information."
     end
-    redirect_to "/familymembers/#{@user.id}"
+    # redirect_to "/familymembers/#{@user.id}"
+    respond_to do |format|
+      format.html { redirect_to "/familymembers/#{@user.id}" }
+      format.js { render 'updatefamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
     # else
     #   flash[:warning] = "Please try and edit your family member again."
     #   render 'edit.html.erb'

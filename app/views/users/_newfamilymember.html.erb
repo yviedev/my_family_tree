@@ -2,6 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
+    <h1>Add Family Member</h1>
       <%= form_tag "/familymembers", method: :post do  %>
         <div class="modal-body">
 
@@ -27,11 +28,6 @@
 
       <%= submit_tag "Add New Family Member!" %><br>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-          Close
-        </button>
-      </div>
       <% end %>
     </div>
   </div>

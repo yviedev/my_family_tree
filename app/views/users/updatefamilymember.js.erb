@@ -1,0 +1,7 @@
+<% if @user.errors.blank? %>
+  $('#user-modal').modal('hide');
+  $('table tbody').html('<%= j render "user_row", user: @user %>');
+
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

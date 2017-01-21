@@ -1,0 +1,29 @@
+<h1>Edit family member</h1>
+
+<%= form_tag "/familymembers/#{@user.id}", method: :patch do  %>
+
+<div>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name, @user.first_name %>
+</div>
+<div>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name, @user.last_name %>
+</div>
+<div>
+  <%= label_tag :birthday %>
+  <%= date_field_tag :birthday, @user.year_month_date(@user.birthday) %>
+</div>
+<div>
+  <%= label_tag :anniversary %>
+  <%= date_field_tag :anniversary, @user.year_month_date(@user.anniversary) %>
+</div>
+
+<%= submit_tag "Edit Family Member!" %><br>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">
+    Close
+  </button>
+</div>
+<% end %>

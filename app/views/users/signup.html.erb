@@ -1,0 +1,41 @@
+<h1>Signup!</h1>
+<%= form_tag "/familymembers", method: :post do  %>
+
+  <div>
+    <%= label_tag :first_name %>
+    <%= text_field_tag :first_name %>
+  </div>
+  <div>
+    <%= label_tag :last_name %>
+    <%= text_field_tag :last_name %>
+  </div>
+  <div>
+    <%= label_tag :group_id %>
+    <%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%> 
+    <%= link_to "My family group is not listed here.", "/myfamily/new" %>
+  </div>
+  <div>
+    <%= label_tag :birthday %>
+    <%= text_field_tag :birthday %>
+  </div>
+  <div>
+    <%= label_tag :anniversary %>
+    <%= text_field_tag :anniversary %>
+  </div>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div>
+    <%= label_tag :password_confirmation %>
+    <%= password_field_tag :password_confirmation %>
+  </div>
+  <%= submit_tag "Submit" %><br>
+
+  <%= link_to "I already have an account.", "/login" %><br>
+
+<% end %>
