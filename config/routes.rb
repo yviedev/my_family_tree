@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/' => 'users#home'
   get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
 
   get '/familymembers'=> 'users#index'
-  post '/familymembers' =>'users#create'
   get '/familymembers/new' => 'users#new_family_member'
-  post '/addfamilymember' => 'users#create_family_member'
+  post '/familymembers' => 'users#create_family_member'
+  
   get '/familymembers/:id' =>'users#show'
   get '/familymembers/:id/edit' =>'users#edit'
   patch '/familymembers/:id' =>'users#update'
