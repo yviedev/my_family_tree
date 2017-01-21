@@ -31,10 +31,10 @@ class ImagesController < ApplicationController
 
   def destroy
     image = Image.find(params[:id])
+    user = User.find(image.user_id)
     image.destroy
-    user = User.find(@image.user_id)
     flash[:warning] = "You deleted your image."
-    redirect_to "familymembers/#{user.id}"
+    redirect_to "/familymembers/#{user.id}"
   end
 
 end
