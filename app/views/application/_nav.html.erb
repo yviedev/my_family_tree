@@ -21,12 +21,12 @@
         <a class="nav-link" href="/newsfeed">Newsfeed</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My Family
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/familymembers">View All Family Members</a>
-          <%= link_to "New Contact", "familymembers/new", remote: true, class: "dropdown-item" %>
+          <%= link_to "New Contact", "/familymembers/new", remote: true, class: "dropdown-item" %>
           <a class="dropdown-item" href="/familymembers/new">Add New Family Member</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/tree">My Family Tree</a>
@@ -34,7 +34,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Hi <%= current_user.first_name %>!
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
