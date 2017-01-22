@@ -14,7 +14,8 @@
  *= require_self
  */
 
-$color-background: #F8FFD6;
+$footer-color-background: #F9E9C6;
+$user-profile-summary-background: #e7a61a;
 .logo-main {
   width: 350px;
   height: auto;
@@ -53,7 +54,7 @@ header {
   padding-top: 0;
   a.nav-link:hover {
     background-color: green;
-    color: yellow !important;
+    color: $user-profile-summary-background !important;
   }
   a.nav-link:focus {
     background-color: green;
@@ -65,7 +66,7 @@ header {
 }
 
 .nav-link:hover {
-  color: yellow;
+  color: $user-profile-summary-background;
 }
 
 .about-sec {
@@ -87,13 +88,14 @@ header {
 .footer-container {
   padding-top: 3em;
   padding-bottom: 0.9em;
-}
-
-footer,
-.footer-container {
-  background-color: $color-background;
+  // background-color: #800080;
 }
 
 .alert {
   text-align: center;
+}
+
+.section-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

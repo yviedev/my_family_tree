@@ -1,7 +1,7 @@
 <div id="image-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <h1>Add your image below:</h2>
+      <h1 class="section-header">Add your image below:</h2>
 
       <%= form_tag "/images", method: :post do  %>
         <div class="modal-body">
@@ -14,9 +14,8 @@
         <%= hidden_field_tag :user_id, @user.id%>
         </div>
         
-        <%= submit_tag "Submit" %><br>
+        <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
 
-        <div class="modal-footer">
       <% end %>
     </div>
   </div>

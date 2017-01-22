@@ -17,7 +17,7 @@ class MapsController < ApplicationController
       user_id: current_user.id,
       group_id: current_user.group_id,
       location: params["location"],
-      description: User.find(current_user.id).first_name + " is at " + params["description"],
+      description: "<a href='/familymembers/#{current_user.id}'>#{User.find(current_user.id).first_name}</a>" + " " + params["description"],
       latitude: coordinates[0],
       longitude: coordinates[1]
       )

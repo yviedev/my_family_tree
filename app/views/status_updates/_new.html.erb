@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <h1>Update My Status</h1>
+      <h1 class="section-header">Update My Status</h1>
       <%= form_tag "/newsfeed", :class => "newsfeed-center", method: :post do  %>
 
         <div class="modal-body">
@@ -16,7 +16,7 @@
           <%= text_field_tag :url %>
         </div>
         
-      <%= submit_tag "Submit" %><br>
+      <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
       <% end %>
     </div>
   </div>

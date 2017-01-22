@@ -7,7 +7,7 @@
 // }
 $color-primary: #3498db;
 $color-secondary: #f1c40f;
-$color-summary-background: #FFFEFC;
+$color-summary-background: #e7a61a;
 $color-gallery-background: #EDECEB;
 #message {
   background: white;
@@ -219,7 +219,7 @@ li {
   .gallery {
     clear: left;
     padding-top: 50px;
-    background-image: url('light_grey.png');
+    background-image: url('new_year_background.png');
     background-repeat: repeat;
     // /* Firefox */
     // -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
@@ -239,6 +239,7 @@ li {
       justify-content: center;
       margin: 0;
       padding: 0;
+      padding-bottom: 3em;
       flex-wrap: wrap;
       justify-content: center;
       .profile-images {
