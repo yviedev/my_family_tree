@@ -4,7 +4,7 @@
       <h2 class="full-name"><%= @user.full_name %></h2>
       <div class="relationship metaItem">
         <span class="metaName">Relationship:</span>
-        <%= @relationship %>
+        <%= @relationship_name %>
       </div>
     </header>
     <div class="body">
@@ -22,8 +22,8 @@
     </div>
     <div class="summary-edits">
       <% if current_user || current_user.admin %>
-        <% if @relationship != "Not available"%>
-          <%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit", class: "relationshipEdit" %>
+        <% if @relationship_name != "Not available"%>
+          <%= link_to "Edit relationship", "/relationships/#{@relationship.id}/edit", remote: true, class: "relationshipEdit" %>
         <% else %>
           <%= form_tag '/relationships', method: :post do %>
           <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
@@ -31,8 +31,8 @@
           <%= submit_tag 'Add relationship' %>
           <% end %><br>
         <% end %>
-        <%= link_to "Edit Family Member (modal)", "/familymembers/#{@user.id}/edit", remote: true, class: "memberEdit" %>
-        <%= link_to "Edit member", "/familymembers/#{@user.id}/edit", class: "memberEdit" %>
+        <%= link_to "Edit Family Member", "/familymembers/#{@user.id}/edit", remote: true, class: "memberEdit" %>
+        <%= link_to "Edit member", "/familymembers/#{@user.id}/edit", remote: true, class: "memberEdit" %>
         <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" }, class: "memberEdit" %>
       <% end %>
     </div>
@@ -44,7 +44,7 @@
       <% @reverse_status_updates.each do |status_update| %>
       <ul>
         <div class="feed-item">
-          <li class="date"><%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %> <% if current_user || current_user.admin %>
+          <li class="date"><%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %> <% if @user || current_user.admin %>
           <li><%= link_to "Delete post", "/newsfeed/#{status_update.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" } %>
           <% end %></li>
           <li class="text"><%= status_update.post %></li>
@@ -53,7 +53,6 @@
           <% end %> 
         </div>
       </ul>
-    
 
     <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
     <% @like = Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
@@ -90,8 +89,11 @@
     <div class="header">
       <h2 class="section-header"><%= @user.first_name %>'s Gallery</h2>
       <p>Click the images below to go through <%= @user.first_name %>'s gallery.</li>  
-      <% if current_user || current_user.admin %>
-        <p><%= link_to "Add image", "/images/new", remote: true %><p>
+      <% if @user || current_user.admin %>
+        <%= form_tag "/images/new", remote: true, method: :get do  %>
+        <%= hidden_field_tag :user_id, @user.id%>
+        <%= submit_tag "Add Image" %><br>
+      <% end %><br>
       <% end %>
     </div>
 
