@@ -18,11 +18,20 @@
     <li>
       <a href="/familymembers/<%=user.id%>">
       <h1><%= user.full_name %></h1>
-      <% @relationships.each do |relationship| %>
-          <% if User.find(relationship.relative).id == user.id %>
-            <p>Relationship: <%= relationship.relative_type.name%></p>
-          <% end %>
-        <% end %>
+      <% @relationships = Relationship.where("user_id = ? AND relative_id = ? OR user_id = ? AND relative_id = ?", current_user.id, user.id, user.id, current_user.id) %>
+        <% if @relationships[0] %>
+          <% @relationships.each do |relationship| %>
+           <% if relationship.user_id == current_user.id %>
+             <p> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).name %></p>
+             <% @relationship = relationship %>
+           <% elsif relationship.relative_id == current_user.id %>
+             <p> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).inverse_name %><p>
+             <% @relationship = relationship %>
+           <% end %>
+         <% end %>
+       <% else %>
+         <p> Relationship: Not available <p>
+       <% end %>
         <% if user.images != [] %>
           <img src="<%= user.images.first.url %>">
         <% end %>
