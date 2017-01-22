@@ -1,46 +1,36 @@
-<!-- Section Header -->
-      <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-        <h2><span class="highlight-text">My Family Members</span></h2>
-        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">(You have <%= (current_user.group.users.count - 1) %> family members)</p>
+<!-- Family Members Title -->
+<div class="col-md-12 col-sm-12 col-xs-12 section-header">
+<h2 class"highlight-text">My Family Members</h2>
+<h3>(You have <%= (current_user.group.users.count - 1) %> family members)</h3>
 
-        <div class="btn-group col-md-8 col-sm-10 col-xs-12 col-md-offset-5 col-sm-offset-1">
-          <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Family Member</button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=asc">Sort by Name | A-Z</a>
-            <a class="dropdown-item" href="/familymembers/?sort_attribute=first_name&order=desc">Sort by Name | Z-A</a>
-            <a class="dropdown-item" href="/familymembers/?sort_attribute=birthday&order=asc">Sort by Birthday | Jan-Dec</a>
-          </div>
-        </div>
-        
-      </div>
-<!-- Section Header End -->
-
-<div class="menu row">
-  <% @users.each_with_index do |user, index| %>
-    <% if user != current_user %>
-    <div class="col-md-4 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-      <div class="card-deck-wrapper">
-        <div class="card-deck">
-          <div class="card card-outline-success text-xs-center">
-          <% if user.images != [] %>
-            <img class="card-img-top" src="<%= user.images.first.url %>" alt="Card image cap">
-          <% end %>
-              <div class="card-block">
-                <h4 class="card-title"><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h4>
-                <p class="card-text">Relationship:
-                  <% @relationships.each do |relationship| %>
-                  <% if User.find(relationship.relative).id == user.id %>
-                    <%= relationship.relative_type.name%> </h3>
-                  <% end %>
-                  <% end %></p>
-                <p class="card-text">Birthday: <%= user.month_date(user.birthday) %></p>
-                <p class="card-text"><small class="text-muted">Last updated: <%= user.month_date_year_time(user.updated_at) %></small></p>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <% end %>
+<!-- Family Members Sort Links -->
+<a href="/familymembers/?sort_attribute=first_name&order=asc">Sort by Name (A-Z) |</a>
+<a href="/familymembers/?sort_attribute=first_name&order=desc">Sort by Name (Z-A) |</a>
+<a href="/familymembers/?sort_attribute=birthday&order=asc">Sort by Birthday (Jan-Dec)</a>
 </div>
-</section>
+
+<!-- Family Member Stickies -->
+
+<div class="stickies">
+<ul>
+<% @users.each do |user| %>
+  <% if user != current_user %>
+    <li>
+      <a href="/familymembers/<%=user.id%>">
+      <h1><%= user.full_name %></h1>
+      <% @relationships.each do |relationship| %>
+          <% if User.find(relationship.relative).id == user.id %>
+            <p>Relationship: <%= relationship.relative_type.name%></p>
+          <% end %>
+        <% end %>
+        <% if user.images != [] %>
+          <img src="<%= user.images.first.url %>">
+        <% end %>
+        <p>Birthday: <%= user.month_date(user.birthday) %></p>
+      </a>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+</div>
+

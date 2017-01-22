@@ -1,75 +1,109 @@
-<div class="card card-outline-success text-xs-center" style="width: 75rem;">
-  <% if @user.images != [] %>
-  <img class="card-img-top" src="<%= @user.images.first.url %>" alt="Card image cap">
-  <% end %>
-  <div class="card-block">
-    <h4 class="card-title"><%= @user.full_name %></h4>
-    <p class="card-text">Relationship: <%= @relationship %></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Birthday: <%= @user.month_date(@user.birthday) %></li>
-    <li class="list-group-item">Anniversary: <%= @user.month_date(@user.anniversary) %></li>
-  </ul>
-  <div class="card-block">
-  <% if current_user || current_user.admin %>
-  <% if @relationship != "Not available"%>
-    <%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit" %><br>
-  <% else %>
-    <%= form_tag '/relationships', method: :post do %>
-    <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
-    <%= hidden_field_tag :user_id, @user.id%>
-    <%= submit_tag 'Add relationship' %>
-    <% end %><br>
-  <% end %>
-  <%= link_to "Edit member", "/familymembers/#{@user.id}/edit" %><br>
-  <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, :confirm => "Are you sure ?"%><br>
-<% end %>
-  </div>
-</div>
-
-<section id="portfolio" class="bgSection portfolio-section">
-  <div class="container">
-      <div class="row">
-        <!-- Section Header -->
-        <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-            <h2><span class="highlight-text"><%= @user.first_name %>'s Gallery</span></h2>
-            
-            <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Click the images below to go through <%= @user.first_name %>'s gallery.</p>
-            
-            <% if current_user || current_user.admin %>
-            <div class="btn-group col-md-8 col-sm-10 col-xs-12 col-md-offset-5 col-sm-offset-1">
-              <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Image options</button>
-              <div class="dropdown-menu">
-              <a class="dropdown-item text-xs-center" href="/images/new">Add image</a>
-            </div>
-            <% end %>
-
-        </div>
-        <!-- Section Header End -->
+<div class="user-profile">
+  <section class="summary">
+    <header>
+      <h2 class="full-name"><%= @user.full_name %></h2>
+      <div class="relationship metaItem">
+        <span class="metaName">Relationship:</span>
+        <%= @relationship %>
       </div>
-  </div>
-  <!-- Works -->
-  <div class="portfolio-works wow fadeIn" data-wow-duration="2s">
-    <div class="portfolio-items">
-    <% @user.images.each do |image| %>
-      <!-- Portfolio Items -->
-      <div class="item portfolio-item">
-        <img src="<%= image.url %>" alt="">
-        <div class="portfolio-details-wrapper">
-            <div class="portfolio-details">
-                <div class="portfolio-meta-btn">
-                    <ul class="work-meta">
-                        <li class="lighbox"><a href="<%= image.url%>" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    </header>
+    <div class="body">
+      <% if @user.images != [] %>
+      <img src="<%= @user.images.first.url %>" alt="<%= @user.full_name %>" class="avatar"/>
+      <% end %>
+      <div class="metaItem birthday">
+        <span class="metaName">Birthday:</span>
+        <%= @user.month_date(@user.birthday) %>
       </div>
-      <!-- Portfolio Items End -->
+      <div class="metaItem anniversary">
+        <span class="metaName">Anniversary:</span>
+        <%= @user.month_date(@user.anniversary) %>
+      </div>
+    </div>
+    <div class="summary-edits">
+      <% if current_user || current_user.admin %>
+        <% if @relationship != "Not available"%>
+          <%= link_to "Edit relationship", "/relationships/#{@relationship_id}/edit", class: "relationshipEdit" %>
+        <% else %>
+          <%= form_tag '/relationships', method: :post do %>
+          <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] })%>
+          <%= hidden_field_tag :user_id, @user.id%>
+          <%= submit_tag 'Add relationship' %>
+          <% end %><br>
+        <% end %>
+        <%= link_to "Edit Family Member (modal)", "/familymembers/#{@user.id}/edit", remote: true, class: "memberEdit" %>
+        <%= link_to "Edit member", "/familymembers/#{@user.id}/edit", class: "memberEdit" %>
+        <%= link_to "Delete member", "/familymembers/#{@user.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" }, class: "memberEdit" %>
       <% end %>
     </div>
+  </section>
+
+  <section class="activity-feed">
+    <h2><%= @user.first_name %>'s Newsfeed</h2>
+      <% @reverse_status_updates = @user.status_updates.sort_by { |a| a.updated_at }.reverse %>
+      <% @reverse_status_updates.each do |status_update| %>
+      <ul>
+        <div class="feed-item">
+          <li class="date"><%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %> <% if current_user || current_user.admin %>
+          <li><%= link_to "Delete post", "/newsfeed/#{status_update.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" } %>
+          <% end %></li>
+          <li class="text"><%= status_update.post %></li>
+          <% if status_update.url %>
+          <li class="text"><img src="<%= status_update.url %>"></li>
+          <% end %> 
+        </div>
+      </ul>
+    
+
+    <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+    <% @like = Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+    <%= form_tag "/likes/#{@like.id}", method: :patch do  %>  
+    <%= submit_tag "Like" %> :<%= status_update.likes.where(vote: true).count %></h2>
+    <% end %>
+  <% else %>
+    <%= form_tag "/likes", method: :post do  %>  
+    <%= hidden_field_tag :status_update_id, status_update.id %>
+    <%= submit_tag "Like" %> :<%= status_update.likes.where(vote: true).count %></h2>
+    <% end %>
+  <% end %>
+  
+  <div class="comment">
+    <% status_update.comments.each do |comment|%>
+      <p>Comment by <%= comment.user.first_name%>: <%= comment.post%> <% comment.id %>
+      <% if comment.user == current_user%>
+        <%= link_to "Delete comment", "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" }%></p>
+      <% end %>
+    <% end %>
+    
+      <%= form_tag "/comments", method: :post do  %>
+      <%= label_tag "Comment:" %>
+      <%= text_field_tag :post %>
+      <%= hidden_field_tag :status_update_id, status_update.id %>
+      <%= submit_tag "Add comment" %><br>
   </div>
-  <!-- Works End -->
-</section>
-<!-- Portfolio Section End -->
-<br>
+      <% end %>
+      <hr>
+      <% end %>
+  </section>
+
+  <section class="gallery">
+    <div class="header">
+      <h2 class="section-header"><%= @user.first_name %>'s Gallery</h2>
+      <p>Click the images below to go through <%= @user.first_name %>'s gallery.</li>  
+      <% if current_user || current_user.admin %>
+        <p><%= link_to "Add image", "/images/new", remote: true %><p>
+      <% end %>
+    </div>
+
+      <!-- Images -->
+    <ul class="images">
+    <% @user.images.each do |image| %>
+      <li><img class="profile-images" src="<%= image.url %>"><%= link_to "Delete image", "/images/#{image.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" } %></li>
+    <% end %>
+    </div>
+
+  </section>
+</div>
+
+
+
