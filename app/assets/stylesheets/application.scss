@@ -17,23 +17,33 @@
 $color-background: #F8FFD6;
 .logo-main {
   width: 350px;
-  height: 250px;
   height: auto;
-  padding-top: 20px;
-  padding-left: 20px;
+  margin-left: 4em;
+  // padding-top: 20px;
+  // padding-left: 20px;
+}
+
+.footer-containertent {
+  margin-bottom: 30px;
 }
 
 .footer-image {
-  width: 60%;
+  width: 17em;
   height: auto;
+}
+
+.footer-contact-us {
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.about-header {
+  text-align: center;
 }
 
 header {
   background-color: white;
-}
-
-nav {
-  margin-top: 0px;
 }
 
 .navbar {
@@ -41,10 +51,21 @@ nav {
   font-size: 1.5em;
   padding-bottom: 20px;
   padding-top: 0;
+  a.nav-link:hover {
+    background-color: green;
+    color: yellow !important;
+  }
+  a:focus {
+    background-color: green;
+  }
   .navbar-nav {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.nav-link:hover {
+  color: yellow;
 }
 
 .about-sec {
