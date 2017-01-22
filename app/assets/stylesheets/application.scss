@@ -55,7 +55,7 @@ header {
     background-color: green;
     color: yellow !important;
   }
-  a:focus {
+  a.nav-link:focus {
     background-color: green;
   }
   .navbar-nav {

@@ -1,4 +1,4 @@
-<div id="user-modal" class="modal fade">
+<div id="image-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <h1>Add your image below:</h2>
@@ -11,7 +11,7 @@
           <%= text_field_tag :url %>
         </div>
         <div>
-        <%= hidden_field_tag :user_id, current_user.id%>
+        <%= hidden_field_tag :user_id, @user.id%>
         </div>
         
         <%= submit_tag "Submit" %><br>

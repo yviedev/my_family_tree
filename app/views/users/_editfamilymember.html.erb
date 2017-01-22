@@ -5,7 +5,7 @@
       <h1>Edit Family Member</h1>
 
       <%= form_tag "/familymembers/#{@user.id}", method: :patch do  %>
-
+        <div class="modal-body">
         <div>
           <%= label_tag :first_name %>
           <%= text_field_tag :first_name, @user.first_name %>

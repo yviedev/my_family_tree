@@ -11,31 +11,19 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     @relative_type_id = params[:relative_type_id]
 
-    @relationship = Relationship.create!(
+    @relationship = Relationship.new(
       user_id: current_user.id,
       relative_id: params[:user_id],
       relative_type_id: params[:relative_type_id],
       group_id: current_user.group_id
     )
 
-    # if @relationship && Relationship.where(user_id: params[:user_id]). where(relative_id: current_user.id).nil? && params[:user_id] != current_user.id
-    #   inverse_relationship = Relationship.create!(
-    #     user_id: params[:user_id],
-    #     relative_id: current_user.id,
-    #     relative_type_id: Relationship.relative_type_id_inverse
-    #   )
-    # elsif @relationship && Relationship.where(user_id: params[:user_id]). where(relative_id: current_user.id) && params[:user_id] != current_user.id
-    #   inverse_relationship = Relationship.where(user_id: params[:user_id]). where(relative_id: current_user.id)
+    if @relationship.save
+      flash[:success] = "Congrats. You added a family relationship."
+    else
+      flash[:warning] = "Oops. Please try again."
+    end
 
-    #   inverse_relationship = Relationship.update(
-    #     id: inverse_relationship.id,
-    #     user_id: params[:user_id],
-    #     relative_id: current_user.id,
-    #     relative_type_id: Relationship.relative_type_id_inverse
-    #   )
-    # end
-    
-    flash[:success] = "Congrats. You added a family relationship."
     redirect_to "/familymembers/#{@user.id}"
       
   end
@@ -49,42 +37,35 @@ class RelationshipsController < ApplicationController
     @user = current_user
     @relative = User.find(@relationship.relative_id)
     @relative_type_id = RelativeType.all
-    render 'edit.html.erb'
+    # render 'edit.html.erb'
+    respond_to do |format|
+      format.html { render 'edit.html.erb' }
+      format.js { render 'edit.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def update
     @title = "Edit relationship"
-    @current_user = current_user
     @relationship = Relationship.find(params[:id])
     @user = User.find(@relationship.relative_id)
 
-    @relationship.update(
-      relative_type_id: params[:relative_type_id]
-    )
+    if @relationship.user_id = current_user.id || current_user.admin!
+      @relationship.update(
+        relative_type_id: params[:relative_type_id]
+      )
 
-    # a = Relationship.where(user_id: params[:user_id]). where(relative_id: current_user.id). where(group_id: current_user.group_id)
-
-    # if @relationship && a.nil? && params[:user_id] != current_user.id
-    #   inverse_relationship = Relationship.create!(
-    #     user_id: params[:user_id],
-    #     relative_id: current_user.id,
-    #     relative_type_id: Relationship.relative_type_id_inverse
-    #   )
-    # elsif @relationship && a && params[:user_id] != current_user.id
-
-    #   inverse_relationship = Relationship.update(
-    #     id: a.first.id,
-    #     user_id: params[:user_id],
-    #     relative_id: current_user.id,
-    #     relative_type_id: Relationship.relative_type_id_inverse
-    #   )
-    # end
-   
-
-    flash[:success] = "Congrats. You updated your family relationship."
-    redirect_to "/familymembers/#{@user.id}"
+      flash[:success] = "Congrats. You updated your family relationship."
+    else
+      flash[:warning] = "Oops. This family relationship was not updated."
+    end
+    # redirect_to "/familymembers/#{@user.id}"
+    respond_to do |format|
+      format.html { redirect_to "/familymembers/#{@user.id}" }
+      format.js { render 'uupdate.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def destroy
   end
+
 end

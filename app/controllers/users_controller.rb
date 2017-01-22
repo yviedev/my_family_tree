@@ -30,29 +30,22 @@ class UsersController < ApplicationController
 
   def show
     @title = "My Family Member"
-    @current_user = current_user
     @user = User.find(params[:id])
     @relative_type_id = RelativeType.all.order('name ASC')
-    @relationships = current_user.relationships
 
-    # work on this later
-    # @relationships.each do |r|
-    #   if r.relative.id == @user.id
-    #     @relationship = @user.id
-    #   else
-    #     @relationship = "Not available"
-    #   end
-    # end
-
-    # @relationships.select { |r| r.relative == @user }
-    # @relatioship = r.relative_type.name || "Not available"
-  
-    @relative_array = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
-    if @relative_array[0]
-      @relationship = RelativeType.find(@relative_array[0].relative_type_id).name
-      @relationship_id = @relative_array[0].id
+    @relationships = Relationship.where("user_id = ? AND relative_id = ? OR user_id = ? AND relative_id = ?", current_user.id, @user.id, @user.id, current_user.id)
+    if @relationships[0]
+      @relationships.each do |relationship|
+        if relationship.user_id == current_user.id
+          @relationship_name = RelativeType.find(relationship.relative_type_id).name
+          @relationship = relationship
+        elsif relationship.relative_id == current_user.id
+          @relationship_name = RelativeType.find(relationship.relative_type_id).inverse_name
+          @relationship = relationship
+        end
+      end
     else
-      @relationship = "Not available"
+      @relationship_name = "Not available"
     end
   
     render = 'show.html.erb'
