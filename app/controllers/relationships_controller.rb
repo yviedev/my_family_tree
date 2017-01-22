@@ -37,7 +37,11 @@ class RelationshipsController < ApplicationController
     @user = current_user
     @relative = User.find(@relationship.relative_id)
     @relative_type_id = RelativeType.all
-    render 'edit.html.erb'
+    # render 'edit.html.erb'
+    respond_to do |format|
+      format.html { render 'edit.html.erb' }
+      format.js { render 'edit.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def update
@@ -54,7 +58,11 @@ class RelationshipsController < ApplicationController
     else
       flash[:warning] = "Oops. This family relationship was not updated."
     end
-    redirect_to "/familymembers/#{@user.id}"
+    # redirect_to "/familymembers/#{@user.id}"
+    respond_to do |format|
+      format.html { redirect_to "/familymembers/#{@user.id}" }
+      format.js { render 'uupdate.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def destroy
