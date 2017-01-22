@@ -33,12 +33,12 @@
         <%= link_to "Delete comment", "/comments/#{comment.id}", :method => :delete, :confirm => "Are you sure ?"%></p>
       <% end %>
     <% end %>
-    
-      <%= form_tag "/comments", method: :post do  %>
+
+      <%= form_tag "/comments", class: "form-inline", method: :post do  %>
       <%= label_tag "Comment:" %>
-      <%= text_field_tag :post %>
+      <%= text_field_tag :post, "", class: "form-control newsfeed-form-width" %>
       <%= hidden_field_tag :status_update_id, status_update.id %>
-      <%= submit_tag "Add comment", class: "btn btn-outline-success btn-sm" %><br>
+      <%= submit_tag "Add comment", class: "btn btn-outline-success" %><br>
   </div>
       <% end %>
       <hr>

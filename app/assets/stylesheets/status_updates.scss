@@ -12,7 +12,8 @@
   -moz-border-radius: 38px 38px 38px 38px;
   -webkit-border-radius: 38px 38px 38px 38px;
   height: auto;
-  width: 600px;
+  min-width: 400px;
+  max-width: 600px;
   float: none;
   margin: 0 auto;
   padding-left: 2em;
@@ -20,6 +21,9 @@
   padding-top: 3em;
   .status-update-text {
     background-color: transparent;
+  }
+  .newsfeed-form-width {
+    width: 20em;
   }
 }
 
