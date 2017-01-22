@@ -36,7 +36,7 @@
 
       <%= form_tag "/comments", class: "form-inline", method: :post do  %>
       <%= label_tag "Comment:" %>
-      <%= text_field_tag :post, "", class: "form-control newsfeed-form-width" %>
+      <%= text_field_tag :post, "Enter comment", class: "form-control form-width" %>
       <%= hidden_field_tag :status_update_id, status_update.id %>
       <%= submit_tag "Add comment", class: "btn btn-outline-success" %><br>
   </div>

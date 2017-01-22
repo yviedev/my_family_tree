@@ -9,19 +9,19 @@
 
 <div class="form">
 <% if @map_place.nil? %>
-  <%= form_tag "/maps", method: :post do  %>
+  <%= form_tag "/maps", class: "form-inline", method: :post do  %>
   <%= label_tag "Location:" %>
-  <%= text_field_tag :location %>
+  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
   <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description %>
+  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
   <%= submit_tag "Add my location" %><br>
   <% end %>
 <% else %>
-  <%= form_tag "/maps/:id", method: :patch do  %>
+  <%= form_tag "/maps", class: "form-inline", method: :patch do  %>
   <%= label_tag "Location:" %>
-  <%= text_field_tag :location, "Enter new location" %>
+  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
   <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description, "is.." %>
+  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
   <%= submit_tag "Update my location", class: "btn btn-warning" %><br>
 <% end %>
 <% end %>
