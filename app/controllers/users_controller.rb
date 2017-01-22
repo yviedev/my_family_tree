@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     # @relationships.select { |r| r.relative == @user }
     # @relatioship = r.relative_type.name || "Not available"
   
-    @relative_array = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
-    if @relative_array[0]
-      @relationship = RelativeType.find(@relative_array[0].relative_type_id).name
-      @relationship_id = @relative_array[0].id
+    @relationships = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
+    if @relationships[0]
+      @relationship = RelativeType.find(@relationships[0].relative_type_id).name
+      @relationship_id = @relationships[0].id
     else
       @relationship = "Not available"
     end
