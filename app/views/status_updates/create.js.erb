@@ -1,0 +1,6 @@
+<% if @status_update.errors.blank? %>
+  $('#status_update-modal').modal('hide');
+  $('table tbody').append('<%= j render "status_update_row", status_update: @status_update %>');
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

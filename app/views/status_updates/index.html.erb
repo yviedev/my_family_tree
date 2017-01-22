@@ -1,18 +1,6 @@
-<%= form_tag "/newsfeed", :class => "newsfeed-center", method: :post do  %>
-
-  <div>
-    <%= label_tag "Status Update:" %>
-    <%= text_field_tag :post %>
-  </div>
-  <div>
-    <%= label_tag "Image URL:" %>
-    <%= text_field_tag :url %>
-  </div>
-  
-<%= submit_tag "Update Status" %><br>
-<%= link_to "Cancel", "/newsfeed" %><br>
-
-<% end %>
+<%= form_tag "/newsfeed/new", :class => "newsfeed-center", remote: true, method: :get do  %> 
+  <%= submit_tag "Update My Status!" %>
+<% end %><br>
 
 <div class="status_update">
 <% @status_updates.each do |status_update| %>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete '/relationships/:id' =>'relationships#destroy'
 
   get '/newsfeed' => 'status_updates#index'
+  get '/newsfeed/new' => 'status_updates#new'
   post '/newsfeed' => 'status_updates#create'
   delete '/newsfeed/:id' =>'status_updates#destroy'
 
