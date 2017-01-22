@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
 
   def new
+    @user = User.find(params[:user_id])
     # render 'new.html.erb'
     respond_to do |format|
       format.html { render 'new.html.erb' }
