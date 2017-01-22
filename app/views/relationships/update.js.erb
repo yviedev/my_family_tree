@@ -1,0 +1,7 @@
+<% if @relationship.errors.blank? %>
+  $('#relationship-modal').modal('hide');
+  $('table tbody').html('<%= j render "relationship_row", relationship: @relationship %>');
+
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

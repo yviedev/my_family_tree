@@ -1,0 +1,18 @@
+<div id="relationship-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <h1>Edit Family Relation below:</h1>
+
+
+      <h2>Relative: <%= User.find(@relationship.relative_id).full_name %></h2>
+
+      <%= form_tag "/relationships/#{@relationship.id}", method: :patch do %>
+        <div class="modal-body">
+      <%= select_tag :relative_type_id, options_from_collection_for_select(@relative_type_id, "id", "name", @relationship.relative_type_id) %> 
+      <%= submit_tag "Edit Family Relation" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+      
+
