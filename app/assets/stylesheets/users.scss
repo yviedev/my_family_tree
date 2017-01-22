@@ -70,8 +70,8 @@ li {
   color: #000;
   background: lightseagreen;
   display: block;
-  height: 20em;
-  width: 20em;
+  height: auto;
+  width: auto;
   padding: 1em;
   text-align: center;
   /* Firefox */
@@ -168,6 +168,9 @@ li {
     h2 {
       text-align: center;
       padding-bottom: 30px;
+    }
+    .form-width {
+      width: 20em;
     }
     padding: 15px;
     float: left;
