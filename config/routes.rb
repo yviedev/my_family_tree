@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get '/maps' => 'maps#index'
   get '/maps/:id' => 'maps#show'
   post '/maps' => 'maps#create'
-  patch '/maps/:id' => 'maps#update'
+  patch '/maps' => 'maps#update'
 
   get '/tree' => 'trees#index'
 
