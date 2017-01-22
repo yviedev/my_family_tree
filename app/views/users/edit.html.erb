@@ -1,3 +1,35 @@
-<h1>Edit your family member page here</h1>
+<h1>Edit your profile here</h1>
 
-<%= render 'form.html.erb', message: "Submit Changes!", url: "/familymembers/#{@user.id}", form_method: :patch %>
+<%= form_tag "/familymembers/#{@user.id}", method: :patch do  %>
+
+  <div>
+    <%= label_tag :first_name %>
+    <%= text_field_tag :first_name, @user.first_name %>
+  </div>
+  <div>
+    <%= label_tag :last_name %>
+    <%= text_field_tag :last_name, @user.last_name %>
+  </div>
+  <div>
+    <%= label_tag :birthday %>
+    <%= text_field_tag :birthday, @user.birthday %>
+  </div>
+  <div>
+    <%= label_tag :anniversary %>
+    <%= text_field_tag :anniversary, @user.anniversary %>
+  </div>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, @user.email %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div>
+    <%= label_tag :password_confirmation %>
+    <%= password_field_tag :password_confirmation %>
+  </div>
+  <%= submit_tag "Edit my account" %><br>
+
+<% end %>

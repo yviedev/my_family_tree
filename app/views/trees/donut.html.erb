@@ -1,0 +1,78 @@
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+  data = new google.visualization.DataTable();
+
+  var trees = []
+    <% @trees.each do |tree|%>
+      trees.push(<%= tree.to_json.html_safe %>);
+    <% end %>
+  console.log(trees)
+  
+  
+  data.addColumn('string', 'Name');
+  data.addColumn('number', 'Amount given');
+  data.addColumn({type: 'string', role: 'tooltip', p: {html:true}});
+  data.addColumn('number', 'User ID');
+  
+  for(var i = 0; i < trees.length; i++){
+    createSlice(trees[i]);
+  }
+    function createSlice(newSlice){
+
+      data.addRows([
+        [newSlice.name, 50, '<a href="/familymembers/' + newSlice.user_id +'">' + '<p style="text-align:center">' + newSlice.name + ' (' + newSlice.relationship + ')' + '</p>' + '<img width=200px height=200px src="' + newSlice.image + '"></a>', newSlice.user_id]
+      ]);
+
+    }
+
+    var options = {
+      title: '',
+      backgroundColor: 'transparent',
+      chartArea: {'width': '100%', 'height': '90%'},
+      pieHole: 0.7,
+      colors: ['#808000', '#6B8E23', '#9ACD32', '#556B2F', '#ADFF2F'],
+      pieSliceText: "label",
+      legend: {position: 'none'},
+      tooltip: {
+        isHtml: true,
+        trigger: 'selection'
+      }
+      
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+    
+    google.visualization.events.addListener(chart, 'select', selectHandler);
+
+
+    function selectHandler(e) {
+      //var selectedItem = chart.getSelection()[0];
+      //if (selectedItem) {
+        //var pieSliceName = data.getValue(selection[0].row, 0);
+        //var pieSliceUserId = data.getValue(selection[0].row, 3);
+
+          //window.location.href = '/familymembers/' + pieSliceUserId;
+        //alert('The user selected ' + e);
+      //}
+    }
+
+    chart.setAction({
+      id: 'export',
+      text: 'Export CSV',
+      action: function() {
+      selection = chart.getSelection();
+      console.log(selection);
+          }
+ });
+    
+  }
+</script>
+
+<div id="donutchart"></div>
+  

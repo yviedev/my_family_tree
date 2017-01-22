@@ -1,28 +1,36 @@
-<h1>My Family Members</h1>
-<h2>You have <%= current_user.group.users.count %> family members</h2>
+<!-- Family Members Title -->
+<div class="col-md-12 col-sm-12 col-xs-12 section-header">
+<h2 class"highlight-text">My Family Members</h2>
+<h3>(You have <%= (current_user.group.users.count - 1) %> family members)</h3>
 
-<div class="row">
-<% @users.each_with_index do |user, index| %>
-<div class="col-md-4 my-col row-eq-height">
+<!-- Family Members Sort Links -->
+<a href="/familymembers/?sort_attribute=first_name&order=asc">Sort by Name (A-Z) |</a>
+<a href="/familymembers/?sort_attribute=first_name&order=desc">Sort by Name (Z-A) |</a>
+<a href="/familymembers/?sort_attribute=birthday&order=asc">Sort by Birthday (Jan-Dec)</a>
+</div>
 
-<h2><a href="/familymembers/<%=user.id%>"><%= user.full_name %></a></h2>
-<h3>Relationship:
-<% @relationships.each do |relationship| %>
-  <% if User.find(relationship.relative_id).id == user.id %>
-    <%= RelativeType.find(relationship.relative_type_id).name %></h3>
+<!-- Family Member Stickies -->
+
+<div class="stickies">
+<ul>
+<% @users.each do |user| %>
+  <% if user != current_user %>
+    <li>
+      <a href="/familymembers/<%=user.id%>">
+      <h1><%= user.full_name %></h1>
+      <% @relationships.each do |relationship| %>
+          <% if User.find(relationship.relative).id == user.id %>
+            <p>Relationship: <%= relationship.relative_type.name%></p>
+          <% end %>
+        <% end %>
+        <% if user.images != [] %>
+          <img src="<%= user.images.first.url %>">
+        <% end %>
+        <p>Birthday: <%= user.month_date(user.birthday) %></p>
+      </a>
+    </li>
   <% end %>
-  <% end %>
-<h4>Status Update: 
-<% if user.status_updates == [] %>
-  No status update available</h4>
-<% else %>
-  <%= user.status_updates.first.post %></h4>
 <% end %>
-<% user.id %>
+</ul>
 </div>
-<% if index % 3 == 2 %>
-</div>
-<div class="row">
-<% end %>
-<% end %>
-</div>
+

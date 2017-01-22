@@ -1,0 +1,21 @@
+{
+  "name": "bower.json",
+  "homepage": "https://github.com/yviedev/my_family_tree",
+  "authors": [
+    "Yvonne Ike <yviedev@gmail.com>"
+  ],
+  "description": "chartist",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chartist": "^0.10.1"
+  }
+}

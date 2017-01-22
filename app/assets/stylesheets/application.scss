@@ -1,0 +1,99 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$color-background: #F8FFD6;
+.logo-main {
+  width: 350px;
+  height: auto;
+  margin-left: 4em;
+  // padding-top: 20px;
+  // padding-left: 20px;
+}
+
+.footer-containertent {
+  margin-bottom: 30px;
+}
+
+.footer-image {
+  width: 17em;
+  height: auto;
+}
+
+.footer-contact-us {
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.about-header {
+  text-align: center;
+}
+
+header {
+  background-color: white;
+}
+
+.navbar {
+  background-color: white;
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  padding-top: 0;
+  a.nav-link:hover {
+    background-color: green;
+    color: yellow !important;
+  }
+  a:focus {
+    background-color: green;
+  }
+  .navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.nav-link:hover {
+  color: yellow;
+}
+
+.about-sec {
+  padding: 20px 0;
+}
+
+.info-section {
+  padding: 20px 0;
+}
+
+.portfolio-section {
+  padding: 10px 0 0;
+}
+
+#team {
+  padding: 20px 0;
+}
+
+.footer-container {
+  padding-top: 3em;
+  padding-bottom: 0.9em;
+}
+
+footer,
+.footer-container {
+  background-color: $color-background;
+}
+
+.alert {
+  text-align: center;
+}

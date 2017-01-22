@@ -1,17 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :newsfeed, :index, :new_family_member, :create_family_member]
 
-  def welcome
-    if current_user
-      @messages = StatusUpdate.where(group_id: current_user.group_id)
-      render 'welcome.html.erb'
-    else
-      redirect_to '/login'
-    end
+  def home
+    @title = "My Family Tree"
+    render 'home.html.erb'
   end
 
   def index
     @title = "All Family Members"
-
+  
     if current_user
       if params["sort_attribute"] && params["order"]
         @users = User.where(group_id: current_user.group_id).order(params["sort_attribute"] => params["order"])
@@ -21,7 +18,7 @@ class UsersController < ApplicationController
         @users = User.where(group_id: current_user.group_id)
       end
       # @users = User.all
-
+  
       #link relationship between current_user and user
       @relationships = current_user.relationships
         
@@ -32,12 +29,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @title = "Family Member"
+    @title = "My Family Member"
     @current_user = current_user
     @user = User.find(params[:id])
     @relative_type_id = RelativeType.all.order('name ASC')
     @relationships = current_user.relationships
 
+    # work on this later
+    # @relationships.each do |r|
+    #   if r.relative.id == @user.id
+    #     @relationship = @user.id
+    #   else
+    #     @relationship = "Not available"
+    #   end
+    # end
+
+    # @relationships.select { |r| r.relative == @user }
+    # @relatioship = r.relative_type.name || "Not available"
+  
     @relative_array = Relationship.where(user_id: current_user.id). where(relative_id: @user.id)
     if @relative_array[0]
       @relationship = RelativeType.find(@relative_array[0].relative_type_id).name
@@ -45,7 +54,7 @@ class UsersController < ApplicationController
     else
       @relationship = "Not available"
     end
-
+  
     render = 'show.html.erb'
   end
 
@@ -53,14 +62,18 @@ class UsersController < ApplicationController
     @title = "Signup"
     @groups = Group.all.order('name ASC')
     @user = User.new
-    render 'new.html.erb'
+    render 'signup.html.erb'
   end
 
   def new_family_member
     @title = "Add New Family Member"
     @groups = Group.all.order('name ASC')
     @user = User.new
-    render 'newfamilymember.html.erb'
+    # render 'newfamilymember.html.erb'
+    respond_to do |format|
+      format.html { render 'newfamilymember.html.erb' }
+      format.js { render 'newfamilymember.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def create
@@ -76,11 +89,11 @@ class UsersController < ApplicationController
     )
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Congrats. You added a new family member."
-      redirect_to "/"
+      flash[:success] = "Congrats. Your account was created."
+      redirect_to "/newsfeed"
     else
-      flash[:warning] = "Please try and edit your family member again."
-      render 'new.html.erb'
+      flash[:warning] = "Please try again."
+      render 'signup.html.erb'
     end
   end
 
@@ -88,25 +101,35 @@ class UsersController < ApplicationController
     @user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
-      group_id: params[:groups],
+      group_id: current_user.group_id,
       birthday: params[:birthday],
       anniversary: params[:anniversary]
     )
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:success] = "Congrats. You added a new family member."
-      redirect_to "/"
-    else
-      flash[:warning] = "Please try and edit your family member again."
-      render 'new.html.erb'
+    # if 
+    @user.save(validate: false)
+    flash[:success] = "Congrats. You added a new family member."
+      # redirect_to "/familymembers"
+    respond_to do |format|
+      format.html { redirect_to '/familymembers' }
+      format.js { render 'createfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
     end
+    # else
+    #   flash[:warning] = "Please try and edit your family member again."
+    #   render 'newfamilymember.html.erb'
+    # end
+
+    
   end
 
   def edit
     @title = "Edit Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
-    render 'edit.html.erb'
+    # render 'editfamilymember.html.erb'
+    respond_to do |format|
+      format.html { render 'editfamilymember.html.erb' }
+      format.js { render 'editfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   # write a method to update email & password but only for current_user
@@ -114,20 +137,24 @@ class UsersController < ApplicationController
     @title = "Update Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
-
-    if @user.email
-      flash[:warning] = "Only user can update their information."
-    else
+  
+    if @user.email || current_user.admin
       @user.update!(
         first_name: params[:first_name],
         last_name: params[:last_name],
-        group_id: params[:group_id],
+        group_id: @user.group_id,
         birthday: params[:birthday],
         anniversary: params[:anniversary]
       )
       flash[:success] = "Congrats. You updated your family member info."
+    else
+      flash[:warning] = "Only user can update their information."
     end
-    redirect_to "/familymembers/#{@user.id}"
+    # redirect_to "/familymembers/#{@user.id}"
+    respond_to do |format|
+      format.html { redirect_to "/familymembers/#{@user.id}" }
+      format.js { render 'updatefamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+    end
     # else
     #   flash[:warning] = "Please try and edit your family member again."
     #   render 'edit.html.erb'
@@ -139,7 +166,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     flash[:warning] = "You deleted your family member."
-    redirect_to "/"
+    redirect_to "/familymembers"
   end
 
 end

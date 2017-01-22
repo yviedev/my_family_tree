@@ -1,0 +1,6 @@
+<% if @image.errors.blank? %>
+  $('#image-modal').modal('hide');
+  $('table tbody').append('<%= j render "image_row", image: @image %>');
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

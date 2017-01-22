@@ -1,0 +1,83 @@
+<% require 'json' %>
+
+<h1>My Family Map</h1>
+<%if @map_places.count == 1 %>
+<h3>You are the only person on your family member.</h3>
+<%elsif @map_places.count > 1%>
+<h3>You have have <%= @map_places.count %> family members on your map. Please zoom out to see more family members.</h3>
+<% end %>
+
+<div class="form">
+<% if @map_place.nil? %>
+  <%= form_tag "/maps", method: :post do  %>
+  <%= label_tag "Location:" %>
+  <%= text_field_tag :location %>
+  <%= label_tag "#{current_user.first_name}" %>
+  <%= text_field_tag :description %>
+  <%= submit_tag "Add my location" %><br>
+  <% end %>
+<% else %>
+  <%= form_tag "/maps/:id", method: :patch do  %>
+  <%= label_tag "Location:" %>
+  <%= text_field_tag :location, "Enter new location" %>
+  <%= label_tag "#{current_user.first_name}" %>
+  <%= text_field_tag :description, "is.." %>
+  <%= submit_tag "Update my location" %><br>
+<% end %>
+<% end %>
+</div>
+  
+  <div id="familyMap"></div>
+  <script>
+    function initMap() {
+      var nyc = {lat: 40.7128, lng: -74.0059};
+
+      var map_places = []
+      <% @map_places.each do |map_place|%>
+        map_places.push(<%= map_place.to_json.html_safe %>);
+      <% end %>
+
+      var map = new google.maps.Map(document.getElementById('familyMap'), {
+          center: nyc,
+          zoom: 8
+        });
+
+        var familyCoordinates = [];
+        console.log(familyCoordinates);
+
+        for(var i = 0; i < map_places.length; i++){
+          createMarker(map_places[i]);
+        }
+        function createMarker(location){
+          var infowindow = new google.maps.InfoWindow({
+            content: location.description
+          });
+          var marker = new google.maps.Marker({
+            position: {lat: location.latitude, lng: location.longitude},
+            map: map,
+            animation: google.maps.Animation.DROP
+          });
+
+          familyCoordinates.push({lat: location.latitude, lng: location.longitude});
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+          
+        }
+        var familyPath = new google.maps.Polyline({
+          path: familyCoordinates,
+          map: map,
+          geodesic: true,
+          strokeColor: '#9932CC',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+      }
+    
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY_GOOGLE_MAPS'] %>&callback=initMap">
+  </script>
+  
