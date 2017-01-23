@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .status_update {
-  background-image: url('asanoha.png');
-  background-repeat: repeat;
+  // background-image: url('asanoha.png');
+  // background-repeat: repeat;
   // background: white;
   -webkit-box-shadow: 25px 21px 89px 3px rgba(0, 0, 0, 0.56);
   -moz-box-shadow: 25px 21px 89px 3px rgba(0, 0, 0, 0.56);
@@ -17,13 +17,19 @@
   float: none;
   margin: 0 auto;
   padding-left: 2em;
-  padding-right: 1em;
-  padding-top: 3em;
+  padding-right: 2em;
+  padding-top: 1em;
   .status-update-text {
     background-color: transparent;
+    font-size: 1.3em;
+    text-align: center;
+    padding-bottom: 5px;
   }
   .form-width {
-    width: 20em;
+    width: 25em;
+  }
+  .status-update-box {
+    background-color: floralwhite;
   }
 }
 
@@ -31,10 +37,24 @@
   // text-align: center;
   float: none;
   margin: 0 auto;
+  background-color: lightgray;
+  p {
+    margin-bottom: 0;
+    margin-left: 2em;
+    color: brown;
+  }
+  input {
+    color: gray;
+  }
 }
 
 .newsfeed-center {
   text-align: center;
   float: none;
   margin: 0 auto;
+}
+
+.status-update-post {
+  color: darkblue;
+  font-size: 1.3em;
 }

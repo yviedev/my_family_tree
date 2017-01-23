@@ -16,10 +16,23 @@
 
 $footer-color-background: #F9E9C6;
 $user-profile-summary-background: #e7a61a;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: bold;
+}
+
 .logo-main {
   width: 350px;
   height: auto;
-  margin-left: 4em;
+  margin-left: 3em;
   // padding-top: 20px;
   // padding-left: 20px;
 }
@@ -45,13 +58,16 @@ $user-profile-summary-background: #e7a61a;
 
 header {
   background-color: white;
+  padding-bottom: 20px;
 }
 
 .navbar {
-  background-color: white;
+  background-image: url('asanoha.png');
+  background-repeat: repeat;
   font-size: 1.5em;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 0;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   a.nav-link:hover {
     background-color: green;
     color: $user-profile-summary-background !important;
@@ -62,6 +78,10 @@ header {
   .navbar-nav {
     margin-left: auto;
     margin-right: auto;
+    li {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
   .active a {
     background-color: green;
