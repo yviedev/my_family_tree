@@ -1,6 +1,0 @@
-<% @messages.each do |message| %>
-<div id="message">By: <%= User.find(message.user_id).first_name %> on <%= message.updated_at %>
-<p><img src="<%= message.url %>"></p>
-<p><%= message.post %></p>
-</div>
-<% end %>
