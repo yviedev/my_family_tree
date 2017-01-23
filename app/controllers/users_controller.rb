@@ -60,7 +60,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      @relationship_name = "Not available"
+      @relationship_name = "Please add"
     end
   
     render = 'show.html.erb'
