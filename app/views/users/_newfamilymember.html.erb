@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
-    <h1>Add Family Member</h1>
+    <h1 class="section-header">Add Family Member</h1>
       <%= form_tag "/familymembers", method: :post do  %>
         <div class="modal-body">
 
@@ -26,7 +26,7 @@
         <%= date_field_tag :anniversary, @user.year_month_date(@user.anniversary) %>
       </div>
 
-      <%= submit_tag "Add New Family Member!" %><br>
+      <%= submit_tag "Add New Family Member!", class: "btn btn-outline-primary" %><br>
 
       <% end %>
     </div>

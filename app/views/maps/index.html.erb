@@ -1,28 +1,28 @@
 <% require 'json' %>
 
-<h1>My Family Map</h1>
+<h1 class="section-header">My Family Map</h1>
 <%if @map_places.count == 1 %>
-<h3>You are the only person on your family member.</h3>
+<h3 class="section-header">You are the only person on your family member.</h3>
 <%elsif @map_places.count > 1%>
-<h3>You have have <%= @map_places.count %> family members on your map. Please zoom out to see more family members.</h3>
+<h3 class="section-header">You have have <%= @map_places.count %> family members on your map. Please zoom out to see more family members.</h3>
 <% end %>
 
 <div class="form">
 <% if @map_place.nil? %>
-  <%= form_tag "/maps", method: :post do  %>
+  <%= form_tag "/maps", class: "form-inline", method: :post do  %>
   <%= label_tag "Location:" %>
-  <%= text_field_tag :location %>
+  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
   <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description %>
+  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
   <%= submit_tag "Add my location" %><br>
   <% end %>
 <% else %>
-  <%= form_tag "/maps/:id", method: :patch do  %>
+  <%= form_tag "/maps", class: "form-inline", method: :patch do  %>
   <%= label_tag "Location:" %>
-  <%= text_field_tag :location, "Enter new location" %>
+  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
   <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description, "is.." %>
-  <%= submit_tag "Update my location" %><br>
+  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
+  <%= submit_tag "Update my location", class: "btn btn-warning" %><br>
 <% end %>
 <% end %>
 </div>

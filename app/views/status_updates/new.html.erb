@@ -1,0 +1,22 @@
+<div id="status-update-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <%= form_tag "/newsfeed", :class => "newsfeed-center", method: :post do  %>
+
+        <div class="modal-body">
+
+        <div>
+          <%= label_tag "Status Update:" %>
+          <%= text_field_tag :post %>
+        </div>
+        <div>
+          <%= label_tag "Image URL:" %>
+          <%= text_field_tag :url %>
+        </div>
+        
+      <%= submit_tag "Update My Status!" %><br>
+      <% end %>
+    </div>
+  </div>
+</div>

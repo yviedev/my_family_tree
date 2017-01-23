@@ -4,7 +4,7 @@ class TreesController < ApplicationController
 
     @trees = []
 
-    @trees_array = Relationship.where("user_id = ? OR relative_id = ?", current_user.id, current_user.id) 
+    p @trees_array = Relationship.where("user_id = ? OR relative_id = ? AND group_id = ?", current_user.id, current_user.id, current_user.group_id) 
     if @trees_array.count > 0
       @trees_array.each do |relationship|
         if User.find(relationship.relative_id).images.first.nil?
@@ -14,14 +14,16 @@ class TreesController < ApplicationController
         end
 
         if relationship.user_id == current_user.id
+          @relationship_name_id = relationship.relative_id
           @relationship = RelativeType.find(relationship.relative_type_id).name
         else
+          @relationship_name_id = relationship.user_id
           @relationship = RelativeType.find(relationship.relative_type_id).inverse_name
         end 
 
         @trees << {
-          user_id: relationship.relative_id,
-          name: User.find(relationship.relative_id).first_name,
+          user_id: @relationship_name_id,
+          name: User.find(@relationship_name_id).first_name,
           relationship: @relationship,
           image: image
         }
@@ -29,7 +31,7 @@ class TreesController < ApplicationController
     end
 
     # @trees.order('name ASC')
-    p @trees
+    @trees
 
     render 'donut.html.erb'
   end

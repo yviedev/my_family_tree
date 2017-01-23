@@ -22,7 +22,11 @@ class StatusUpdatesController < ApplicationController
   end
 
   def new
-  
+    @title = "Update My Status"
+    respond_to do |format|
+      # format.html { render 'new.html.erb' }
+      format.js { render 'new.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def create
@@ -37,7 +41,11 @@ class StatusUpdatesController < ApplicationController
       user_id: current_user.id
     )
 
-    redirect_to '/newsfeed'
+    # redirect_to '/newsfeed'
+    respond_to do |format|
+      format.html { redirect_to '/newsfeed' }
+      format.js { render 'create.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def destroy

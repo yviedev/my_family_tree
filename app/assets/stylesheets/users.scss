@@ -7,7 +7,7 @@
 // }
 $color-primary: #3498db;
 $color-secondary: #f1c40f;
-$color-summary-background: #FFFEFC;
+$color-summary-background: #e7a61a;
 $color-gallery-background: #EDECEB;
 #message {
   background: white;
@@ -25,6 +25,7 @@ $color-gallery-background: #EDECEB;
 input {
   margin: 0 auto;
   float: none;
+  background-color: transparent;
 }
 
 //Stickies CSS
@@ -70,8 +71,8 @@ li {
   color: #000;
   background: lightseagreen;
   display: block;
-  height: 20em;
-  width: 20em;
+  height: auto;
+  width: auto;
   padding: 1em;
   text-align: center;
   /* Firefox */
@@ -101,14 +102,13 @@ li {
   top: -5px;
 }
 
-.stickies ul li:nth-child(5n) a {
-  transform: rotate(5deg);
-  -webkit-transform: rotate(5deg);
-  -moz-transform: rotate(5deg);
-  position: relative;
-  top: -10px;
-}
-
+// .stickies ul li:nth-child(5n) a {
+//   transform: rotate(5deg);
+//   -webkit-transform: rotate(5deg);
+//   -moz-transform: rotate(5deg);
+//   position: relative;
+//   top: -10px;
+// }
 .stickies ul li a:hover {
   -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
   -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
@@ -141,14 +141,22 @@ li {
     header {
       background-color: transparent;
     }
+    .form-control {
+      background-color: transparent;
+      border: none;
+    }
     float: left;
     text-decoration: none;
     color: #000;
-    background: $color-summary-background;
+    background-color: transparent;
     display: block;
     height: auto;
     width: auto;
+    min-width: 400px;
+    max-width: 600px;
     padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
     text-align: center;
     /* Firefox */
     -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
@@ -159,7 +167,7 @@ li {
     .summary-edits {
       padding-top: 20px;
     }
-    img {
+    .profile-images {
       width: 300px;
       height: 300px;
     }
@@ -169,11 +177,15 @@ li {
       text-align: center;
       padding-bottom: 30px;
     }
+    .form-width {
+      width: 30em;
+    }
     padding: 15px;
     float: left;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin-left: 0;
+    margin-top: 0;
     margin-bottom: 10px;
+    padding-left: 50px;
     height: 500px;
     background-color: white;
     overflow-y: scroll;
@@ -185,19 +197,41 @@ li {
     // box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
     .feed-item {
       position: relative;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       padding-left: 30px;
       border-left: 2px solid #e4e8eb;
+      background-color: floralwhite;
       .date {
         position: relative;
         top: -5px;
         color: #8c96a3;
         text-transform: uppercase;
-        font-size: 13px;
+        font-size: 1.5em;
       }
       .text {
         position: relative;
-        top: -3px;
+        top: -1px;
+        color: darkblue;
+        font-size: 1.3em;
+        background-color: floralwhite;
+      }
+    }
+    .like {
+      padding-left: 30px;
+      padding-bottom: 5px;
+      font-size: 1.3em;
+      background-color: floralwhite;
+    }
+    .comment {
+      padding-left: 30px;
+      padding-bottom: 10px;
+      background-color: antiquewhite;
+      p {
+        margin-bottom: 0;
+        color: brown;
+      }
+      input {
+        color: gray;
       }
     }
     .feed-item:last-child {
@@ -219,7 +253,7 @@ li {
   .gallery {
     clear: left;
     padding-top: 50px;
-    background-image: url('light_grey.png');
+    background-image: url('new_year_background.png');
     background-repeat: repeat;
     // /* Firefox */
     // -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
@@ -239,10 +273,13 @@ li {
       justify-content: center;
       margin: 0;
       padding: 0;
+      padding-bottom: 3em;
       flex-wrap: wrap;
       justify-content: center;
       .profile-images {
         margin-right: 30px;
+        width: 300px;
+        height: 300px;
       }
       .profile-images:hover {
         -webkit-transform: scale(1.25);
@@ -260,10 +297,7 @@ li {
           color: black;
         }
       }
-      img {
-        width: 300px;
-        height: 300px;
-      }
+      img {}
     }
   }
 }

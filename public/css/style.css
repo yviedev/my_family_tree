@@ -121,7 +121,8 @@ h5 {
   font-size: 14px;
 }
 
-a,
+
+/*a,
 p,
 li,
 input,
@@ -144,18 +145,20 @@ a {
   -o-transition: all .3s;
   transition: all .3s;
   color: #80cc0c;
-}
+}*/
 
-a:hover,
+
+/*a:hover,
 a:focus,
 a:active {
   outline: 0;
   text-decoration: none;
   border: 0;
   color: #80cc0c;
-}
+}*/
 
-.btn-primary:hover {
+
+/*.btn-primary:hover {
   color: #fff;
   background-color: #6fb10a;
   border-color: #6fb10a;
@@ -164,15 +167,16 @@ a:active {
 .btn:focus,
 .btn:hover {
   text-decoration: none;
-}
+}*/
 
-.btn-primary {
+
+/*.btn-primary {
   color: #fff;
   border-radius: 0;
   background-color: #f7792e;
   border-color: #f7792e;
   padding: 15px 25px;
-}
+}*/
 
 .page-title h1 {
   font-size: 36px;
@@ -391,7 +395,8 @@ section#services {
   padding: 100px 0;
 }
 
-.btn-primary {
+
+/*.btn-primary {
   color: #fff;
   border-radius: 0;
   background-color: #80cc0c;
@@ -399,7 +404,7 @@ section#services {
   padding: 15px 25px;
   margin: 0 auto;
   display: block;
-}
+}*/
 
 
 /*.form-control,

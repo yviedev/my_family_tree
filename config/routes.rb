@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete '/relationships/:id' =>'relationships#destroy'
 
   get '/newsfeed' => 'status_updates#index'
+  get '/newsfeed/new' => 'status_updates#new'
   post '/newsfeed' => 'status_updates#create'
   delete '/newsfeed/:id' =>'status_updates#destroy'
 
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
   get '/maps' => 'maps#index'
   get '/maps/:id' => 'maps#show'
   post '/maps' => 'maps#create'
-  patch '/maps/:id' => 'maps#update'
+  patch '/maps' => 'maps#update'
 
   get '/tree' => 'trees#index'
 
