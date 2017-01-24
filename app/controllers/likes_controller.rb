@@ -10,11 +10,12 @@ class LikesController < ApplicationController
   
   def update
     like = Like.find(params[:id])
+    status_update_id = like.status_update_id
     p "I'm in the update action"
     like.update(
       vote: !like.vote
     )
-    redirect_to '/newsfeed'
+    redirect_to "/newsfeed/#like-#{status_update_id}"
   end
 
   # def destroy
