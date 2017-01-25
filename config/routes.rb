@@ -40,9 +40,11 @@ Rails.application.routes.draw do
   delete '/images/:id' =>'images#destroy'
 
   get '/maps' => 'maps#index'
-  get '/maps/:id' => 'maps#show'
+  get '/maps/new' => 'maps#new'
   post '/maps' => 'maps#create'
-  patch '/maps' => 'maps#update'
+  get '/maps/:id' => 'maps#show'
+  get '/maps/:id/edit' => 'maps#edit'
+  patch '/maps/:id' => 'maps#update'
 
   get '/tree' => 'trees#index'
 
