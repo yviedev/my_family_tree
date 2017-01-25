@@ -1,0 +1,6 @@
+<% if @session.errors.blank? %>
+  $('#session-modal').modal('hide');
+  $('table tbody').append('<%= j render "session_row", session: @session %>');
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>
