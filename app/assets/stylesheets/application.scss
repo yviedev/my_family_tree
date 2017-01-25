@@ -38,27 +38,32 @@ h1 {
   font-size: 36px;
 }
 
-.about-container {
-  display: -webkit-flex;
-  display: flex;
-  width: auto;
-  height: auto;
-  background-color: lightgrey;
+.about-class {
+  float: left;
+  background-color: white;
+  p {
+    font-family: 'Comfortaa', cursive;
+  }
 }
 
-.about-item {
-  background-color: cornflowerblue;
-  width: auto;
-  height: auto;
-  margin: 10px;
+p.software-stack {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
+// .about-container {
+//   display: -webkit-flex;
+//   display: flex;
+//   width: auto;
+//   height: auto;
+//   background-color: lightgrey;
+// }
 .about-video {
   width: 600px;
   height: auto;
 }
 
-.a {
+a {
   color: green;
   size: 2em;
 }
@@ -98,8 +103,9 @@ a:hover {
 }
 
 header {
-  background-color: white;
+  background-color: transparent;
   padding-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .container {
@@ -131,10 +137,10 @@ header {
   }
   .navbar-nav {
     margin-left: auto;
-    margin-right: auto;
+    // margin-right: auto;
     li {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
   .active a {
@@ -172,7 +178,7 @@ header {
 }
 
 .about-sec {
-  padding: 20px 0;
+  padding: 0;
 }
 
 .info-section {
@@ -204,77 +210,5 @@ header {
     color: inherit;
     padding: 0;
     font-size: 36px;
-  }
-}
-
-
-/*  SECTIONS  */
-
-.section {
-  clear: both;
-  padding: 0px;
-  margin: 0px;
-}
-
-
-/*  COLUMN SETUP  */
-
-.col {
-  display: block;
-  float: none;
-  margin: 1% 0 1% 1.6%;
-}
-
-.col:first-child {
-  margin-left: 100px;
-}
-
-
-/*  GROUPING  */
-
-.group:before,
-.group:after {
-  content: "";
-  display: table;
-}
-
-.group:after {
-  clear: both;
-}
-
-.group {
-  zoom: 1;
-  /* For IE 6/7 */
-}
-
-
-/*  GRID OF TWO  */
-
-.span_2_of_2 {
-  width: 100%;
-}
-
-.about-mft {
-  background-color: floralwhite;
-}
-
-.span_1_of_2 {
-  width: 40%;
-  margin-left: 30px;
-}
-
-
-/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
-
-@media only screen and (max-width: 480px) {
-  .col {
-    margin: 1% 0 1% 0%;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .span_2_of_2,
-  .span_1_of_2 {
-    width: 100%;
   }
 }
