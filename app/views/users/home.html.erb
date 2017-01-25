@@ -4,8 +4,9 @@
   <%= render 'about.html.erb' %>
   <!-- About Section End -->
 
+  <% if current_user.nil? %>
   <!-- Call to Action Section Begin -->
   <%= render 'cta.html.erb' %>
   <!-- Call to Action Section Begin -->
-
+  <% end %>
 </body>
