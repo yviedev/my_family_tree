@@ -26,6 +26,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Welcome back #{current_user.first_name}!"
         redirect_to '/newsfeed'
       else
+        flash[:warning] = "Oops. Please try again."
         redirect_to '/login'
       end
     }
@@ -35,6 +36,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Welcome back #{current_user.first_name}!"
         render 'create.js.erb'
       else
+        flash[:warning] = "Oops. Please try again."
         redirect_to '/login'
       end
     }
