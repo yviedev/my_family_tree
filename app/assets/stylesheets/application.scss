@@ -29,9 +29,42 @@ h6 {
   color: #4c4c4c;
 }
 
-a {
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.about-container {
+  display: -webkit-flex;
+  display: flex;
+  width: auto;
+  height: auto;
+  background-color: lightgrey;
+}
+
+.about-item {
+  background-color: cornflowerblue;
+  width: auto;
+  height: auto;
+  margin: 10px;
+}
+
+.about-video {
+  width: 600px;
+  height: auto;
+}
+
+.a {
   color: green;
   size: 2em;
+}
+
+a:hover {
+  color: #e7a61a;
 }
 
 .logo-main {
@@ -53,6 +86,8 @@ a {
 
 #footer-contact-us {
   text-align: left;
+  color: white;
+  font-weight: 500;
   h4 {
     margin: 0;
   }
@@ -89,7 +124,7 @@ header {
   font-family: 'Arvo', serif;
   a.nav-link:hover {
     background-color: green;
-    color: $user-profile-summary-background !important;
+    color: lightgray !important;
   }
   a.nav-link:focus {
     background-color: green;
@@ -104,12 +139,36 @@ header {
   }
   .active a {
     background-color: green;
-    color: $user-profile-summary-background !important;
+    color: lightgray !important;
+  }
+  .container-fluid {
+    background-image: none;
+  }
+  .nav-link.active {
+    background-color: green;
+    color: lightgray !important;
+  }
+  .dropdown-item {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: inherit;
+    a:hover {
+      background-color: green;
+      color: lightgray;
+    }
   }
 }
 
+// a.nav-item.dropdown-item:hover {
+//   color: #4c4c4c;
+//   background-color: green;
+//   padding: .5 1em;
+// }
 .nav-link:hover {
   color: $user-profile-summary-background;
+}
+
+.my-2 {
+  display: inline;
 }
 
 .about-sec {
@@ -141,8 +200,81 @@ header {
 .section-header {
   margin-top: 10px;
   margin-bottom: 10px;
-  h2 {
+  h1 {
     color: inherit;
     padding: 0;
+    font-size: 36px;
+  }
+}
+
+
+/*  SECTIONS  */
+
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+/*  COLUMN SETUP  */
+
+.col {
+  display: block;
+  float: none;
+  margin: 1% 0 1% 1.6%;
+}
+
+.col:first-child {
+  margin-left: 100px;
+}
+
+
+/*  GROUPING  */
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  zoom: 1;
+  /* For IE 6/7 */
+}
+
+
+/*  GRID OF TWO  */
+
+.span_2_of_2 {
+  width: 100%;
+}
+
+.about-mft {
+  background-color: floralwhite;
+}
+
+.span_1_of_2 {
+  width: 40%;
+  margin-left: 30px;
+}
+
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .span_2_of_2,
+  .span_1_of_2 {
+    width: 100%;
   }
 }

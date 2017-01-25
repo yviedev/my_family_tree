@@ -6,17 +6,19 @@
   width: 80%;
   margin: 0 auto;
   float: none;
+  .container-fluid {
+    background-image: none;
+  }
 }
 
-// .family-map {
-//   h1 {
-//     font-weight: 700;
-//     margin-bottom: 0;
-//     padding-bottom: 0;
-//   }
-//   h3 {
-//     margin-bottom: 0;
-//     padding: 0;
-//     padding-bottom: 20px;
-//   }
-// }
+.family-map {
+  h1 {
+    margin-bottom: 20px;
+    padding-bottom: 0;
+  }
+  h3 {
+    margin-bottom: 0;
+    padding: 0;
+    padding-bottom: 0;
+  }
+}

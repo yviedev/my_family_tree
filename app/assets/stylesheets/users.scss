@@ -21,6 +21,17 @@ $color-gallery-background: #EDECEB;
   margin-bottom: 15px;
 }
 
+.cta {
+  .btn {
+    background-color: green;
+    border-color: green;
+  }
+  .btn:hover {
+    background-color: gray;
+    border-color: gray;
+  }
+}
+
 .form-control,
 input {
   margin: 0 auto;
@@ -136,6 +147,23 @@ li {
   float: left;
 }
 
+p {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
+  padding-bottom: 5px;
+}
+
+#about {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 35px;
+  color: #004000;
+  .section-header {
+    margin: 0;
+    float: none;
+  }
+}
+
 .user-profile {
   .summary {
     header {
@@ -223,11 +251,13 @@ li {
         }
       }
       .text {
+        font-family: 'Indie Flower', cursive;
+        font-size: 1.7em;
         position: relative;
         top: -1px;
         color: #8c96a3;
-        font-size: 1.2em;
         padding-right: 10px;
+        padding-top: 20px;
         background-color: floralwhite;
         img {
           padding-left: 20px;

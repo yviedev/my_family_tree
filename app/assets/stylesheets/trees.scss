@@ -25,14 +25,13 @@
   .google-visualization-tooltip {
     background-color: #ffce19;
   }
+  a:hover {
+    color: lightseagreen;
+  }
 }
 
-// body {
-//   background-image: url('tree.jpg');
-//   background-size: 100% 100%;
-//   background-repeat: no-repeat;
-//   opacity: 0.8;
-// }
+body {}
+
 .trees {
   text {
     font-family: 'Indie Flower', cursive;
@@ -40,4 +39,7 @@
   h1 {
     font-weight: 700;
   }
+  background: url('green-background');
+  opacity: 0.8;
+  background-size: cover;
 }
