@@ -1,39 +1,53 @@
 <section id="about" class="about-sec section-wrapper description">
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="fadeInDown about-header">
-                    <h2><span class="highlight-text">About</span></h2>
-                   
-                    <p class="col-md-8 col-sm-10 col-xs-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nam corporis quas, saepe minima error aperiam dolorum aliquam, quis deserunt eos eius quisquam odio itaque.</p>
-                </div>
-                <!-- Section Header End -->
-
-                <div class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown">
-                    <img src="images/features.jpg" alt="Custom Image">
-                </div>
-
-                <div class="col-md-6 col-sm-6 col-xs-12 customized-text wow fadeInDown black-ed">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa sit, numquam amet voluptatibus obcaecati ea maiores totam nostrum, ad iure rerum quas harum ipsum.  lobcaecati ea maiores totam nostrum, ad iure rerum quas harum ipsum. Rem ea ducimus quos quae quo.</p>
-                    <div class="row"> 
-                        <div class="col-md-11">
-                            <strong>Bootstrap</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam iusto, natus est ducimus saepe laborum</p>
-                        </div>
-                    </div>
-                    <div class="row"> 
-                        <div class="col-md-11">
-                            <strong>Responisve Theme</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam iusto, natus est ducimus saepe laborum Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                    <div class="row"> 
-                        <div class="col-md-11">
-                            <strong>HTML5/CSS3</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam iusto, natus est ducimus saepe laborum Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+  <div class="container">
+      <!-- Section Header -->
+      <div class="fadeInDown">
+        <h1 class="section-header">About</h1>
+      </div>
+      <!-- Section Header End -->
+      <div class="section group">
+        <div class="col span_1_of_2">
+        <div class="row">
+        <div class="col-md-12">
+          <%= video_tag "about.mp4", controls: true, autoplay: true, muted: true, loop: true, id: "about-video" %>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-md-12">
+            <strong><p>MFT was built with the following software stack:</p></strong>
+          </div>
         </div>
-    </section>
+        <div class="row">
+          <div class="col-md-12">
+            <strong><p>*Bootstrap</p?</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <strong><p>*Rails v. 5.0</p></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <strong><p>*HTML5/CSS3</p></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <strong><p>*JavaScript</p></strong>
+          </div>
+        </div>
+        </div>
+        <div class="col span_1_of_2">
+          <div class="row">
+            <div class="about-mft col-md-12">
+              <strong><p>My Family Tree (MFT) is a fun, easy and safe way to build a family tree while keeping in touch using technology and it takes a few seconds to sign up for an account!</p>
+              <p>Once you are logged in, you can add photos and keep your family up-to-date via the family newsfeed. You can even add familiy member profiles in order to build your family tree. You can also view your Family Tree in order to see how everyone is related to you and don't forget to visit the Family Map to log in your location!</p></strong>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+</section>
