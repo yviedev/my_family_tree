@@ -3,18 +3,18 @@
     <div class="modal-content">
 
       <h1 class="section-header">Update My Status</h1>
-      <%= form_tag "/newsfeed", :class => "newsfeed-center", method: :post do  %>
+      <%= form_tag "/newsfeed", :class => "form-inline newsfeed-center", method: :post do  %>
 
         <div class="modal-body">
 
         <div>
           <%= label_tag "Status Update:" %>
-          <%= text_field_tag :post %>
-        </div>
+          <%= text_field_tag :post, "Enter post", class: "form-control form-width" %>
+        </div><br>
         <div>
           <%= label_tag "Image URL:" %>
-          <%= text_field_tag :url %>
-        </div>
+          <%= text_field_tag :url, "Enter image url (optional)", class: "form-control form-width" %>
+        </div><br>
         
       <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
       <% end %>
