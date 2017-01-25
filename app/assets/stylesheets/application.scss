@@ -212,3 +212,43 @@ header {
     font-size: 36px;
   }
 }
+
+.modal-content {
+  form {
+    color: green;
+  }
+  .btn {
+    color: white;
+    background-color: green;
+    border: green;
+  }
+  .btn:hover {
+    color: green;
+    background-color: white;
+    border: white;
+  }
+}
+
+.modal-button {
+  color: white;
+  background-color: green;
+  border: green;
+}
+
+.modal-button:hover {
+  color: green;
+  background-color: white;
+  border: white;
+}
+
+.modal-form {
+  width: 400px;
+  input {
+    font-family: 'Indie Flower', cursive;
+  }
+}
+
+.form-control {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
+}

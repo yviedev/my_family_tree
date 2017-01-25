@@ -1,5 +1,5 @@
 <h1>Login</h1>
-<%= form_tag '/login', class: "newsfeed-center form-control", method: :post do %>
+<%= form_tag '/login', class: "newsfeed-center form-control modal-form", method: :post do %>
   <div>
     <%= label_tag :email %>
     <%= text_field_tag :email, "", class: "form-control form-width" %>
@@ -8,7 +8,7 @@
     <%= label_tag :password %>
     <%= password_field_tag :password, "", class: "form-control form-width" %>
   </div>
-  <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
+  <%= submit_tag "Submit", class: "btn btn-outline-primary modal-button" %><br>
 
   <%= link_to "I need to create an account.", "/signup" %><br>
 

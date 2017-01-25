@@ -8,23 +8,23 @@
 
       <div>
         <%= label_tag :first_name %>
-        <%= text_field_tag :first_name, @user.first_name, "", class: "form-control form-width"  %>
+        <%= text_field_tag :first_name, @user.first_name, class: "form-control form-width"  %>
       </div>
       <div>
         <%= label_tag :last_name %>
-        <%= text_field_tag :last_name, @user.last_name, "", class: "form-control form-width"  %>
+        <%= text_field_tag :last_name, @user.last_name, class: "form-control form-width"  %>
       </div>
       <div>
         <%= hidden_field_tag :group_id, current_user.group_id %>
       </div>
       <div>
         <%= label_tag :birthday %>
-        <%= date_field_tag :birthday, @user.year_month_date(@user.birthday), "", class: "form-control form-width"  %>
+        <%= date_field_tag :birthday, @user.year_month_date(@user.birthday), class: "form-control form-width"  %>
       </div>
       <div>
         <%= label_tag :anniversary %>
-        <%= date_field_tag :anniversary, @user.year_month_date(@user.anniversary), "", class: "form-control form-width"  %>
-      </div>
+        <%= date_field_tag :anniversary, @user.year_month_date(@user.anniversary), class: "form-control form-width"  %>
+      </div><br>
 
       <%= submit_tag "Add New Family Member!", class: "btn btn-outline-primary" %>
 
