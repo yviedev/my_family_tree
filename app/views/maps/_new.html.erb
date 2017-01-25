@@ -3,13 +3,13 @@
     <div class="modal-content">
     <br>
     <h1>Add Your Location</h1>
-      <%= form_tag "/maps", class: "newsfeed-center form-inline", method: :post do  %>
+      <%= form_tag "/maps", class: "form-control newsfeed-center", method: :post do  %>
       <div class="modal-body">
       <%= label_tag "Location:" %>
       <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
       <%= label_tag "#{current_user.first_name}" %>
-      <%= text_field_tag :description, "is..", class: "form-control form-width" %><br>
-      <%= submit_tag "Add my location" %><br>
+      <%= text_field_tag :description, "is..", class: "form-control form-width" %>
+      <%= submit_tag "Add my location" %>
       <% end %>
       <br>
     </div>

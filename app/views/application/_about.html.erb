@@ -1,53 +1,18 @@
 <section id="about" class="about-sec section-wrapper description">
-  <div class="container">
-      <!-- Section Header -->
-      <div class="fadeInDown">
-        <h1 class="section-header">About</h1>
+    <div class="section group about-class">
+      <div>
+        <%= video_tag "about.mp4", controls: true, autoplay: true, muted: true, loop: true, id: "about-video" %>
       </div>
-      <!-- Section Header End -->
-      <div class="section group">
-        <div class="col span_1_of_2">
-        <div class="row">
-        <div class="col-md-12">
-          <%= video_tag "about.mp4", controls: true, autoplay: true, muted: true, loop: true, id: "about-video" %>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-12">
-            <strong><p>MFT was built with the following software stack:</p></strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <strong><p>*Bootstrap</p?</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <strong><p>*Rails v. 5.0</p></strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <strong><p>*HTML5/CSS3</p></strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <strong><p>*JavaScript</p></strong>
-          </div>
-        </div>
-        </div>
-        <div class="col span_1_of_2">
-          <div class="row">
-            <div class="about-mft col-md-12">
-              <strong><p>My Family Tree (MFT) is a fun, easy and safe way to build a family tree while keeping in touch using technology and it takes a few seconds to sign up for an account!</p>
-              <p>Once you are logged in, you can add photos and keep your family up-to-date via the family newsfeed. You can even add familiy member profiles in order to build your family tree. You can also view your Family Tree in order to see how everyone is related to you and don't forget to visit the Family Map to log in your location!</p></strong>
-            </div>
-          </div>
-          
-        </div>
+      <div><strong>
+        <p>My Family Tree (MFT) is a fun, easy and safe way to keep in touch with family and build a family tree. It only takes a few seconds to sign up for an account!</p>
+        <p>Once you are logged in, you can add photos and keep your family up-to-date via the family newsfeed. You can even add familiy member profiles in order to build your family tree. You can also view your Family Tree in order to see how everyone is related to you and don't forget to visit the Family Map to log in your location!</p>
+      </div></strong>
+      <div class="software-stack">
+        <p><strong>MFT was built with the following software stack:</strong></p>
+        <p><strong>*Bootstrap</strong></p>
+        <p><strong>*Rails v. 5.0</strong></p>
+        <p><strong>*HTML5/CSS3</strong></p>
+        <p><strong>*JavaScript</strong></p>
       </div>
     </div>
-
 </section>

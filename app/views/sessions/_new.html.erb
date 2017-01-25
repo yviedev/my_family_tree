@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <h1>Login</h1>
-      <%= form_tag '/login', class: "form-inline", method: :post do %>
+      <%= form_tag '/login', class: "form-control", method: :post do %>
       <div class="modal-body">
         <div>
           <%= label_tag :email %>
@@ -14,7 +14,7 @@
         </div>
         <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
 
-        <%= link_to "I need to create an account.", "/signup" %><br>
+        <%= link_to "I need to create an account.", "/signup" %>
 
       <% end %>
     </div>

@@ -3,7 +3,7 @@
     <div class="modal-content">
       <h1 class="section-header">Add your image below:</h2>
 
-      <%= form_tag "/images", class: "newsfeed-center form-inline", method: :post do  %>
+      <%= form_tag "/images", class: "form-control newsfeed-center", method: :post do  %>
         <div class="modal-body">
 
         <div>
@@ -14,7 +14,7 @@
         <%= hidden_field_tag :user_id, @user.id%>
         </div>
         
-        <%= submit_tag "Submit", class: "btn btn-outline-primary" %><br>
+        <%= submit_tag "Submit", class: "btn btn-outline-primary" %>
 
       <% end %>
     </div>

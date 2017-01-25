@@ -2,15 +2,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <h1>Signup!</h1>
-      <%= form_tag "/familymembers", method: :post do  %>
+      <%= form_tag "/familymembers", class: "form-control", method: :post do  %>
         <div class="modal-body">
         <div>
           <%= label_tag :first_name %>
-          <%= text_field_tag :first_name %>
+          <%= text_field_tag :first_name, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :last_name %>
-          <%= text_field_tag :last_name %>
+          <%= text_field_tag :last_name, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :group_id %>
@@ -19,23 +19,23 @@
         </div>
         <div>
           <%= label_tag :birthday %>
-          <%= text_field_tag :birthday %>
+          <%= text_field_tag :birthday, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :anniversary %>
-          <%= text_field_tag :anniversary %>
+          <%= text_field_tag :anniversary, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :email %>
-          <%= text_field_tag :email %>
+          <%= text_field_tag :email, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :password %>
-          <%= password_field_tag :password %>
+          <%= password_field_tag :password, "", class: "form-control form-width" %>
         </div>
         <div>
           <%= label_tag :password_confirmation %>
-          <%= password_field_tag :password_confirmation %>
+          <%= password_field_tag :password_confirmation, "", class: "form-control form-width" %>
         </div>
         <%= submit_tag "Submit" %><br>
 
