@@ -10,6 +10,13 @@ class MapsController < ApplicationController
     render 'index.html.erb'
   end
 
+  def new
+    respond_to do |format|
+      format.html { render 'new.html.erb' }
+      format.js { render 'new.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
+  end
+
   def create
     coordinates = Geocoder.coordinates(params["location"])
 
@@ -22,7 +29,20 @@ class MapsController < ApplicationController
       longitude: coordinates[1]
       )
   
-    redirect_to '/maps'
+    respond_to do |format|
+      format.html { redirect_to '/maps' }
+      format.js { render 'create.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
+  end
+
+  def edit
+
+    @map_place = Map.find_by(user_id: current_user.id)
+    
+    respond_to do |format|
+      format.html { redirect_to '/maps' }
+      format.js { render 'edit.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def update
@@ -37,7 +57,10 @@ class MapsController < ApplicationController
       longitude: coordinates[1]
     )
 
-    redirect_to '/maps'
+    respond_to do |format|
+      format.html { redirect_to '/maps' }
+      format.js { render 'update.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def destroy

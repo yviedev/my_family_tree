@@ -1,0 +1,17 @@
+<div id="map-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content"> 
+    <br>
+    <h1>Update Your Location</h1>
+      <%= form_tag "/maps/#{@map_place.id}", class: "newsfeed-center form-inline", method: :patch do  %>
+      <div class="modal-body">
+    <%= label_tag "Location:" %>
+      <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
+      <%= label_tag "#{current_user.first_name}" %>
+      <%= text_field_tag :description, "is..", class: "form-control form-width" %><br>
+      <%= submit_tag "Update my location", class: "btn btn-warning" %><br>
+      <% end %>
+      <br>
+    </div>
+  </div>
+</div>
