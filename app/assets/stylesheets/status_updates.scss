@@ -19,17 +19,27 @@
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 1em;
+  a {
+    color: green;
+  }
   .status-update-text {
     background-color: transparent;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-align: center;
     padding-bottom: 5px;
+    display: inline;
   }
   .form-width {
     width: 25em;
   }
   .status-update-box {
     background-color: floralwhite;
+    padding-top: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  form {
+    display: inline;
   }
 }
 
@@ -37,14 +47,14 @@
   // text-align: center;
   float: none;
   margin: 0 auto;
-  background-color: lightgray;
+  background-color: #efefef;
   p {
     margin-bottom: 0;
-    margin-left: 2em;
-    color: brown;
+    margin-left: 1em;
+    color: gray;
   }
   input {
-    color: gray;
+    color: #8bc58b;
   }
 }
 
@@ -52,9 +62,15 @@
   text-align: center;
   float: none;
   margin: 0 auto;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2em;
 }
 
 .status-update-post {
-  color: darkblue;
-  font-size: 1.3em;
+  color: gray;
+  font-size: 1.7em;
+}
+
+.btn-secondary:hover {
+  background-color: white;
 }

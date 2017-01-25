@@ -1,27 +1,26 @@
 <% require 'json' %>
 
-<h1 class="section-header">My Family Map</h1>
-<%if @map_places.count == 1 %>
-<h3 class="section-header">You are the only person on your family member.</h3>
+<div class="family-map">
+<h1>My Family Map</h1>
+<%if @map_places.count < 1 %>
+<h2>Add a location to show up on the map.</h2>
+<%elsif @map_places.count == 1 %>
+<h2>You are the only person on your family member map.</h2>
 <%elsif @map_places.count > 1%>
-<h3 class="section-header">You have have <%= @map_places.count %> family members on your map. Please zoom out to see more family members.</h3>
+<h3>You have have <%= @map_places.count %> family members on your map.</h2> 
+<h3>(Please zoom out to see more family members.)</h3>
 <% end %>
+</div>
 
 <div class="form">
 <% if @map_place.nil? %>
-  <%= form_tag "/maps", class: "form-inline", method: :post do  %>
-  <%= label_tag "Location:" %>
-  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
-  <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
+  <%= form_tag "/maps/new", class: "form-inline", remote: true, method: :get do  %>
+  
   <%= submit_tag "Add my location" %><br>
   <% end %>
 <% else %>
-  <%= form_tag "/maps", class: "form-inline", method: :patch do  %>
-  <%= label_tag "Location:" %>
-  <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %>
-  <%= label_tag "#{current_user.first_name}" %>
-  <%= text_field_tag :description, "is..", class: "form-control form-width" %>
+  <%= form_tag "/maps/#{@map_place.id}/edit", class: "form-inline", remote: true, method: :get do  %>
+  
   <%= submit_tag "Update my location", class: "btn btn-warning" %><br>
 <% end %>
 <% end %>
@@ -43,7 +42,6 @@
         });
 
         var familyCoordinates = [];
-        console.log(familyCoordinates);
 
         for(var i = 0; i < map_places.length; i++){
           createMarker(map_places[i]);

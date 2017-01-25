@@ -1,6 +1,6 @@
 <!-- Family Members Title -->
-<div class="col-md-12 col-sm-12 col-xs-12 section-header">
-<h2 class"highlight-text">My Family Members</h2>
+<div class="col-md-12 col-sm-12 col-xs-12 section-header index-class">
+<h1>My Family Members</h1>
 <h3>(You have <%= (current_user.group.users.count - 1) %> family members)</h3>
 
 <!-- Family Members Sort Links -->
@@ -22,20 +22,20 @@
         <% if @relationships[0] %>
           <% @relationships.each do |relationship| %>
            <% if relationship.user_id == current_user.id %>
-             <p> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).name %></p>
+             <h4> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).name %></h4>
              <% @relationship = relationship %>
            <% elsif relationship.relative_id == current_user.id %>
-             <p> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).inverse_name %><p>
+             <h4> Relationship: <%= @relationship_name = RelativeType.find(relationship.relative_type_id).inverse_name %><h4>
              <% @relationship = relationship %>
            <% end %>
          <% end %>
        <% else %>
-         <p> Relationship: Please add <p>
+         <h4> Relationship: Please add <h4>
        <% end %>
         <% if user.images != [] %>
           <img src="<%= user.images.first.url %>">
         <% end %>
-        <p>Birthday: <%= user.month_date(user.birthday) %></p>
+        <h4>Birthday: <%= user.month_date(user.birthday) %></h4>
       </a>
     </li>
   <% end %>

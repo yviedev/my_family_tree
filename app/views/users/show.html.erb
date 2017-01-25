@@ -45,7 +45,22 @@
       <% @reverse_status_updates.each do |status_update| %>
       <ul>
         <div class="feed-item">
+        <div class="date-wrapper">
           <li class="date"><%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')) %> <% if @user.id = current_user.id || current_user.admin %><%= link_to image_tag("garbage"), "/newsfeed/#{status_update.id}", :method => :delete, data: { confirm: "Are you sure you want to delete this status update?" } %></li>
+          <div class="like">
+          <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+          <% @like = Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
+          <%= form_tag "/likes/#{@like.id}", method: :patch do  %>  
+          <%= submit_tag "Like", class: "btn btn-primary btn-sm" %> :<%= status_update.likes.where(vote: true).count %>
+          <% end %>
+          <% else %>
+            <%= form_tag "/likes", method: :post do  %>  
+            <%= hidden_field_tag :status_update_id, status_update.id %>
+            <%= submit_tag "Like", class: "btn btn-primary btn-sm" %> :<%= status_update.likes.where(vote: true).count %>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
           <% end %>
           <li class="text"><%= status_update.post %></li>
           <% if status_update.url %>
@@ -53,20 +68,6 @@
           <% end %> 
         </div>
       </ul>
-
-    <div class="like">
-    <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
-    <% @like = Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
-    <%= form_tag "/likes/#{@like.id}", method: :patch do  %>  
-    <%= submit_tag "Like", class: "btn btn-primary btn-sm" %> :<%= status_update.likes.where(vote: true).count %>
-    <% end %>
-  <% else %>
-    <%= form_tag "/likes", method: :post do  %>  
-    <%= hidden_field_tag :status_update_id, status_update.id %>
-    <%= submit_tag "Like", class: "btn btn-primary btn-sm" %> :<%= status_update.likes.where(vote: true).count %>
-    <% end %>
-  <% end %>
-  </div>
 
   <div class="comment">
     <% status_update.comments.each do |comment|%>
@@ -87,9 +88,10 @@
   </section>
 
   <section class="gallery">
+  <div class="gallery-wrapping-div">
     <div class="header">
       <h2 class="section-header"><%= @user.first_name %>'s Gallery</h2>
-      <p>Click the images below to go through <%= @user.first_name %>'s gallery.</li>  
+      <p>(Hover over the images below to go through <%= @user.first_name %>'s gallery.)</li>  
       <% if @user.id == current_user.id || current_user.admin %>
         <%= form_tag "/images/new", remote: true, method: :get do  %>
         <%= hidden_field_tag :user_id, @user.id%>
@@ -99,16 +101,18 @@
     </div>
 
       <!-- Images -->
-    <ul class="images">
-    <% @user.images.each do |image| %>
-      <li><img class="profile-images" src="<%= image.url %>">
-      <% if @user.id == current_user.id || current_user.admin %>
-        <%= link_to image_tag("garbage"), "/images/#{image.id}", :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %></li>
+    <div class="image-wrapping-div">
+      <ul class="images">
+      <% @user.images.each do |image| %>
+        <li><img class="profile-images" src="<%= image.url %>">
+        <% if @user.id == current_user.id || current_user.admin %>
+          <%= link_to image_tag("garbage"), "/images/#{image.id}", :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %></li>
+        <% end %>
       <% end %>
-    <% end %>
+      </ul>
     </div>
-
-  </section>
+  </div>
+</section>
 </div>
 
 

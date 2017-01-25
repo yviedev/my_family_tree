@@ -1,0 +1,6 @@
+<% if @map.errors.blank? %>
+  $('#map-modal').modal('hide');
+  $('table tbody').append('<%= j render "map_row", map: @map %>');
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

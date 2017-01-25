@@ -14,7 +14,7 @@
  *= require_self
  */
 
-$footer-color-background: #F9E9C6;
+$footer-color-background: #1e1e1e;
 $user-profile-summary-background: #e7a61a;
 h1,
 h2,
@@ -26,13 +26,56 @@ h6 {
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 0;
-  color: bold;
+  color: #4c4c4c;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.about-class {
+  float: left;
+  background-color: white;
+  p {
+    font-family: 'Comfortaa', cursive;
+  }
+}
+
+p.software-stack {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+// .about-container {
+//   display: -webkit-flex;
+//   display: flex;
+//   width: auto;
+//   height: auto;
+//   background-color: lightgrey;
+// }
+.about-video {
+  width: 600px;
+  height: auto;
+}
+
+a {
+  color: green;
+  size: 2em;
+}
+
+a:hover {
+  color: #e7a61a;
 }
 
 .logo-main {
   width: 350px;
   height: auto;
-  margin-left: 3em;
+  margin-left: 1em;
   // padding-top: 20px;
   // padding-left: 20px;
 }
@@ -46,9 +89,12 @@ h6 {
   height: auto;
 }
 
-.footer-contact-us {
+#footer-contact-us {
+  text-align: left;
+  color: white;
+  font-weight: 500;
   h4 {
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 
@@ -57,8 +103,20 @@ h6 {
 }
 
 header {
-  background-color: white;
+  background-color: transparent;
   padding-bottom: 20px;
+  // margin-bottom: 20px;
+}
+
+.container {
+  float: none;
+  margin: 0;
+  width: 100%;
+  .wrap-nav-container {
+    float: none;
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .navbar {
@@ -67,34 +125,60 @@ header {
   font-size: 1.5em;
   padding-bottom: 10px;
   padding-top: 0;
-  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  margin-top: 0;
+  // padding-left: 20px;
+  font-family: 'Arvo', serif;
   a.nav-link:hover {
     background-color: green;
-    color: $user-profile-summary-background !important;
+    color: lightgray !important;
   }
   a.nav-link:focus {
     background-color: green;
   }
   .navbar-nav {
     margin-left: auto;
-    margin-right: auto;
+    // margin-right: auto;
     li {
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
   .active a {
     background-color: green;
-    color: $user-profile-summary-background !important;
+    color: lightgray !important;
+  }
+  .container-fluid {
+    background-image: none;
+  }
+  .nav-link.active {
+    background-color: green;
+    color: lightgray !important;
+  }
+  .dropdown-item {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: inherit;
+    a:hover {
+      background-color: green;
+      color: lightgray;
+    }
   }
 }
 
+// a.nav-item.dropdown-item:hover {
+//   color: #4c4c4c;
+//   background-color: green;
+//   padding: .5 1em;
+// }
 .nav-link:hover {
   color: $user-profile-summary-background;
 }
 
+.my-2 {
+  display: inline;
+}
+
 .about-sec {
-  padding: 20px 0;
+  padding: 0;
 }
 
 .info-section {
@@ -112,7 +196,7 @@ header {
 .footer-container {
   padding-top: 3em;
   padding-bottom: 0.9em;
-  // background-color: #800080;
+  background-color: $footer-color-background;
 }
 
 .alert {
@@ -122,4 +206,49 @@ header {
 .section-header {
   margin-top: 10px;
   margin-bottom: 10px;
+  h1 {
+    color: inherit;
+    padding: 0;
+    font-size: 36px;
+  }
+}
+
+.modal-content {
+  form {
+    color: green;
+  }
+  .btn {
+    color: white;
+    background-color: green;
+    border: green;
+  }
+  .btn:hover {
+    color: green;
+    background-color: white;
+    border: white;
+  }
+}
+
+.modal-button {
+  color: white;
+  background-color: green;
+  border: green;
+}
+
+.modal-button:hover {
+  color: green;
+  background-color: white;
+  border: white;
+}
+
+.modal-form {
+  width: 400px;
+  input {
+    font-family: 'Indie Flower', cursive;
+  }
+}
+
+.form-control {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
 }

@@ -70,7 +70,11 @@ class UsersController < ApplicationController
     @title = "Signup"
     @groups = Group.all.order('name ASC')
     @user = User.new
-    render 'signup.html.erb'
+    # render 'signup.html.erb'
+    respond_to do |format|
+      format.html { render 'signup.html.erb' }
+      format.js { render 'signup.js.erb' }#default behaviour is to run app/views/notes/create.js.erb file
+    end
   end
 
   def new_family_member
@@ -95,13 +99,36 @@ class UsersController < ApplicationController
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
-    if @user.save
+    # if @user.save
+    #   session[:user_id] = @user.id
+    #   flash[:success] = "Congrats. Your account was created."
+    #   redirect_to "/newsfeed"
+    # else
+    #   flash[:warning] = "Please try again."
+    #   render 'signup.html.erb'
+    # end
+
+    respond_to do |format| 
+    format.html {
+      if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Congrats. Your account was created."
-      redirect_to "/newsfeed"
-    else
-      flash[:warning] = "Please try again."
+        redirect_to '/newsfeed'
+      else
+        flash[:warning] = "Please try again."
       render 'signup.html.erb'
+      end
+    }
+    format.js {
+      if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Congrats. Your account was created."
+        render 'create.js.erb'
+      else
+        flash[:warning] = "Please try again."
+      render 'signup.html.erb'
+      end
+    }
     end
   end
 
