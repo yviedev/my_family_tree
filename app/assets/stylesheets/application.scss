@@ -10,12 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require sweetalert2
+ *= require_tree .
  */
 
 $footer-color-background: #1e1e1e;
 $user-profile-summary-background: #e7a61a;
+$super-dark-gray: #4c4c4c;
 h1,
 h2,
 h3,
@@ -38,29 +40,45 @@ h1 {
   font-size: 36px;
 }
 
-.about-class {
-  float: left;
-  background-color: white;
+.software-stack {
   p {
-    font-family: 'Comfortaa', cursive;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
-p.software-stack {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-// .about-container {
-//   display: -webkit-flex;
-//   display: flex;
-//   width: auto;
-//   height: auto;
-//   background-color: lightgrey;
-// }
 .about-video {
   width: 600px;
   height: auto;
+}
+
+.about-class {
+  // font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 1.3em;
+  // font-weight: 200;
+  line-height: 30px;
+  color: lighten ($super-dark-gray, 70%);
+  margin-left: 5%;
+  // background-color: #f3f3f3;
+  width: 90%;
+  .section-header {
+    margin: 0;
+  }
+  p {
+    font-family: 'Muli', sans-serif;
+    // display: inline;
+  }
+  padding-bottom: 20px;
+}
+
+#MFT-text {
+  // padding-left: 20px;
+  margin-left: 20px;
+}
+
+#video-in-about-sec {
+  float: left;
+  padding-right: 60px;
 }
 
 a {
@@ -84,6 +102,10 @@ a:hover {
   margin-bottom: 30px;
 }
 
+.footer-container {
+  li {}
+}
+
 .footer-image {
   width: 17em;
   height: auto;
@@ -91,8 +113,10 @@ a:hover {
 
 #footer-contact-us {
   text-align: left;
-  color: white;
-  font-weight: 500;
+  color: gray;
+  font-weight: 700;
+  font-size: 1.6em;
+  padding-top: 10px;
   h4 {
     margin: 0;
   }
@@ -162,6 +186,19 @@ header {
       color: lightgray;
     }
   }
+  form {
+    input {
+      font-size: 0.9em;
+    }
+  }
+  .btn {
+    color: green;
+    background-color: transparent;
+  }
+  .btn:hover {
+    color: white;
+    background-color: green;
+  }
 }
 
 // a.nav-item.dropdown-item:hover {
@@ -214,6 +251,8 @@ header {
 }
 
 .modal-content {
+  background-image: url('asanoha.png');
+  background-repeat: repeat;
   form {
     color: green;
   }
@@ -226,6 +265,9 @@ header {
     color: green;
     background-color: white;
     border: white;
+  }
+  input {
+    font-family: 'Indie Flower', cursive;
   }
 }
 
@@ -243,12 +285,27 @@ header {
 
 .modal-form {
   width: 400px;
+  line-height: 2em;
   input {
     font-family: 'Indie Flower', cursive;
   }
 }
 
+.modal-body {
+  input {
+    color: green;
+    text-align: center;
+  }
+}
+
 .form-control {
   font-family: 'Indie Flower', cursive;
-  font-size: 1.5em;
+  // 
+  max-width: 400px;
+}
+
+label {
+  color: #4c4c4c;
+  // font-size: 1.6em;
+  padding-top: 10px;
 }

@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     like = Like.create!(
       status_update_id: params[:status_update_id],
