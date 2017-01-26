@@ -28,7 +28,7 @@
           <%= form_tag '/relationships', class: "form-control", method: :post do %>
           <%= select_tag :relative_type_id, options_for_select(@relative_type_id.collect{ |r| [r.name, r.id] }, class: "form-control")%>
           <%= hidden_field_tag :user_id, @user.id%>
-          <%= submit_tag image_tag("add"), class: "btn btn-secondary btn-sm" %>
+          <%= image_submit_tag("add.png", class: "btn btn-secondary btn-sm") %>
           <% end %><br>
         <% end %>
         <%= link_to image_tag("edit"), "/familymembers/#{@user.id}/edit", remote: true, class: "memberEdit" %>
