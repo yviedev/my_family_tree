@@ -19,6 +19,9 @@ class CommentsController < ApplicationController
   end
 
   def show
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "Comment not found."
+      redirect_to "/newsfeed"
   end
 
   def destroy

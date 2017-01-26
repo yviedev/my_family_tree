@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     )
 
     if @group.save
-      flash[:success] = "Congrats. You created a new group."
+      flash[:success] = "Congrats. You created a new family group."
       redirect_to '/signup'
     else
       render 'new.html.erb'

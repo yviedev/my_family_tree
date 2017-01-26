@@ -88,6 +88,15 @@ class UsersController < ApplicationController
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
+
+    if @user.save
+      relationship = Relationship.create(
+        user_id: @user.id,
+        relative_id: @user.id,
+        relative_type_id: 1,
+        group_id: @user.group_id
+      )
+    end
     # if @user.save
     #   session[:user_id] = @user.id
     #   flash[:success] = "Congrats. Your account was created."
