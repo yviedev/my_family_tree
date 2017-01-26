@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user
 
   def index
   end
@@ -22,8 +23,11 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy
-    flash[:warning] = "Your comment has been deleted."
+
+    if current_user.id == comment.user_id || current_user.admin
+      comment.destroy
+      flash[:warning] = "Your comment has been deleted."
+    end
     redirect_to '/newsfeed'
   end
 

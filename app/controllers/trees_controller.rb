@@ -1,4 +1,6 @@
 class TreesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @title = "My Family Tree"
 

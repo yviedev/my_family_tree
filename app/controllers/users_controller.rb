@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :newsfeed, :index, :new_family_member, :create_family_member]
+  before_action :authenticate_user!, except: [:home, :new, :create]
 
   def home
     @title = "My Family Tree"
@@ -17,25 +17,6 @@ class UsersController < ApplicationController
       else
         @users = User.where(group_id: current_user.group_id)
       end
-      # @users = User.all
-  
-      #link relationship between current_user and user
-      # @users.each do |user|
-      #   @relationships = Relationship.where("user_id = ? AND relative_id = ? OR user_id = ? AND relative_id = ?", current_user.id, user.id, user.id, current_user.id)
-      #   if @relationships[0]
-      #     @relationships.each do |relationship|
-      #       if relationship.user_id == current_user.id
-      #         @relationship_name = RelativeType.find(relationship.relative_type_id).name
-      #         @relationship = relationship
-      #       elsif relationship.relative_id == current_user.id
-      #         @relationship_name = RelativeType.find(relationship.relative_type_id).inverse_name
-      #         @relationship = relationship
-      #       end
-      #     end
-      #   else
-      #     @relationship_name = "Not available"
-      #   end
-      # end
         
       render = 'index.html.erb'
     else
@@ -62,8 +43,16 @@ class UsersController < ApplicationController
     else
       @relationship_name = "Please add"
     end
-  
-    render = 'show.html.erb'
+
+    if current_user.group_id == @user.group.id || current_user.admin
+      render = 'show.html.erb'
+    else
+      redirect_to "/newsfeed"
+    end
+
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "Family member not found."
+      redirect_to "/familymembers"
   end
 
   def new
@@ -140,7 +129,11 @@ class UsersController < ApplicationController
       birthday: params[:birthday],
       anniversary: params[:anniversary]
     )
-    # if 
+    if params[:first_name].blank? || params[:last_name].blank?
+      flash[:warning] = "You must enter a name to continue. Please try again"
+      redirect_to "/familymembers/new" and return
+    end
+
     @user.save(validate: false)
     flash[:success] = "Congrats. You added a new family member."
       # redirect_to "/familymembers"
@@ -152,18 +145,21 @@ class UsersController < ApplicationController
     #   flash[:warning] = "Please try and edit your family member again."
     #   render 'newfamilymember.html.erb'
     # end
-
-    
   end
 
   def edit
     @title = "Edit Family Member"
     @groups = Group.all
     @user = User.find(params[:id])
+
+    if current_user.group_id == @user.group_id
     # render 'editfamilymember.html.erb'
-    respond_to do |format|
-      format.html { render 'editfamilymember.html.erb' }
-      format.js { render 'editfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+      respond_to do |format|
+        format.html { render 'editfamilymember.html.erb' }
+        format.js { render 'editfamilymember.js.erb' } #default behaviour is to run app/views/notes/create.js.erb file
+      end
+    else
+      redirect_to "/familymembers"
     end
   end
 
@@ -173,6 +169,7 @@ class UsersController < ApplicationController
     @groups = Group.all
     @user = User.find(params[:id])
   
+  if current_user.group_id == @user.group_id
     if @user.email || current_user.admin
       @user.update!(
         first_name: params[:first_name],
@@ -183,7 +180,7 @@ class UsersController < ApplicationController
       )
       flash[:success] = "Congrats. You updated your family member info."
     else
-      flash[:warning] = "Only user can update their information."
+      flash[:warning] = "Umm. Only user can update their information."
     end
     # redirect_to "/familymembers/#{@user.id}"
     respond_to do |format|
@@ -194,13 +191,30 @@ class UsersController < ApplicationController
     #   flash[:warning] = "Please try and edit your family member again."
     #   render 'edit.html.erb'
     # end
+    else
+      redirect_to "/familymembers"
+    end
   end
 
   def destroy
     @title = "Delete Family Member"
-    user = User.find(params[:id])
-    user.destroy
-    flash[:warning] = "You deleted your family member."
+
+    @user = User.find_by(id: params[:id])
+    
+    if current_user.group_id == @user.group_id || current_user.admin
+      
+      @relationships = Relationship.where("user_id = ? OR relative_id = ?", @user.id, @user.id)
+      
+      @relationships.each do |relationship|
+        relationship.destroy
+      end
+
+      @user.destroy
+
+      flash[:warning] = "You deleted #{@user.first_name}."
+    
+    end
+
     redirect_to "/familymembers"
   end
 
