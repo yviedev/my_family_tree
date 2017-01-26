@@ -1,4 +1,4 @@
-/*
+      /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -14,298 +14,299 @@
  *= require sweetalert2
  *= require_tree .
  */
-
-$footer-color-background: #1e1e1e;
-$user-profile-summary-background: #e7a61a;
-$super-dark-gray: #4c4c4c;
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Indie Flower', cursive;
-  text-align: center;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  color: #4c4c4c;
-}
-
-h1,
-h2 {
-  font-weight: 700;
-}
-
-h1 {
-  font-size: 36px;
-}
-
-.software-stack {
-  p {
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-}
-
-.about-video {
-  width: 600px;
-  height: auto;
-}
-
-.about-class {
-  // font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 1.3em;
-  // font-weight: 200;
-  line-height: 30px;
-  color: lighten ($super-dark-gray, 70%);
-  margin-left: 5%;
-  // background-color: #f3f3f3;
-  width: 90%;
-  .section-header {
-    margin: 0;
-  }
-  p {
-    font-family: 'Muli', sans-serif;
-    // display: inline;
-  }
-  padding-bottom: 20px;
-}
-
-#MFT-text {
-  // padding-left: 20px;
-  margin-left: 20px;
-}
-
-#video-in-about-sec {
-  float: left;
-  padding-right: 60px;
-}
-
-a {
-  color: green;
-  size: 2em;
-}
-
-a:hover {
-  color: #e7a61a;
-}
-
-.logo-main {
-  width: 350px;
-  height: auto;
-  margin-left: 1em;
-  // padding-top: 20px;
-  // padding-left: 20px;
-}
-
-.footer-containertent {
-  margin-bottom: 30px;
-}
-
-.footer-container {
-  li {}
-}
-
-.footer-image {
-  width: 17em;
-  height: auto;
-}
-
-#footer-contact-us {
-  text-align: left;
-  color: gray;
-  font-weight: 700;
-  font-size: 1.6em;
-  padding-top: 10px;
-  h4 {
-    margin: 0;
-  }
-}
-
-.about-header {
-  text-align: center;
-}
-
-header {
-  background-color: transparent;
-  padding-bottom: 20px;
-  // margin-bottom: 20px;
-}
-
-.container {
-  float: none;
-  margin: 0;
-  width: 100%;
-  .wrap-nav-container {
-    float: none;
-    margin: 0;
-    width: 100%;
-  }
-}
-
-.navbar {
-  background-image: url('asanoha.png');
-  background-repeat: repeat;
-  font-size: 1.5em;
-  padding-bottom: 10px;
-  padding-top: 0;
-  margin-top: 0;
-  // padding-left: 20px;
-  font-family: 'Arvo', serif;
-  a.nav-link:hover {
-    background-color: green;
-    color: lightgray !important;
-  }
-  a.nav-link:focus {
-    background-color: green;
-  }
-  .navbar-nav {
-    margin-left: auto;
-    // margin-right: auto;
-    li {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-  .active a {
-    background-color: green;
-    color: lightgray !important;
-  }
-  .container-fluid {
-    background-image: none;
-  }
-  .nav-link.active {
-    background-color: green;
-    color: lightgray !important;
-  }
-  .dropdown-item {
-    color: rgba(0, 0, 0, 0.5);
-    background-color: inherit;
-    a:hover {
-      background-color: green;
-      color: lightgray;
-    }
-  }
-  form {
-    input {
-      font-size: 0.9em;
-    }
-  }
-  .btn {
-    color: green;
-    background-color: transparent;
-  }
-  .btn:hover {
-    color: white;
-    background-color: green;
-  }
-}
-
-// a.nav-item.dropdown-item:hover {
-//   color: #4c4c4c;
-//   background-color: green;
-//   padding: .5 1em;
-// }
-.nav-link:hover {
-  color: $user-profile-summary-background;
-}
-
-.my-2 {
-  display: inline;
-}
-
-.about-sec {
-  padding: 0;
-}
-
-.info-section {
-  padding: 20px 0;
-}
-
-.portfolio-section {
-  padding: 10px 0 0;
-}
-
-#team {
-  padding: 20px 0;
-}
-
-.footer-container {
-  padding-top: 3em;
-  padding-bottom: 0.9em;
-  background-color: $footer-color-background;
-}
-
-.alert {
-  text-align: center;
-}
-
-.section-header {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  h1 {
-    color: inherit;
-    padding: 0;
-    font-size: 36px;
-  }
-}
-
-.modal-content {
-  background-image: url('asanoha.png');
-  background-repeat: repeat;
-  form {
-    color: green;
-  }
-  .btn {
-    color: white;
-    background-color: green;
-    border: green;
-  }
-  .btn:hover {
-    color: green;
-    background-color: white;
-    border: white;
-  }
-  input {
-    font-family: 'Indie Flower', cursive;
-  }
-}
-
-.modal-button {
-  color: white;
-  background-color: green;
-  border: green;
-}
-
-.modal-button:hover {
-  color: green;
-  background-color: white;
-  border: white;
-}
-
-.modal-form {
-  width: 400px;
-  line-height: 2em;
-  input {
-    font-family: 'Indie Flower', cursive;
-  }
-}
-
-.modal-body {
-  input {
-    color: green;
-    text-align: center;
-  }
-}
-
-.form-control {
-  font-family: 'Indie Flower', cursive;
-  // 
-  max-width: 400px;
-}
-
-label {
-  color: #4c4c4c;
-  // font-size: 1.6em;
-  padding-top: 10px;
-}
+      
+      $footer-color-background: #1e1e1e;
+      $user-profile-summary-background: #e7a61a;
+      $super-dark-gray: #4c4c4c;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Indie Flower', cursive;
+        text-align: center;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        color: #4c4c4c;
+      }
+      
+      h1,
+      h2 {
+        font-weight: 700;
+      }
+      
+      h1 {
+        font-size: 36px;
+      }
+      
+      .software-stack {
+        p {
+          margin-bottom: 0;
+          padding-bottom: 0;
+          color: green;
+        }
+      }
+      
+      .about-video {
+        width: 600px;
+        height: auto;
+      }
+      
+      .about-class {
+        // font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 1.3em;
+        // font-weight: 200;
+        line-height: 30px;
+        color: lighten ($super-dark-gray, 70%);
+        margin-left: 5%;
+        // background-color: #f3f3f3;
+        width: 90%;
+        .section-header {
+          margin: 0;
+        }
+        p {
+          font-family: 'Muli', sans-serif;
+          // display: inline;
+        }
+        padding-bottom: 20px;
+      }
+      
+      #MFT-text {
+        // padding-left: 20px;
+        margin-left: 20px;
+      }
+      
+      #video-in-about-sec {
+        float: left;
+        padding-right: 60px;
+      }
+      
+      a {
+        color: green;
+        size: 2em;
+      }
+      
+      a:hover {
+        color: #e7a61a;
+      }
+      
+      .logo-main {
+        width: 350px;
+        height: auto;
+        margin-left: 1em;
+        // padding-top: 20px;
+        // padding-left: 20px;
+      }
+      
+      .footer-containertent {
+        margin-bottom: 30px;
+      }
+      
+      .footer-container {
+        li {}
+      }
+      
+      .footer-image {
+        width: 17em;
+        height: auto;
+      }
+      
+      #footer-contact-us {
+        text-align: left;
+        color: gray;
+        font-weight: 700;
+        font-size: 1.6em;
+        padding-top: 10px;
+        h4 {
+          margin: 0;
+        }
+      }
+      
+      .about-header {
+        text-align: center;
+      }
+      
+      header {
+        background-color: transparent;
+        padding-bottom: 20px;
+        // margin-bottom: 20px;
+      }
+      
+      .container {
+        float: none;
+        margin: 0;
+        width: 100%;
+        .wrap-nav-container {
+          float: none;
+          margin: 0;
+          width: 100%;
+        }
+      }
+      
+      .navbar {
+        background-image: url('asanoha.png');
+        background-repeat: repeat;
+        font-size: 1.5em;
+        padding-bottom: 10px;
+        padding-top: 0;
+        margin-top: 0;
+        // padding-left: 20px;
+        font-family: 'Arvo', serif;
+        a.nav-link:hover {
+          background-color: green;
+          color: lightgray !important;
+        }
+        a.nav-link:focus {
+          background-color: green;
+        }
+        .navbar-nav {
+          margin-left: auto;
+          // margin-right: auto;
+          li {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+        .active a {
+          background-color: green;
+          color: lightgray !important;
+        }
+        .container-fluid {
+          background-image: none;
+        }
+        .nav-link.active {
+          background-color: green;
+          color: lightgray !important;
+        }
+        .dropdown-item {
+          color: rgba(0, 0, 0, 0.5);
+          background-color: inherit;
+          a:hover {
+            background-color: green;
+            color: lightgray;
+          }
+        }
+        form {
+          input {
+            font-size: 0.9em;
+          }
+        }
+        .btn {
+          color: green;
+          background-color: transparent;
+        }
+        .btn:hover {
+          color: white;
+          background-color: green;
+        }
+      }
+      
+      // a.nav-item.dropdown-item:hover {
+      //   color: #4c4c4c;
+      //   background-color: green;
+      //   padding: .5 1em;
+      // }
+      .nav-link:hover {
+        color: $user-profile-summary-background;
+      }
+      
+      .my-2 {
+        display: inline;
+      }
+      
+      .about-sec {
+        padding: 0;
+      }
+      
+      .info-section {
+        padding: 20px 0;
+      }
+      
+      .portfolio-section {
+        padding: 10px 0 0;
+      }
+      
+      #team {
+        padding: 20px 0;
+      }
+      
+      .footer-container {
+        padding-top: 3em;
+        padding-bottom: 0.9em;
+        background-color: $footer-color-background;
+      }
+      
+      .alert {
+        text-align: center;
+      }
+      
+      .section-header {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        h1 {
+          color: inherit;
+          padding: 0;
+          font-size: 36px;
+        }
+      }
+      
+      .modal-content {
+        background-image: url('asanoha.png');
+        background-repeat: repeat;
+        form {
+          color: green;
+        }
+        .btn {
+          color: white;
+          background-color: green;
+          border: green;
+        }
+        .btn:hover {
+          color: green;
+          background-color: white;
+          border: white;
+        }
+        input {
+          font-family: 'Indie Flower', cursive;
+        }
+      }
+      
+      .modal-button {
+        color: white;
+        background-color: green;
+        border: green;
+      }
+      
+      .modal-button:hover {
+        color: green;
+        background-color: white;
+        border: white;
+      }
+      
+      .modal-form {
+        width: 400px;
+        line-height: 2em;
+        input {
+          font-family: 'Indie Flower', cursive;
+        }
+      }
+      
+      .modal-body {
+        input {
+          color: green;
+          text-align: center;
+        }
+      }
+      
+      .form-control {
+        font-family: 'Indie Flower', cursive;
+        // 
+        max-width: 400px;
+      }
+      
+      label {
+        color: #4c4c4c;
+        // font-size: 1.6em;
+        padding-top: 10px;
+      }
