@@ -9,7 +9,7 @@
       <%= text_field_tag :location, "Enter new location", class: "form-control form-width" %><br>
       <%= label_tag "#{current_user.first_name}" %>
       <%= text_field_tag :description, "is..", class: "form-control form-width" %><br>
-      <%= submit_tag "Add my location" %>
+      <%= submit_tag "Add my location", class: "btn btn-outline-primary modal-button"  %>
       <% end %>
       <br>
     </div>
