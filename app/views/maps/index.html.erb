@@ -16,7 +16,7 @@
 <% if @map_place.nil? %>
   <%= form_tag "/maps/new", class: "form-inline map-form", remote: true, method: :get do  %>
   
-  <%= submit_tag "Add my location" %><br>
+  <%= submit_tag "Add my location" , class: "btn btn-warning" %><br>
   <% end %>
 <% else %>
   <%= form_tag "/maps/#{@map_place.id}/edit", class: "form-inline map-form", remote: true, method: :get do  %>
