@@ -2,9 +2,9 @@
     <div class="about-class">
         <p id="video-in-about-sec"><%= video_tag "about.mp4", controls: true, autoplay: true, muted: true, loop: true, id: "about-video" %></p>
       <strong>
-        <p id="MFT-text">My Family Tree (MFT) is a fun, easy and safe way to keep in touch with family and build a family tree. It only takes a few seconds to <%= link_to "signup", "/signup", remote: true %> for an account!
-        <p>Once you are logged in, you can add photos and keep your family up-to-date via the family <a href="/newsfeed">newsfeed</a>. You can even <%= link_to "add family member", "/familymembers/new", remote: true %> profiles in order to quickly build your family tree.</p> 
-        <p>You can also view your <a href="/tree">Family Tree</a> in order to see how everyone is related to you and don't forget to visit the <a href="/maps">Family Map</a> to check in your location!</p>
+        <p id="MFT-text">My Family Tree (MFT) is a fun, easy and safe way to keep in touch with family and build a family tree. It only takes a few seconds to <%=link_to "signup", "/signup", remote: true %> for an account!
+        <p>Once you are logged in, you can add photos and keep your family up-to-date via the family <% if current_user %><a href="/newsfeed">newsfeed</a><% else %><%= link_to "newsfeed", (url_to_image("newsfeed.png")) %><% end %>. You can even <% if current_user %><a href="/familymembers/new">add family members</a><% else %><%= link_to "add family members", (url_to_image("addfamilymember.png")) %><% end %> in order to quickly see your <% if current_user %><a href="/familymembers">family members</a><% else %><%= link_to "family members", (url_to_image("familymembers.png")) %><% end %>.</p> 
+        <p>You can also view your <% if current_user %><a href="/tree">Family Tree</a><% else %><%= link_to "tree", (url_to_image("tree.png")) %><% end %> in order to see how everyone is related to you and don't forget to visit the <% if current_user %><a href="/maps">Family Map</a><% else %><%= link_to "map", (url_to_image("map.png")) %><% end %> to check in your location!</p>
       </strong>
       <div class="software-stack">
         <p><strong>MFT was built with: Rails 5, HTML, CSS/SASS, Vanilla JS, JQuery, Bootstrap, Google Chart and Map APIs.</strong></p>
