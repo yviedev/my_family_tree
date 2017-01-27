@@ -2,7 +2,7 @@
 
 <%= form_tag "/myfamily", class: "form-control", method: :post do %>
 <div>
-  <%= label_tag :name %>
+  <%= label_tag "Family Group Name" %>
   <%= text_field_tag :name, "Enter your last name", class: "form-control form-width" %>
 </div>
 <%= submit_tag "Add Family Name", class: "btn btn-outline-primary modal-button"  %>
