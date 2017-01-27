@@ -35,6 +35,9 @@ class ImagesController < ApplicationController
   end
 
   def show
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "Image not found."
+      redirect_to "/familymembers"
   end
 
   def edit

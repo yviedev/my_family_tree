@@ -254,6 +254,7 @@
       .modal-content {
         background-image: url('asanoha.png');
         background-repeat: repeat;
+        font-size: 75%;
         form {
           color: green;
         }
@@ -301,8 +302,18 @@
       
       .form-control {
         font-family: 'Indie Flower', cursive;
+        label {
+          font-size: 1.5em;
+        }
+        input {
+          font-size: 1.3em;
+        }
         // 
         max-width: 400px;
+      }
+      
+      .form-control:focus {
+        border-color: green;
       }
       
       label {
