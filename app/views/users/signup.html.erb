@@ -8,12 +8,12 @@
   <div>
     <%= label_tag :last_name %>
     <%= text_field_tag :last_name, "", class: "form-control form-width" %>
-  </div><br>
+  </div>
   <div>
     <%= label_tag :group_id %>
     <%= select_tag :groups, options_for_select(@groups.collect{ |g| [g.name, g.id] })%> 
     <%= link_to "My family group is not listed here.", "/myfamily/new" %>
-  </div><br>
+  </div>
   <div>
     <%= label_tag :birthday %>
     <%= text_field_tag :birthday, "", class: "form-control form-width" %>
