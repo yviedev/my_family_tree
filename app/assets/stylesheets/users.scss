@@ -166,27 +166,36 @@ p {
   padding-bottom: 5px;
 }
 
+.metaItem {
+  color: green;
+  padding: 0;
+}
+
 .user-profile {
   .summary {
     header {
-      background-color: transparent;
+      background-color: white;
     }
     .form-control {
       background-color: transparent;
       border: none;
     }
     float: left;
+    // position: absolute;
+    // top: 0;
     text-decoration: none;
     color: #000;
-    background-color: transparent;
+    background-color: white;
     display: block;
-    height: auto;
+    height: 100%;
+    min-height: 100%;
     width: auto;
     min-width: 400px;
     max-width: 600px;
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 5px;
+    padding-right: 10px;
     text-align: center;
     /* Firefox */
     -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
@@ -213,104 +222,15 @@ p {
       height: 300px;
     }
   }
-  .activity-feed {
-    h2 {
-      text-align: center;
-      padding-bottom: 30px;
-    }
-    .form-width {
-      width: 30em;
-    }
-    // padding: 15px;
-    float: left;
-    margin-left: 15px;
-    margin-top: 0;
-    margin-bottom: 10px;
-    padding-left: 50px;
-    height: 500px;
-    background-color: white;
-    overflow-y: scroll;
-    // /* Firefox */
-    // -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
-    // /* Safari+Chrome */
-    // -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
-    // /* Opera */
-    // box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
-    .feed-item {
-      position: relative;
-      padding-bottom: 10px;
-      padding-left: 30px;
-      border-left: 2px solid #e4e8eb;
-      background-color: floralwhite;
-      .date-wrapper {
-        display: inline;
-        .date {
-          position: relative;
-          top: -5px;
-          color: green;
-          text-transform: uppercase;
-          font-size: 1.5em;
-          display: inline;
-          padding-bottom: 20px;
-        }
-        .like {
-          padding-bottom: 5px;
-          font-size: 1.3em;
-          background-color: floralwhite;
-          display: inline;
-          form {
-            display: inline;
-          }
-        }
-      }
-      .text {
-        font-family: 'Indie Flower', cursive;
-        font-size: 1.7em;
-        line-height: 2em;
-        position: relative;
-        top: -1px;
-        color: #8c96a3;
-        padding-right: 20px;
-        padding-top: 20px;
-        background-color: floralwhite;
-        img {
-          padding-left: 20px;
-          padding-top: 20px;
-          padding-bottom: 10px;
-        }
-      }
-    }
-    .comment {
-      padding-left: 30px;
-      padding-bottom: 10px;
-      background-color: antiquewhite;
-      p {
-        margin-bottom: 0;
-        color: gray;
-      }
-      input {
-        color: #8bc58b;
-      }
-    }
-    .feed-item:last-child {
-      border-color: transparent;
-    }
-    .feed-item:after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: -6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 6px;
-      background: #fff;
-      border: 1px solid #f37167;
-    }
-  }
   .gallery {
-    clear: left;
-    padding-top: 50px;
+    // float: inherit;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    padding-top: 10px;
+    min-height: 500px;
+    // max-width: 1500px;
+    min-width: 1000px;
     background-image: url('new_year_background.png');
     background-repeat: repeat;
     // /* Firefox */
@@ -356,7 +276,6 @@ p {
           color: black;
         }
       }
-      img {}
     }
   }
 }

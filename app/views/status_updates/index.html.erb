@@ -10,7 +10,7 @@
     <a href="/familymembers/<%= status_update.user.id %>"><%= status_update.user.first_name.upcase %></a> WROTE ON <%= status_update.month_date_year_time(status_update.updated_at.in_time_zone('Eastern Time (US & Canada)')).upcase %>
     <% if current_user == status_update.user || current_user.admin %>
     
-    <p class="status-update-text" id="like-<%= status_update.id %>"><%= link_to image_tag("garbage"), "/newsfeed/#{status_update.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" } %></p>
+    <p class="status-update-text" id="like-<%= status_update.id %>"><%= link_to image_tag("garbage"), "/newsfeed/#{status_update.id}", :method => :delete, data: { confirm: "Are you sure?" } %></p>
     <% end %>
 
     <% if Like.where(status_update_id: status_update.id). where(user_id: current_user.id).first %>
@@ -39,7 +39,7 @@
     <% status_update.comments.each do |comment|%>
       <p><%= comment.user.first_name%>: <%= comment.post%> <% comment.id %>
       <% if comment.user == current_user || current_user.admin %>
-        <%= link_to image_tag("garbage"), "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure you want to delete?" } %></p>
+        <%= link_to image_tag("garbage"), "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure?" } %></p>
       <% end %>
     <% end %>
 

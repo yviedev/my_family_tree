@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
-gem 'sweet-alert-confirm'
+gem 'sweet-alert2-rails'
 gem 'geocoder'
 gem 'dotenv-rails'
 gem 'seed_dump'
