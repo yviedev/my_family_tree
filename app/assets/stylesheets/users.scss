@@ -54,11 +54,8 @@ $color-gallery-background: #EDECEB;
 // }
 //Stickies CSS
 .stickies {
-  display: flex;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .stickies body {
@@ -88,6 +85,9 @@ li {
 .stickies ul {
   overflow: hidden;
   padding: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .stickies ul li a {
